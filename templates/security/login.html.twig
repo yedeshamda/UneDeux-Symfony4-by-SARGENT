@@ -1,13 +1,17 @@
-{% block stylesheets %}
-    <link href="{{ asset('assets/css/login.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css">
-{% endblock %}
+<html>
+<head>
 
+    {% block stylesheets %}
+        <link href="{{ asset('assets/css/css_login.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('assets/css/bootstrap.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('assets/css/login.css') }}" rel="stylesheet" type="text/css">
+    {% endblock %}
+</head>
+<body>
 {% block body %}
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
-
     <span class="bottomTrapezoidal"></span><span class="enterTriangle"></span>
     <div class="bottomTriangle"></div>
     <div class="mainTriangle">
@@ -25,10 +29,6 @@
                            placeholder="MOT DE PASSE..." required="required"/>
                 </div>
                 <br>
-                <div class="d-flex">
-                    <button class="btn btn-outline-light btn-forgot btn-sm mx-auto" type="button">FORGOT PASSWORD?
-                    </button>
-                </div>
                 <input type="hidden" name="_csrf_token"
                        value="{{ csrf_token('authenticate') }}"
                 >
@@ -38,3 +38,12 @@
         </div>
     </div>
 {% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('assets/js/all.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+{% endblock %}
+
+</body>
+
+</html>
+
