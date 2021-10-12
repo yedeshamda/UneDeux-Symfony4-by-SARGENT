@@ -1,0 +1,40 @@
+{% block stylesheets %}
+    <link href="{{ asset('assets/css/login.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block body %}
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    <span class="bottomTrapezoidal"></span><span class="enterTriangle"></span>
+    <div class="bottomTriangle"></div>
+    <div class="mainTriangle">
+        <div class="tContent">
+            <p class="h4 font-IBM font-weight-light mb-5">SE CONNECTER</p>
+            <form method="post">
+                <div class="form-group input-shadow">
+                    <label class="d-none" for="loginInput"> </label>
+                    <input name="email" value="{{ last_username }}" class="form-control border-0 rounded-0"
+                           id="inputEmail" type="email" placeholder="EMAIL..." required="required"/>
+                </div>
+                <div class="form-group input-shadow">
+                    <label class="d-none" for="passwordInput"> </label>
+                    <input name="password" class="form-control border-0 rounded-0" id="inputPassword" type="password"
+                           placeholder="MOT DE PASSE..." required="required"/>
+                </div>
+                <br>
+                <div class="d-flex">
+                    <button class="btn btn-outline-light btn-forgot btn-sm mx-auto" type="button">FORGOT PASSWORD?
+                    </button>
+                </div>
+                <input type="hidden" name="_csrf_token"
+                       value="{{ csrf_token('authenticate') }}"
+                >
+                <button class="btn btn-enter font-weight-light" type="submit"><i class="fas fa-lock fa-2x"> </i><br/>ENTRER
+                </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'layout/base.html.twig' %}
+{% block body %}
+    <h1>User index</h1>
+
+    <table id="table_id" class="table table-striped">
+        <thead>
+        <tr>
+            <th>Email</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Role</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.email }}</td>
+                <td>{{ user.nom }}</td>
+                <td>{{ user.prenom }}</td>
+                {% if user.roles[0]=="ROLE_ADMIN" %}
+                    <td>ADMIN</td>
+                {% else %}
+                    <td>USER</td>
+                {% endif %}
+                <td>
+                    <a href="{{ path('admin_user_show', {'id': user.id}) }}">show</a>
+                    <a href="{{ path('admin_user_edit', {'id': user.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_user_new') }}">Create new</a>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('assets/css/datatables.min.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <!-- DataTable-->
+    <script src="{{ asset('assets/js/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('assets/js/datatables.min.js') }}"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#table_id').DataTable({
+                language: {
+                    url: 'http://cdn.datatables.net/plug-ins/1.10.24/i18n/French.json'
+                },
+            });
+        });
+    </script>
+{% endblock %}

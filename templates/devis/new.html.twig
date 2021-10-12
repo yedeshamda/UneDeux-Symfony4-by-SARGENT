@@ -1,0 +1,8 @@
+{% extends 'layout/base.html.twig' %}
+{% block body %}
+    <h1>Create new Devis</h1>
+
+    {{ include('devis/_form.html.twig') }}
+
+    <a href="{{ path('admin_devis_index') }}">back to list</a>
+{% endblock %}
