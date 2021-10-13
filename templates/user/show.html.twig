@@ -4,6 +4,10 @@
 
     <table class="table">
         <tbody>
+        <center>
+        <img src="{{asset('images/users/'~user.imageName)}}" height="160">
+        </center>
+        <br>
             <tr>
                 <th>Email</th>
                 <td>{{ user.email }}</td>
@@ -27,11 +31,13 @@
         </tbody>
     </table>
 
-
+    <center>
     {{ include('user/_delete_form.html.twig') }}
     <br>
     <a class="btn btn-primary btn-sm" href="{{ path('admin_user_edit', {'id': user.id}) }}">Modifer</a>
     <br><br>
+    </center>
     <a href="{{ path('admin_user_index') }}">back to list</a>
     <br>
+
 {% endblock %}

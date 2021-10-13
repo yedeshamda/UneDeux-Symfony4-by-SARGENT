@@ -4,34 +4,39 @@
 
     <table class="table">
         <tbody>
-            <tr>
-                <th>Nom</th>
-                <td>{{ produit.nom }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ produit.description }}</td>
-            </tr>
-            <tr>
-                <th>Datecreation</th>
-                <td>{{ produit.datecreation ? produit.datecreation|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Slug</th>
-                <td>{{ produit.slug }}</td>
-            </tr>
-            <tr>
-                <th>Descriptiontech</th>
-                <td>{{ produit.descriptiontech }}</td>
-            </tr>
+        <center>
+            <img src="{{ asset('images/produits/'~produit.imageName) }}" height="160">
+        </center>
+        <br>
+        <tr>
+            <th>Nom</th>
+            <td>{{ produit.nom }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ produit.description }}</td>
+        </tr>
+        <tr>
+            <th>Datecreation</th>
+            <td>{{ produit.datecreation ? produit.datecreation|date('Y-m-d') : '' }}</td>
+        </tr>
+        <tr>
+            <th>Slug</th>
+            <td>{{ produit.slug }}</td>
+        </tr>
+        <tr>
+            <th>Descriptiontech</th>
+            <td>{{ produit.descriptiontech }}</td>
+        </tr>
         </tbody>
     </table>
+    <center>
+        {{ include('produit/_delete_form.html.twig') }}
 
-    {{ include('produit/_delete_form.html.twig') }}
-
-    <br>
-    <a class="btn btn-primary btn-sm" href="{{ path('admin_produit_edit', {'id': produit.id}) }}">Modifer</a>
-    <br><br>
+        <br>
+        <a class="btn btn-primary btn-sm" href="{{ path('admin_produit_edit', {'id': produit.id}) }}">Modifer</a>
+        <br><br>
+    </center>
     <a href="{{ path('admin_produit_index') }}">back to list</a>
     <br>
 {% endblock %}

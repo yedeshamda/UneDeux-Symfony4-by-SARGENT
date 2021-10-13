@@ -8,6 +8,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class BlogType extends AbstractType
 {
@@ -16,7 +17,7 @@ class BlogType extends AbstractType
         $builder
             ->add('titre')
             ->add('description',CKEditorType::class)
-            ->add('image')
+            ->add('imageFile',VichImageType::class)
         ;
     }
 

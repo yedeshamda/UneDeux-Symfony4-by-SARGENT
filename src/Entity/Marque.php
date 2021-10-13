@@ -30,16 +30,17 @@ class Marque
     private $nom;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $image;
-
-    /**
-     * @Vich\UploadableField(mapping="marque",fileNameProperty="image")
-     * @var File
+     * @Vich\UploadableField(mapping="marques", fileNameProperty="imageName")
+     * @var File|null
      */
     private $imageFile;
 
+    /**
+     * @ORM\Column(type="string")
+     *
+     * @var string|null
+     */
+    private $imageName;
 
     /**
      * @Gedmo\Slug(fields={"nom"})
@@ -73,18 +74,6 @@ class Marque
 
         return $this;
     }
-
-    /*    public function getImage(): ?string
-        {
-            return $this->image;
-        }*/
-
-    /*    public function setImage(string $image): self
-        {
-            $this->image = $image;
-
-            return $this;
-        }*/
 
     public function getSlug(): ?string
     {
@@ -134,37 +123,25 @@ class Marque
     }
 
     /**
-     * @return string|null
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $imageFile
      */
-    public function getImage(): ?string
+    public function setImageFile(?File $imageFile = null): void
     {
-        return $this->image;
+        $this->imageFile = $imageFile;
     }
 
-    /**
-     * @param string|null $image
-     * @return $this
-     */
-    public function setImage(?string $image): self
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * @return File|null
-     */
     public function getImageFile(): ?File
     {
         return $this->imageFile;
     }
 
-    /**
-     * @param File|null $imageFile
-     */
-    public function setImageFile(?File $imageFile=null)
+    public function setImageName(?string $imageName): void
     {
-        $this->imageFile = $imageFile;
+        $this->imageName = $imageName;
+    }
+
+    public function getImageName(): ?string
+    {
+        return $this->imageName;
     }
 }

@@ -6,6 +6,7 @@ use App\Entity\Marque;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class MarqueType extends AbstractType
 {
@@ -13,7 +14,7 @@ class MarqueType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('image')
+            ->add('imageFile',VichImageType::class)
         ;
     }
 
