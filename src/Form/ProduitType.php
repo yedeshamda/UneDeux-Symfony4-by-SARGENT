@@ -15,7 +15,6 @@ class ProduitType extends AbstractType
             ->add('nom')
             ->add('description')
             ->add('datecreation')
-            ->add('slug')
             ->add('descriptiontech')
             ->add('categorie')
             ->add('marque')

@@ -13,7 +13,6 @@ class CategorieType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('slug')
             ->add('baniere')
             ->add('titre')
             ->add('description')

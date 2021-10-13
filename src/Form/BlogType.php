@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Blog;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,8 +14,7 @@ class BlogType extends AbstractType
     {
         $builder
             ->add('titre')
-            ->add('slug')
-            ->add('description')
+            ->add('description',TextareaType::class)
             ->add('image')
             ->add('datecreation')
         ;

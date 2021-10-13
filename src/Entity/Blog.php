@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\BlogRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass=BlogRepository::class)
@@ -23,7 +24,8 @@ class Blog
     private $titre;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @Gedmo\Slug(fields={"titre"})
+     * @ORM\Column(type="string", length=255,unique=true)
      */
     private $slug;
 
@@ -62,13 +64,6 @@ class Blog
     public function getSlug(): ?string
     {
         return $this->slug;
-    }
-
-    public function setSlug(string $slug): self
-    {
-        $this->slug = $slug;
-
-        return $this;
     }
 
     public function getDescription(): ?string

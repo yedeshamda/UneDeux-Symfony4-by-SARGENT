@@ -6,9 +6,14 @@ use App\Repository\MarqueRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=MarqueRepository::class)
+ * @Vich\Uploadable
  */
 class Marque
 {
@@ -25,12 +30,20 @@ class Marque
     private $nom;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $image;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @Vich\UploadableField(mapping="marque",fileNameProperty="image")
+     * @var File
+     */
+    private $imageFile;
+
+
+    /**
+     * @Gedmo\Slug(fields={"nom"})
+     * @ORM\Column(type="string", length=255,unique=true)
      */
     private $slug;
 
@@ -61,17 +74,17 @@ class Marque
         return $this;
     }
 
-    public function getImage(): ?string
-    {
-        return $this->image;
-    }
+    /*    public function getImage(): ?string
+        {
+            return $this->image;
+        }*/
 
-    public function setImage(string $image): self
-    {
-        $this->image = $image;
+    /*    public function setImage(string $image): self
+        {
+            $this->image = $image;
 
-        return $this;
-    }
+            return $this;
+        }*/
 
     public function getSlug(): ?string
     {
@@ -115,8 +128,43 @@ class Marque
         return $this;
     }
 
-    public function __toString() {
+    public function __toString()
+    {
         return $this->getNom();
     }
 
+    /**
+     * @return string|null
+     */
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param string|null $image
+     * @return $this
+     */
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * @param File|null $imageFile
+     */
+    public function setImageFile(?File $imageFile=null)
+    {
+        $this->imageFile = $imageFile;
+    }
 }

@@ -30,7 +30,7 @@ class AddAdminCommand extends Command
     /**
      * CreateAdminCommand constructor.
      */
-    public function __construct(EntityManagerInterface $entityManager,UserPasswordHasherInterface $passwordEncoder )
+    public function __construct(EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordEncoder)
     {
         $this->entityManager = $entityManager;
         parent::__construct();
@@ -46,15 +46,14 @@ class AddAdminCommand extends Command
 
             // the full command description shown when running the command with
             // the "--help" option
-            ->setHelp('This command allows you to create a admin...')
-        ;
+            ->setHelp('This command allows you to create a admin...');
 
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         // ... put here the code to run in your command
-        $admin=new User();
+        $admin = new User();
         $helper = $this->getHelper('question');
 
         // this method must return an integer number with the "exit status code"
@@ -66,12 +65,18 @@ class AddAdminCommand extends Command
             '</comment>',
         ]);
         $admin->setRoles(array('ROLE_ADMIN'));
-        $usernameQ=new Question('Email : ');
-        $username=$helper->ask($input,$output,$usernameQ);
+        $usernameQ = new Question('Email : ');
+        $username = $helper->ask($input, $output, $usernameQ);
+        $nomQ = new Question('Nom : ');
+        $nom = $helper->ask($input, $output, $nomQ);
+        $prenomQ = new Question('Prenom : ');
+        $prenom = $helper->ask($input, $output, $prenomQ);
         $admin->setEmail($username);
-        $passwordQ=new Question('Password : ');
-        $password=$helper->ask($input,$output,$passwordQ);
-        $admin->setPassword($this->passwordEncoder->hashPassword($admin,$password));
+        $admin->setNom($nom);
+        $admin->setPrenom($prenom);
+        $passwordQ = new Question('Password : ');
+        $password = $helper->ask($input, $output, $passwordQ);
+        $admin->setPassword($this->passwordEncoder->hashPassword($admin, $password));
         $this->entityManager->persist($admin);
         $this->entityManager->flush();
         // return this if there was no problem running the command

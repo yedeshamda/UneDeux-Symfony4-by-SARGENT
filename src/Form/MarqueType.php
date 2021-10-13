@@ -14,7 +14,6 @@ class MarqueType extends AbstractType
         $builder
             ->add('nom')
             ->add('image')
-            ->add('slug')
         ;
     }
 
