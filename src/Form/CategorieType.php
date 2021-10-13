@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Categorie;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,7 +16,7 @@ class CategorieType extends AbstractType
             ->add('nom')
             ->add('baniere')
             ->add('titre')
-            ->add('description')
+            ->add('description',TextareaType::class)
         ;
     }
 

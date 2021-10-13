@@ -22,8 +22,8 @@
                 <td>{{ produit.slug }}</td>
                 <td>{{ produit.descriptiontech }}</td>
                 <td>
-                    <a href="{{ path('admin_produit_show', {'id': produit.id}) }}">show</a>
-                    <a href="{{ path('admin_produit_edit', {'id': produit.id}) }}">edit</a>
+                    <a class="btn btn-primary btn-sm" href="{{ path('admin_produit_show', {'id': produit.id}) }}">Détails</a>
+                    <a class="btn btn-warning btn-sm" href="{{ path('admin_produit_edit', {'id': produit.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}

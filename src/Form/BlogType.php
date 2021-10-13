@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Blog;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -14,9 +15,8 @@ class BlogType extends AbstractType
     {
         $builder
             ->add('titre')
-            ->add('description',TextareaType::class)
+            ->add('description',CKEditorType::class)
             ->add('image')
-            ->add('datecreation')
         ;
     }
 

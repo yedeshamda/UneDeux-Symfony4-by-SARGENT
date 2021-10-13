@@ -18,8 +18,8 @@
                 <td>{{ marque.image }}</td>
                 <td>{{ marque.slug }}</td>
                 <td>
-                    <a href="{{ path('admin_marque_show', {'id': marque.id}) }}">show</a>
-                    <a href="{{ path('admin_marque_edit', {'id': marque.id}) }}">edit</a>
+                    <a class="btn btn-primary btn-sm" href="{{ path('admin_marque_show', {'id': marque.id}) }}">Détails</a>
+                    <a class="btn btn-warning btn-sm" href="{{ path('admin_marque_edit', {'id': marque.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}

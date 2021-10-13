@@ -40,10 +40,14 @@ class Blog
     private $image;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date",nullable=true)
      */
     private $datecreation;
 
+    public function __construct()
+    {
+        $this->datecreation=new \DateTimeImmutable();
+    }
     public function getId(): ?int
     {
         return $this->id;

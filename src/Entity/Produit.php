@@ -75,6 +75,7 @@ class Produit
     {
         $this->fichetech = new ArrayCollection();
         $this->image = new ArrayCollection();
+        $this->datecreation=new \DateTimeImmutable();
     }
 
     public function getId(): ?int

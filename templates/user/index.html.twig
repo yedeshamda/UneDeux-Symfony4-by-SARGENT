@@ -24,8 +24,8 @@
                     <td>USER</td>
                 {% endif %}
                 <td>
-                    <a href="{{ path('admin_user_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('admin_user_edit', {'id': user.id}) }}">edit</a>
+                    <a class="btn btn-primary btn-sm" href="{{ path('admin_user_show', {'id': user.id}) }}">Détails</a>
+                    <a class="btn btn-warning btn-sm" href="{{ path('admin_user_edit', {'id': user.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}

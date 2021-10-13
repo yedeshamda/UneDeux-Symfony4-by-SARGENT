@@ -37,6 +37,7 @@ class Images
     public function __construct()
     {
         $this->produits = new ArrayCollection();
+        $this->datecreation=new \DateTimeImmutable();
     }
 
     public function getId(): ?int

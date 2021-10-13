@@ -79,4 +79,6 @@ class BlogController extends AbstractController
 
         return $this->redirectToRoute('admin_blog_index', [], Response::HTTP_SEE_OTHER);
     }
+
+
 }

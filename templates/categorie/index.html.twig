@@ -22,8 +22,8 @@
                 <td>{{ categorie.titre }}</td>
                 <td>{{ categorie.description }}</td>
                 <td>
-                    <a href="{{ path('admin_categorie_show', {'id': categorie.id}) }}">show</a>
-                    <a href="{{ path('admin_categorie_edit', {'id': categorie.id}) }}">edit</a>
+                    <a class="btn btn-primary btn-sm" href="{{ path('admin_categorie_show', {'id': categorie.id}) }}">Détails</a>
+                    <a class="btn btn-warning btn-sm" href="{{ path('admin_categorie_edit', {'id': categorie.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}

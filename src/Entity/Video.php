@@ -55,4 +55,10 @@ class Video
 
         return $this;
     }
+
+    public function __construct()
+    {
+        $this->datecreation=new \DateTimeImmutable();
+    }
+
 }

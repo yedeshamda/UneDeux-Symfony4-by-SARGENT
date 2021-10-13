@@ -7,7 +7,6 @@
             <tr>
                 <th>Titre</th>
                 <th>Slug</th>
-                <th>Description</th>
                 <th>Image</th>
                 <th>Datecreation</th>
                 <th>actions</th>
@@ -18,12 +17,11 @@
             <tr>
                 <td>{{ blog.titre }}</td>
                 <td>{{ blog.slug }}</td>
-                <td>{{ blog.description }}</td>
                 <td>{{ blog.image }}</td>
                 <td>{{ blog.datecreation ? blog.datecreation|date('Y-m-d') : '' }}</td>
                 <td>
-                    <a href="{{ path('admin_blog_show', {'id': blog.id}) }}">show</a>
-                    <a href="{{ path('admin_blog_edit', {'id': blog.id}) }}">edit</a>
+                    <a class="btn btn-primary btn-sm" href="{{ path('admin_blog_show', {'id': blog.id}) }}">Détails</a>
+                    <a class="btn btn-warning btn-sm" href="{{ path('admin_blog_edit', {'id': blog.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}

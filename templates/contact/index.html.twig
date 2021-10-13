@@ -22,8 +22,8 @@
                 <td>{{ contact.email }}</td>
                 <td>{{ contact.message }}</td>
                 <td>
-                    <a href="{{ path('admin_contact_show', {'id': contact.id}) }}">show</a>
-                    <a href="{{ path('admin_contact_edit', {'id': contact.id}) }}">edit</a>
+                    <a class="btn btn-primary btn-sm" href="{{ path('admin_contact_show', {'id': contact.id}) }}">Détails</a>
+                    <a class="btn btn-warning btn-sm" href="{{ path('admin_contact_edit', {'id': contact.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}

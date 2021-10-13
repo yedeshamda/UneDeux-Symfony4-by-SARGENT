@@ -22,8 +22,8 @@
                 <td>{{ devi.email }}</td>
                 <td>{{ devi.message }}</td>
                 <td>
-                    <a href="{{ path('admin_devis_show', {'id': devi.id}) }}">show</a>
-                    <a href="{{ path('admin_devis_edit', {'id': devi.id}) }}">edit</a>
+                    <a class="btn btn-primary btn-sm" href="{{ path('admin_devis_show', {'id': devi.id}) }}">Détails</a>
+                    <a class="btn btn-warning btn-sm" href="{{ path('admin_devis_edit', {'id': devi.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
