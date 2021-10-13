@@ -1,0 +1,74 @@
+{% extends 'layout/base.html.twig' %}
+{% block body %}
+    <h1>Paramétres de MATEB</h1>
+
+    <table class="table">
+        <tbody>
+        {% for parametre in parametres %}
+            <tr>
+                <th>Numéro Télèphone 1</th>
+                <td>{{ parametre.tel1 }}</td>
+            </tr>
+            <tr>
+                <th>Numéro Télèphone 2</th>
+                <td>{{ parametre.tel2 }}</td>
+            </tr>
+            <tr>
+                <th>E-mail</th>
+                <td>{{ parametre.email }}</td>
+            </tr>
+            <tr>
+                <th>FACEBOOK</th>
+                <td>{{ parametre.fb }}</td>
+            </tr>
+            <tr>
+                <th>YOUTUBE</th>
+                <td>{{ parametre.youtube }}</td>
+            </tr>
+            <tr>
+                <th>LINKEDIN</th>
+                <td>{{ parametre.linkedin }}</td>
+            </tr>
+            <tr>
+                <th>INSTAGRAM</th>
+                <td>{{ parametre.instagram }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ parametre.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ parametre.ville }}</td>
+            </tr>
+
+            <tr>
+                <th>De</th>
+                <td>{{ parametre.jourdebut }}</td>
+            </tr>
+            <tr>
+                <th>Jusqu'à</th>
+                <td>{{ parametre.jourfin }}</td>
+            </tr>
+            <tr>
+                <th>A</th>
+                <td>{{ parametre.heuredebut }}H</td>
+            </tr>
+            <tr>
+                <th>Vers</th>
+                <td>{{ parametre.heurefin }}H</td>
+            </tr>
+            <tr>
+                <td><a class="btn btn-primary btn-sm" href="{{ path('admin_parametre_edit', {'id': parametre.id}) }}">Modifier</a></td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="15">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+
+

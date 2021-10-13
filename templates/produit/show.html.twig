@@ -17,7 +17,7 @@
             <td>{{ produit.description }}</td>
         </tr>
         <tr>
-            <th>Datecreation</th>
+            <th>Date Création</th>
             <td>{{ produit.datecreation ? produit.datecreation|date('Y-m-d') : '' }}</td>
         </tr>
         <tr>
@@ -25,8 +25,16 @@
             <td>{{ produit.slug }}</td>
         </tr>
         <tr>
-            <th>Descriptiontech</th>
-            <td>{{ produit.descriptiontech }}</td>
+            <th>Description Technique</th>
+            <td>{{ produit.descriptiontech|raw }}</td>
+        </tr>
+        <tr>
+            <th>Marque</th>
+            <td>{{ produit.marque.nom }}</td>
+        </tr>
+        <tr>
+            <th>Catégorie</th>
+            <td>{{ produit.categorie.nom }}</td>
         </tr>
         </tbody>
     </table>

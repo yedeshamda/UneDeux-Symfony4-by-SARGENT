@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
+use phpDocumentor\Reflection\Types\Integer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -62,6 +63,20 @@ class UserController extends AbstractController
     public function show(User $user): Response
     {
         return $this->render('user/show.html.twig', [
+            'user' => $user,
+        ]);
+    }
+
+    #[Route('/userProfile/{id}', name: 'user_profile', methods: ['GET'])]
+    public function showProfile(User $user,UserRepository $userRepository,int $id): Response
+    {
+        $user=$userRepository->find($id);
+        if($this->getUser() != $user)
+        {
+            return $this->redirectToRoute('home');
+        }
+
+        return $this->render('user/show_profile.html.twig', [
             'user' => $user,
         ]);
     }
