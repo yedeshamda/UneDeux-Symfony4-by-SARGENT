@@ -2,20 +2,21 @@
 
 namespace App\Form;
 
-use App\Entity\Categorie;
+use App\Entity\Video;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichImageType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
-class CategorieType extends AbstractType
+class VideoType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('nom')
-            ->add('baniereImageFile',VichImageType::class, [
+            ->add('description',CKEditorType::class)
+            ->add('videoFile',VichImageType::class, [
                 'required' => false,
                 'allow_delete' => false,
                 'delete_label' => 'Supprimer',
@@ -23,17 +24,15 @@ class CategorieType extends AbstractType
                 'download_uri' => false,
                 'image_uri' => true,
                 'asset_helper' => true,
-                'label' => 'Image'
+                'label' => 'Video'
             ])
-            ->add('titre')
-            ->add('description',TextareaType::class)
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Categorie::class,
+            'data_class' => Video::class,
         ]);
     }
 }

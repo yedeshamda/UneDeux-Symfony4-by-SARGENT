@@ -40,14 +40,19 @@ class Devis
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="text",nullable=true)
      */
     private $message;
 
     /**
-     * @ORM\OneToMany(targetEntity=Produit::class, mappedBy="devis")
+     * @ORM\ManyToMany(targetEntity=Produit::class, inversedBy="devis")
      */
     private $produits;
+
+//    /**
+//     * @ORM\OneToMany(targetEntity=Produit::class, mappedBy="devis")
+//     */
+//    private $produits;
 
     public function __construct()
     {
@@ -119,24 +124,6 @@ class Devis
         return $this;
     }
 
-    /**
-     * @return Collection|Produit[]
-     */
-    public function getProduits(): Collection
-    {
-        return $this->produits;
-    }
-
-    public function addProduit(Produit $produit): self
-    {
-        if (!$this->produits->contains($produit)) {
-            $this->produits[] = $produit;
-            $produit->setDevis($this);
-        }
-
-        return $this;
-    }
-
     public function removeProduit(Produit $produit): self
     {
         if ($this->produits->removeElement($produit)) {
@@ -151,5 +138,22 @@ class Devis
 
     public function __toString() {
         return $this->getNom();
+    }
+
+    /**
+     * @return Collection|Produit[]
+     */
+    public function getProduits(): Collection
+    {
+        return $this->produits;
+    }
+
+    public function addProduit(Produit $produit): self
+    {
+        if (!$this->produits->contains($produit)) {
+            $this->produits[] = $produit;
+        }
+
+        return $this;
     }
 }

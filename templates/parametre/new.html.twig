@@ -1,8 +1,64 @@
 {% extends 'layout/base.html.twig' %}
+
 {% block body %}
-    <h1>Create new Parametre</h1>
-
-    {{ include('parametre/_form.html.twig') }}
-
-    <a href="{{ path('admin_parametre_index') }}">back to list</a>
+<div class="container">
+    <form method="post">
+        <div class="row mb-3">
+            <label>Facebook</label>
+            <input type="text" class="form-control" value="{{ facebook|default('') }}" name="FACEBOOK">
+        </div>
+        <div class="row mb-3">
+            <label>INSTAGRAM</label>
+            <input type="text" class="form-control" value="{{ instagram|default('') }}" name="INSTAGRAM">
+        </div>
+        <div class="row mb-3">
+            <label>YOUTUBE</label>
+            <input type="text" class="form-control" value="{{ youtube|default('') }}" name="YOUTUBE">
+        </div>
+        <div class="row mb-3">
+            <label>LINKEDIN</label>
+            <input type="text" class="form-control" value="{{ linkedin|default('') }}" name="LINKEDIN">
+        </div>
+        <div class="row mb-3">
+            <label>NUM1</label>
+            <input type="text" class="form-control" value="{{ tel1|default('') }}" name="NUM1">
+        </div>
+        <div class="row mb-3">
+            <label>NUM2</label>
+            <input type="text" class="form-control" value="{{ tel2|default('') }}" name="NUM2">
+        </div>
+        <div class="row mb-3">
+            <label>ADRESSE</label>
+            <input type="text" class="form-control" value="{{ adresse|default('') }}" name="ADRESSE">
+        </div>
+        <div class="row mb-3">
+            <label>VILLE</label>
+            <input type="text" class="form-control" value="{{ ville|default('') }}" name="VILLE">
+        </div>
+        <div class="row mb-3">
+            <label>EMAIL</label>
+            <input type="text" class="form-control" value="{{ email|default('') }}" name="EMAIL">
+        </div>
+        <div class="row mb-3">
+            <label>JourDebut</label>
+            <input type="text" class="form-control" value="{{ jourdebut|default('') }}" name="JourDebut">
+        </div>
+        <div class="row mb-3">
+            <label>JourFin</label>
+            <input type="text" class="form-control" value="{{ jourfin|default('') }}" name="JourFin">
+        </div>
+        <div class="row mb-3">
+            <label>HeureDebut</label>
+            <input type="text" class="form-control" value="{{ heuredebut|default('') }}" name="HeureDebut">
+        </div>
+        <div class="row mb-3">
+            <label>HeureFin</label>
+            <input type="text" class="form-control" value="{{ heurefin|default('') }}" name="HeureFin">
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">Valider</button>
+        </div>
+    </form>
+</div>
 {% endblock %}
+

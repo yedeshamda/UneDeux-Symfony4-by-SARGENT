@@ -19,7 +19,7 @@ class BlogType extends AbstractType
             ->add('description',CKEditorType::class)
             ->add('imageFile',VichImageType::class, [
                 'required' => false,
-                'allow_delete' => true,
+                'allow_delete' => false,
                 'delete_label' => 'Supprimer',
                 'download_label' => '...',
                 'download_uri' => false,

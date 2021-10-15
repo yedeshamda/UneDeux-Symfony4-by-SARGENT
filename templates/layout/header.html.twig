@@ -57,7 +57,7 @@
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle header-profile-user" src="{{ asset('images/users/'~app.user.imageName|default('')) }}">
+                    <img class="rounded-circle header-profile-user" src="{{ asset('images/users/'~app.user.photo.photoName|default('')) }}">
                     <span class="d-none d-xl-inline-block ms-1"
                           key="t-henry">{{ app.user.prenom|default('') }} {{ app.user.nom|default('') }}</span>
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
@@ -74,7 +74,7 @@
             </div>
 
             <div class="d-inline-block">
-                <a href="{{ path('admin_parametre_index') }}">
+                <a href="{{ path('admin_parametre') }}">
                 <button type="button" class="btn header-item noti-icon waves-effect">
                     <i class="bx bx-cog bx-spin"></i>
                 </button>

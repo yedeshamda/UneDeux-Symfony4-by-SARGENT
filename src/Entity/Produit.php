@@ -30,7 +30,7 @@ class Produit
     private $nom;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="text",nullable=true)
      */
     private $description;
 
@@ -51,6 +51,12 @@ class Produit
      * @var string|null
      */
     private $imageName;
+    /**
+     * @ORM\Column(type="datetime",nullable=true)
+     *
+     * @var \DateTimeInterface|null
+     */
+    private $updatedAt;
 
     /**
      * @Gedmo\Slug(fields={"nom"})
@@ -59,7 +65,7 @@ class Produit
     private $slug;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="text",nullable=true)
      */
     private $descriptiontech;
 
@@ -74,11 +80,6 @@ class Produit
     private $marque;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Devis::class, inversedBy="produits")
-     */
-    private $devis;
-
-    /**
      * @ORM\ManyToMany(targetEntity=FicheTech::class, inversedBy="produits")
      */
     private $fichetech;
@@ -88,11 +89,17 @@ class Produit
      */
     private $image;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Devis::class, mappedBy="produits")
+     */
+    private $devis;
+
     public function __construct()
     {
         $this->fichetech = new ArrayCollection();
         $this->image = new ArrayCollection();
         $this->datecreation=new \DateTimeImmutable();
+        $this->devis = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -184,18 +191,6 @@ class Produit
         return $this;
     }
 
-    public function getDevis(): ?Devis
-    {
-        return $this->devis;
-    }
-
-    public function setDevis(?Devis $devis): self
-    {
-        $this->devis = $devis;
-
-        return $this;
-    }
-
     /**
      * @return Collection|FicheTech[]
      */
@@ -250,6 +245,11 @@ class Produit
     public function setImageFile(?File $imageFile = null): void
     {
         $this->imageFile = $imageFile;
+        if (null !== $imageFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
     }
 
     public function getImageFile(): ?File
@@ -265,5 +265,32 @@ class Produit
     public function getImageName(): ?string
     {
         return $this->imageName;
+    }
+
+    /**
+     * @return Collection|Devis[]
+     */
+    public function getDevis(): Collection
+    {
+        return $this->devis;
+    }
+
+    public function addDevi(Devis $devi): self
+    {
+        if (!$this->devis->contains($devi)) {
+            $this->devis[] = $devi;
+            $devi->addProduit($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDevi(Devis $devi): self
+    {
+        if ($this->devis->removeElement($devi)) {
+            $devi->removeProduit($this);
+        }
+
+        return $this;
     }
 }

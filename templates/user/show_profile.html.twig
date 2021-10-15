@@ -5,7 +5,7 @@
     <table class="table">
         <tbody>
         <center>
-        <img src="{{ asset('images/users/'~app.user.imageName) }}" height="160">
+        <img src="{{ asset('images/users/'~app.user.photo.photoName) }}" height="160">
         </center>
         <br>
             <tr>
@@ -17,7 +17,7 @@
                 {% if app.user.roles[0]=="ROLE_ADMIN" %}
                     <td>ADMIN</td>
                 {% else %}
-                    <td>USER</td>
+                    <td>Utilisateur</td>
                 {% endif %}
             </tr>
             <tr>
@@ -30,4 +30,10 @@
             </tr>
         </tbody>
     </table>
+    <br>
+    <center>
+    <a class="btn btn-primary btn-sm" href="{{ path('admin_user_edit', {'id': user.id}) }}">Modifer vos informations</a>
+        <br><br>
+    <a class="btn btn-warning btn-sm" href="{{ path('admin_user_edit', {'id': user.id}) }}">Changer votre mot de passe</a>
+    </center>
 {% endblock %}

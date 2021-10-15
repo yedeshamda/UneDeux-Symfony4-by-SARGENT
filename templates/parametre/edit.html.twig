@@ -1,11 +1,5 @@
 {% extends 'layout/base.html.twig' %}
-
 {% block body %}
-    <h1>Edit Parametre</h1>
-
-    {{ include('parametre/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('admin_parametre_index') }}">back to list</a>
-
-    {{ include('parametre/_delete_form.html.twig') }}
+    <h1>Paramétres de MATEB</h1>
+    {{ include('parametre/_form.html.twig', {'button_label': 'Modifier'}) }}
 {% endblock %}

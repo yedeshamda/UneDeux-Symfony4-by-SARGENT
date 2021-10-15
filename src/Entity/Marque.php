@@ -41,6 +41,12 @@ class Marque
      * @var string|null
      */
     private $imageName;
+    /**
+     * @ORM\Column(type="datetime",nullable=true)
+     *
+     * @var \DateTimeInterface|null
+     */
+    private $updatedAt;
 
     /**
      * @Gedmo\Slug(fields={"nom"})
@@ -128,6 +134,11 @@ class Marque
     public function setImageFile(?File $imageFile = null): void
     {
         $this->imageFile = $imageFile;
+        if (null !== $imageFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
     }
 
     public function getImageFile(): ?File

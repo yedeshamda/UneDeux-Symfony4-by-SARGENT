@@ -7,7 +7,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -15,7 +14,6 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
- * @Vich\Uploadable
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -48,22 +46,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $nom;
 
     /**
-     * @Vich\UploadableField(mapping="users", fileNameProperty="imageName")
-     * @var File|null
-     */
-    private $imageFile;
-
-    /**
-     * @ORM\Column(type="string",nullable=true)
-     *
-     * @var string|null
-     */
-    private $imageName;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
     private $prenom;
+    /**
+     * @ORM\Column(type="datetime",nullable=true)
+     *
+     * @var \DateTimeInterface|null
+     */
+    private $updatedAt;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\UserPhoto", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $photo;
 
     public function getId(): ?int
     {
@@ -178,26 +175,25 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+
     /**
-     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $imageFile
+     * @ORM\PreUpdate
+     *
+     * @return void
      */
-    public function setImageFile(?File $imageFile = null): void
-    {
-        $this->imageFile = $imageFile;
+    public function setUpdatedAtValue(){
+        $this->updatedAt = new \DateTime();
     }
 
-    public function getImageFile(): ?File
+    public function getPhoto(): ?UserPhoto
     {
-        return $this->imageFile;
+        return $this->photo;
     }
 
-    public function setImageName(?string $imageName): void
+    public function setPhoto(?UserPhoto $photo): self
     {
-        $this->imageName = $imageName;
-    }
+        $this->photo = $photo;
 
-    public function getImageName(): ?string
-    {
-        return $this->imageName;
+        return $this;
     }
 }

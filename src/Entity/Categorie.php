@@ -7,9 +7,13 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @ORM\Entity(repositoryClass=CategorieRepository::class)
+ * @Vich\Uploadable
  */
 class Categorie
 {
@@ -32,9 +36,24 @@ class Categorie
     private $slug;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @Vich\UploadableField(mapping="categories", fileNameProperty="baniereImageName")
+     * @var File|null
      */
-    private $baniere;
+    private $baniereImageFile;
+
+    /**
+     * @ORM\Column(type="string",nullable=true)
+     *
+     * @var string|null
+     */
+    private $baniereImageName;
+
+    /**
+     * @ORM\Column(type="datetime",nullable=true)
+     *
+     * @var \DateTimeInterface|null
+     */
+    private $updatedAt;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -42,7 +61,7 @@ class Categorie
     private $titre;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="text",nullable=true)
      */
     private $description;
 
@@ -153,5 +172,33 @@ class Categorie
 
     public function __toString() {
         return $this->getNom();
+    }
+
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $baniereImageFile
+     */
+    public function setBaniereImageFile(?File $baniereImageFile = null): void
+    {
+        $this->baniereImageFile = $baniereImageFile;
+        if (null !== $baniereImageFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    public function getBaniereImageFile(): ?File
+    {
+        return $this->baniereImageFile;
+    }
+
+    public function setBaniereImageName(?string $baniereImageName): void
+    {
+        $this->baniereImageName = $baniereImageName;
+    }
+
+    public function getBaniereImageName(): ?string
+    {
+        return $this->baniereImageName;
     }
 }
