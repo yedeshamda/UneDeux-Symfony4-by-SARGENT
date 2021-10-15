@@ -9,6 +9,8 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 
 
 /**
@@ -61,6 +63,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\JoinColumn(nullable=true)
      */
     private $photo;
+
 
     public function getId(): ?int
     {
@@ -196,4 +199,5 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
 }

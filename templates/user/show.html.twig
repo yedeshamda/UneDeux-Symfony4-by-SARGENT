@@ -5,7 +5,7 @@
     <table class="table">
         <tbody>
         <center>
-        <img src="{{ asset('images/users/'~user.imageName) }}" height="160">
+        <img src="{{ asset('images/users/'~user.photo.photoName|default('')) }}" height="160">
         </center>
         <br>
             <tr>
