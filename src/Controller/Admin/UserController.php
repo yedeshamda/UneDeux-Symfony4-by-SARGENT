@@ -32,7 +32,7 @@ class UserController extends AbstractController
         Route('/user', name: 'user_index', methods: ['GET'])]
     public function index(UserRepository $userRepository): Response
     {
-        return $this->render('user/index.html.twig', [
+        return $this->render('admin/user/index.html.twig', [
             'users' => $userRepository->findAll(),
         ]);
     }
@@ -58,7 +58,7 @@ class UserController extends AbstractController
             return $this->redirectToRoute('admin_user_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('user/new.html.twig', [
+        return $this->renderForm('admin/user/new.html.twig', [
             'user' => $user,
             'form' => $form,
         ]);
@@ -67,7 +67,7 @@ class UserController extends AbstractController
     #[Route('/user/{id}', name: 'user_show', methods: ['GET'])]
     public function show(User $user): Response
     {
-        return $this->render('user/show.html.twig', [
+        return $this->render('admin/user/show.html.twig', [
             'user' => $user,
         ]);
     }
@@ -80,7 +80,7 @@ class UserController extends AbstractController
             return $this->redirectToRoute('home');
         }
 
-        return $this->render('user/show_profile.html.twig', [
+        return $this->render('admin/user/show_profile.html.twig', [
             'user' => $user,
         ]);
     }
@@ -97,7 +97,7 @@ class UserController extends AbstractController
             return $this->redirectToRoute('admin_user_index');
         }
 
-        return $this->renderForm('user/edit.html.twig', [
+        return $this->renderForm('admin/user/edit.html.twig', [
             'user' => $user,
             'form' => $form,
         ]);
@@ -124,7 +124,7 @@ class UserController extends AbstractController
              }
         }
 
-        return $this->renderForm('user/editPassword.html.twig', [
+        return $this->renderForm('admin/user/editPassword.html.twig', [
             'user' => $user,
             'form' => $form,
         ]);

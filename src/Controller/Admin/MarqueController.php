@@ -16,7 +16,7 @@ class MarqueController extends AbstractController
     #[Route('/marque', name: 'marque_index', methods: ['GET'])]
     public function index(MarqueRepository $marqueRepository): Response
     {
-        return $this->render('marque/index.html.twig', [
+        return $this->render('admin/marque/index.html.twig', [
             'marques' => $marqueRepository->findAll(),
         ]);
     }
@@ -36,7 +36,7 @@ class MarqueController extends AbstractController
             return $this->redirectToRoute('admin_marque_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('marque/new.html.twig', [
+        return $this->renderForm('admin/marque/new.html.twig', [
             'marque' => $marque,
             'form' => $form,
         ]);
@@ -45,7 +45,7 @@ class MarqueController extends AbstractController
     #[Route('/marque/{id}', name: 'marque_show', methods: ['GET'])]
     public function show(Marque $marque): Response
     {
-        return $this->render('marque/show.html.twig', [
+        return $this->render('admin/marque/show.html.twig', [
             'marque' => $marque,
         ]);
     }
@@ -62,7 +62,7 @@ class MarqueController extends AbstractController
             return $this->redirectToRoute('admin_marque_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('marque/edit.html.twig', [
+        return $this->renderForm('admin/marque/edit.html.twig', [
             'marque' => $marque,
             'form' => $form,
         ]);

@@ -1,0 +1,59 @@
+{% extends 'admin/layout/base.html.twig' %}
+{% block body %}
+    <h1>Liste des Marques</h1>
+
+    <table id="table_id" class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Image</th>
+                <th>Slug</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for marque in marques %}
+            <tr>
+                <td>{{ marque.nom }}</td>
+                <td>
+                    <img src="{{asset('images/marques/'~marque.imageName)}}" height="40">
+                </td>
+                <td>{{ marque.slug }}</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="{{ path('admin_marque_show', {'id': marque.id}) }}">Détails</a>
+                    <a class="btn btn-warning btn-sm" href="{{ path('admin_marque_edit', {'id': marque.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_marque_new') }}">Ajouter une Marque ?</a>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('assets/css/datatables.min.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <!-- DataTable-->
+    <script src="{{ asset('assets/js/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('assets/js/datatables.min.js') }}"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#table_id').DataTable({
+                language: {
+                    url: 'http://cdn.datatables.net/plug-ins/1.10.24/i18n/French.json'
+                },
+            });
+        });
+    </script>
+{% endblock %}

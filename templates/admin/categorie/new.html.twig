@@ -1,0 +1,8 @@
+{% extends 'admin/layout/base.html.twig' %}
+{% block body %}
+    <h1>Ajouter une Categorie</h1>
+
+    {{ include('admin/categorie/_form.html.twig') }}
+
+    <a href="{{ path('admin_categorie_index') }}">back to list</a>
+{% endblock %}

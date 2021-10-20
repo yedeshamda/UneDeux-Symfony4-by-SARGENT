@@ -1,0 +1,38 @@
+{% extends 'admin/layout/base.html.twig' %}
+{% block body %}
+    <h1>Détails du Categorie</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Nom</th>
+            <td>{{ categorie.nom }}</td>
+        </tr>
+        <tr>
+            <th>Slug</th>
+            <td>{{ categorie.slug }}</td>
+        </tr>
+        <tr>
+            <th>Baniere</th>
+            <td>{{ categorie.baniere }}</td>
+        </tr>
+        <tr>
+            <th>Titre</th>
+            <td>{{ categorie.titre }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ categorie.description }}</td>
+        </tr>
+        </tbody>
+    </table>
+    </center>
+    {{ include('admin/categorie/_delete_form.html.twig') }}
+    <br>
+    <a class="btn btn-primary btn-sm" href="{{ path('admin_categorie_edit', {'id': categorie.id}) }}">Modifer</a>
+    <br><br>
+    </center>
+    <br>
+    <a href="{{ path('admin_categorie_index') }}">back to list</a>
+    <br>
+{% endblock %}

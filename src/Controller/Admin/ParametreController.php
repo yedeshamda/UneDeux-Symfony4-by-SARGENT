@@ -158,7 +158,7 @@ class ParametreController extends AbstractController
 
 
         $this->entityManager->flush();
-        return $this->render('parametre/new.html.twig', [
+        return $this->render('admin/parametre/new.html.twig', [
             'facebook' => $facebook->getValeur(),
             'instagram' => $instagram->getValeur(),
             'youtube' => $youtube->getValeur(),

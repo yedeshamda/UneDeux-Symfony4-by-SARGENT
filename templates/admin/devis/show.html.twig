@@ -1,0 +1,38 @@
+{% extends 'admin/layout/base.html.twig' %}
+{% block body %}
+    <h1>Détails du Devis</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Nom</th>
+            <td>{{ devi.nom }}</td>
+        </tr>
+        <tr>
+            <th>Prenom</th>
+            <td>{{ devi.prenom }}</td>
+        </tr>
+        <tr>
+            <th>Tel</th>
+            <td>{{ devi.tel }}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ devi.email }}</td>
+        </tr>
+        <tr>
+            <th>Message</th>
+            <td>{{ devi.message }}</td>
+        </tr>
+        </tbody>
+    </table>
+    <center>
+        {{ include('admin/devis/_delete_form.html.twig') }}
+        <br>
+        <a class="btn btn-primary btn-sm" href="{{ path('admin_devis_edit', {'id': devi.id}) }}">Modifer</a>
+        <br><br>
+    </center>
+    <br>
+    <a href="{{ path('admin_devis_index') }}">back to list</a>
+    <br>
+{% endblock %}

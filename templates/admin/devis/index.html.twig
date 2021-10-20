@@ -1,0 +1,59 @@
+{% extends 'admin/layout/base.html.twig' %}
+{% block body %}
+    <h1>Liste des Devis</h1>
+
+    <table id="table_id" class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Tel</th>
+                <th>Email</th>
+                <th>Message</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for devi in devis %}
+            <tr>
+                <td>{{ devi.nom }}</td>
+                <td>{{ devi.prenom }}</td>
+                <td>{{ devi.tel }}</td>
+                <td>{{ devi.email }}</td>
+                <td>{{ devi.message }}</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="{{ path('admin_devis_show', {'id': devi.id}) }}">Détails</a>
+                    <a class="btn btn-warning btn-sm" href="{{ path('admin_devis_edit', {'id': devi.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('assets/css/datatables.min.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <!-- DataTable-->
+    <script src="{{ asset('assets/js/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('assets/js/datatables.min.js') }}"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#table_id').DataTable({
+                language: {
+                    url: 'http://cdn.datatables.net/plug-ins/1.10.24/i18n/French.json'
+                },
+            });
+        });
+    </script>
+{% endblock %}

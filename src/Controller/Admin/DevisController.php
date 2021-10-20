@@ -16,7 +16,7 @@ class DevisController extends AbstractController
     #[Route('/devis/', name: 'devis_index', methods: ['GET'])]
     public function index(DevisRepository $devisRepository): Response
     {
-        return $this->render('devis/index.html.twig', [
+        return $this->render('admin/devis/index.html.twig', [
             'devis' => $devisRepository->findAll(),
         ]);
     }
@@ -36,7 +36,7 @@ class DevisController extends AbstractController
             return $this->redirectToRoute('admin_devis_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('devis/new.html.twig', [
+        return $this->renderForm('admin/devis/new.html.twig', [
             'devi' => $devi,
             'form' => $form,
         ]);
@@ -45,7 +45,7 @@ class DevisController extends AbstractController
     #[Route('/devis/{id}', name: 'devis_show', methods: ['GET'])]
     public function show(Devis $devi): Response
     {
-        return $this->render('devis/show.html.twig', [
+        return $this->render('admin/devis/show.html.twig', [
             'devi' => $devi,
         ]);
     }
@@ -62,7 +62,7 @@ class DevisController extends AbstractController
             return $this->redirectToRoute('admin_devis_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('devis/edit.html.twig', [
+        return $this->renderForm('admin/devis/edit.html.twig', [
             'devi' => $devi,
             'form' => $form,
         ]);
