@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Contact;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -13,11 +14,26 @@ class ContactType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nom')
-            ->add('prenom')
-            ->add('tel')
-            ->add('email')
-            ->add('message',TextareaType::class)
+            ->add('nom',null, [
+                'attr' => ['class' => 'input-contact',
+                    'placeholder' => '*Nom'],
+            ])
+            ->add('prenom',null, [
+                'attr' => ['class' => 'input-contact',
+                    'placeholder' => '*Prenom'],
+            ])
+            ->add('tel',TelType::class, [
+                'attr' => ['class' => 'input-contact',
+                    'placeholder' => '*Entrez votre numéro de téléphone'],
+            ])
+            ->add('email',null, [
+                'attr' => ['class' => 'input-contact',
+                    'placeholder' => '*Entrez votre E-mail'],
+            ])
+            ->add('message',TextareaType::class, [
+                'attr' => ['class' => 'input-contact-textareaType',
+                    'placeholder' => '*Entrez un message'],
+            ])
         ;
     }
 
