@@ -1,0 +1,147 @@
+{% extends 'front/layout/base.html.twig' %}
+{% block body %}
+
+    <div class="row">
+        <!-- Swiper -->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                {% for categorie in categories %}
+                    <div class="swiper-slide">
+                        <img src="{{ asset('images/categories/'~categorie.baniereImageName) }}" height="500px"
+                             style="width:100%">
+                        {# <div class="row">
+                                <span class="baniere-span-bold"> {{ categorie.nom }} </span>
+                                <span class="baniere-span"> {{ categorie.description }}.</span>
+                            </div> #}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+    <br>
+    <div class="container">
+        <img src="{{ asset('assets/images/island.png') }}" class="island1" alt="">
+        <img src="{{ asset('assets/images/island.png') }}" class="island2" alt="">
+        <div class="row">
+            <div class="col-3">
+                <div class="d-flex">
+                    <input class="w3-input w3-animate-input" type="text" style="width:135px" placeholder="Recherche...">
+                    <button class="btn btn-outline-warning button-search-product" type="submit">Trouver</button>
+                </div>
+                <br>
+                <h4>Filters</h4><br>
+                <h6>Marques</h6>
+                <ul>
+                    {% for marque in marques %}
+                        <li>{{ marque.nom }}</li>
+                    {% endfor %}
+                </ul>
+                <br>
+                <h6>Catégories</h6>
+                <ul>
+                    {% for categorie in categories %}
+                        <li>{{ categorie.titre }}</li>
+                    {% endfor %}
+                </ul>
+                <br>
+                <h6>Featured Products</h6>
+                <ul>
+                    {% for produitFeatured in produitsFeatured %}
+
+                        <li>
+                            <div class="row">
+                                <div class="col-6">
+                                    <img src="{{ asset('images/produits/'~produitFeatured.imageName) }}" height="60"
+                                         class="card-img-top">
+                                </div>
+                                <div class="col-6">
+                                    <h6>{{ produitFeatured.nom }}</h6>
+                                    <p>{{ produitFeatured.description }}</p>
+                                </div>
+                            </div>
+                        </li>
+
+                    {% endfor %}
+
+                </ul>
+            </div>
+
+            <div class="col-9">
+                <div class="row">
+                    {% for produit in produits %}
+                        <div class="col-4">
+                            <div class="card">
+                                <img src="{{ asset('images/produits/'~produit.imageName) }}" height="170"
+                                     class="card-img-top">
+                                <div class="card-body">
+                                    <h5>{{ produit.marque.nom }}</h5>
+                                    <h6>{{ produit.nom }}</h6>
+                                    <h7>{{ produit.categorie.nom }}</h7>
+                                    <p class="card-text">{{ produit.description }}.</p>
+                                    <a class="button-details-product btn-outline-warning btn"
+                                       href="{{ path('front_produit_show', {'id': produit.id}) }}">Détails</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="col-md-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    no records found
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <div class="navigation">
+                        {{ knp_pagination_render(produits) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
+          integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('assets/css/swiper.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/swiper.min.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"
+            integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.esm.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.esm.bundle.js"></script>
+    <script>
+        var mySwiper = new Swiper('.swiper-container', {
+            // Optional parameters
+            direction: 'horizontal',
+            loop: true,
+
+            // And if we need scrollbar
+            scrollbar: {
+                el: '.swiper-scrollbar',
+            },
+            autoplay: {
+                delay: 3000,
+            },
+        })
+    </script>
+{% endblock %}

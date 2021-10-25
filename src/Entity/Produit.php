@@ -94,6 +94,11 @@ class Produit
      */
     private $devis;
 
+    /**
+     * @ORM\Column(type="boolean",nullable=true)
+     */
+    private $featured;
+
     public function __construct()
     {
         $this->fichetech = new ArrayCollection();
@@ -290,6 +295,18 @@ class Produit
         if ($this->devis->removeElement($devi)) {
             $devi->removeProduit($this);
         }
+
+        return $this;
+    }
+
+    public function getFeatured(): ?bool
+    {
+        return $this->featured;
+    }
+
+    public function setFeatured(bool $featured): self
+    {
+        $this->featured = $featured;
 
         return $this;
     }

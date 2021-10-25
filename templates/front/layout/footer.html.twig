@@ -43,18 +43,18 @@
 
                     <div class="w-100">
                         <a href=""> <span> AGRICULTURE </span></a>
-                        <a class="span-footer" href=""> GP1 Birbouregba 8042 Hammamet. Hammamet, Tunisia</a>
+                        <a class="span-footer" href=""> {{ parametre.adresse }}</a>
                     </div>
                     <div class="w-100">
                         <div class="num-footer">
-                            (+216)
+                            (+216) {{ parametre.num1 }}
                         </div>
                     </div>
                     <div class="w-100">
                         <div class="social-logo">
-                            <i class="fab fa-facebook"></i>
-                            <i class="fab fa-youtube"></i>
-                            <i class="fab fa-linkedin"></i>
+                            <a href="{{ parametre.facebook }}"><i class="fab fa-facebook"></i></a>
+                            <a href="{{ parametre.youtube }}"><i class="fab fa-youtube"></i></a>
+                            <a href="{{ parametre.linkedin }}"><i class="fab fa-linkedin"></i></a>
                         </div>
                     </div>
 

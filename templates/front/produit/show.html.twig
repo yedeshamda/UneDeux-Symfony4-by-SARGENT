@@ -1,0 +1,50 @@
+{% extends 'front/layout/base.html.twig' %}
+{% block body %}
+    <h1>Détails du Produit</h1>
+
+    <table class="table">
+        <tbody>
+        <center>
+            <img src="{{ asset('images/produits/'~produit.imageName) }}" height="160">
+        </center>
+        <br>
+        <tr>
+            <th>Nom</th>
+            <td>{{ produit.nom }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ produit.description }}</td>
+        </tr>
+        <tr>
+            <th>Date Création</th>
+            <td>{{ produit.datecreation ? produit.datecreation|date('Y-m-d') : '' }}</td>
+        </tr>
+        <tr>
+            <th>Slug</th>
+            <td>{{ produit.slug }}</td>
+        </tr>
+        <tr>
+            <th>Description Technique</th>
+            <td>{{ produit.descriptiontech|raw }}</td>
+        </tr>
+        <tr>
+            <th>Marque</th>
+            <td>{{ produit.marque.nom }}</td>
+        </tr>
+        <tr>
+            <th>Catégorie</th>
+            <td>{{ produit.categorie.nom }}</td>
+        </tr>
+        </tbody>
+    </table>
+    <center>
+        {{ include('admin/produit/_delete_form.html.twig') }}
+
+        <br>
+        <a class="btn btn-primary btn-sm" href="{{ path('admin_produit_edit', {'id': produit.id}) }}">Modifer</a>
+        <br><br>
+    </center>
+    <a href="{{ path('admin_produit_index') }}">back to list</a>
+    <br>
+{% endblock %}

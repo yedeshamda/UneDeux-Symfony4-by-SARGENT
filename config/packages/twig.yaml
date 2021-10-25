@@ -1,7 +1,14 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
     form_themes: ['bootstrap_5_layout.html.twig']
+    globals:
+        parametre: '@App\Service\Parametre\ParametreService'
+        categorie: '@App\Service\Categorie\CategorieService'
+        produit: '@App\Service\Produit\ProduitService'
+        marque: '@App\Service\Marque\MarqueService'
 
 when@test:
     twig:
         strict_variables: true
+
+

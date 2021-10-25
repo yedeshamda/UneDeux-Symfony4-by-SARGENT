@@ -4,6 +4,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: white;
+
 }
 
 a {
@@ -12,6 +13,7 @@ a {
 
 ul {
     list-style: none;
+    padding-left: 0;
 }
 
 header {
@@ -65,6 +67,17 @@ header {
 .topicon2 {
     color: #f47822;
     font-size: 25px;
+    margin-right: 3px;
+}
+
+.topicon2-span {
+    color: #f47822;
+    font-family: "Roboto";
+    font-weight: bold;
+}
+
+.topicon2-margin {
+    margin-right: -110px;
 }
 
 .nav-bar {
@@ -252,12 +265,12 @@ header {
 }
 
 .black-behind-form {
-    background: black;
+    background: #262625;
     background-image: url(/assets/images/phone.png);
     background-position: 0% 150%;
     background-repeat: no-repeat;
     background-position-x: inherit;
-    height: 720px;
+    height: 735px;
 }
 
 .topicon4 {
@@ -268,6 +281,14 @@ header {
     color: #f47822;
     font-size: 25px;
     margin-left: 30px;
+    gap: 15px;
+}
+
+.topicon4-span {
+    color: white;
+    font-family: "Roboto";
+    font-weight: bold;
+    font-size: 20px;
 }
 
 .black-behind-form label {
@@ -305,6 +326,66 @@ header {
 .input-contact-textareaType {
     border-radius: 20px;
     height: 160px;
+}
+
+#menu ul > li.active > a {
+    color: #f47822;
+}
+
+.baniere-span-bold {
+    position: absolute;
+    top: -300px;
+    left: 250px;
+    font-family: "Roboto";
+    font-weight: bold;
+    color: black;
+    font-size: 25px;
+}
+
+.baniere-span {
+    position: absolute;
+    top: -260px;
+    left: 250px;
+    font-family: "Roboto";
+    color: black;
+    font-size: 20px;
+}
+
+.produit-index {
+    border: 1px solid #a09c9c;
+}
+
+.button-search-product {
+    margin-left: 20px;
+    border-radius: 20px !important;
+}
+
+.button-details-product {
+    margin-left: 0px;
+    border-radius: 20px !important;
+}
+
+.navigation {
+    display: flex;
+    justify-content: center;
+}
+
+.island1 {
+    right: 1325px;
+    top: 615px;
+    width: 1744px;
+    z-index: -1;
+    position: absolute;
+
+}
+
+.island2 {
+    right: -1540px;
+    top: 615px;
+    width: 1744px;
+    z-index: -1;
+    position: absolute;
+
 }
 
 

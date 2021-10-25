@@ -1,5 +1,7 @@
 @import url(css.css);
-
+body{
+    background-color: #e2f2df;
+}
 #page-topbar {
     position: fixed;
     top: 0;
@@ -104,13 +106,14 @@
     height: 70px;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
-    color: #555b6d;
+    color: #44773b;
     border: 0;
-    border-radius: 0
+    border-radius: 0;
+    font-weight: bold;
 }
 
 .header-item:hover {
-    color: #555b6d
+    color: #f47822
 }
 
 .header-profile-user {
@@ -122,7 +125,7 @@
 
 .noti-icon i {
     font-size: 22px;
-    color: #555b6d
+    color: #44773b;
 }
 
 .noti-icon .badge {
@@ -136,7 +139,7 @@
 }
 
 .notification-item .d-flex:hover {
-    background-color: #f6f6f6
+    background-color: white;
 }
 
 .dropdown-icon-item {
@@ -215,7 +218,7 @@ body[data-topbar=dark] .app-search input.form-control::-webkit-input-placeholder
 }
 
 body[data-sidebar=dark] .navbar-brand-box {
-    background: #2a3042
+    background: white;
 }
 
 body[data-sidebar=dark] .logo-dark {
@@ -278,10 +281,13 @@ body[data-layout=horizontal] .page-content {
     padding: 20px calc(24px / 2);
     position: absolute;
     right: 0;
-    color: #74788d;
+    color: #535354;
+    font-family: "Roboto";
+    font-weight: bold;
+    font-size: 15px;
     left: 250px;
     height: 60px;
-    background-color: #f2f2f5
+    background-color: #2e2c2c;
 }
 
 @media (max-width: 991.98px) {
@@ -695,31 +701,37 @@ body[data-layout=horizontal] .footer {
 }
 
 body[data-sidebar=dark] .vertical-menu {
-    background: #2a3042
+    background: white;
 }
 
 body[data-sidebar=dark] #sidebar-menu ul li a {
-    color: #a6b0cf
+    color: black;
+    font-weight: bold;
 }
 
 body[data-sidebar=dark] #sidebar-menu ul li a i {
-    color: #6a7187
+    color: black;
+    font-weight: bold;
 }
 
 body[data-sidebar=dark] #sidebar-menu ul li a:hover {
-    color: #fff
+    color: black;
+    font-weight: bold;
 }
 
 body[data-sidebar=dark] #sidebar-menu ul li a:hover i {
-    color: #fff
+    color: black;
+    font-weight: bold;
 }
 
 body[data-sidebar=dark] #sidebar-menu ul li ul.sub-menu li a {
-    color: #79829c
+    color: black;
+    font-weight: bold;
 }
 
 body[data-sidebar=dark] #sidebar-menu ul li ul.sub-menu li a:hover {
-    color: #fff
+    color: black;
+    font-weight: bold;
 }
 
 body[data-sidebar=dark].vertical-collpsed {
@@ -728,11 +740,11 @@ body[data-sidebar=dark].vertical-collpsed {
 
 body[data-sidebar=dark].vertical-collpsed .vertical-menu #sidebar-menu > ul > li:hover > a {
     background: #2e3548;
-    color: #fff
+    color: #f47822
 }
 
 body[data-sidebar=dark].vertical-collpsed .vertical-menu #sidebar-menu > ul > li:hover > a i {
-    color: #fff
+    color: #f47822
 }
 
 body[data-sidebar=dark].vertical-collpsed .vertical-menu #sidebar-menu > ul > li:hover > ul a {
@@ -748,39 +760,39 @@ body[data-sidebar=dark].vertical-collpsed .vertical-menu #sidebar-menu > ul ul {
 }
 
 body[data-sidebar=dark].vertical-collpsed .vertical-menu #sidebar-menu ul li.mm-active .active {
-    color: #fff !important
+    color: #f47822 !important
 }
 
 body[data-sidebar=dark].vertical-collpsed .vertical-menu #sidebar-menu ul li.mm-active .active i {
-    color: #fff !important
+    color: #f47822 !important
 }
 
 body[data-sidebar=dark] .mm-active {
-    color: #fff !important
+    color: #f47822 !important
 }
 
 body[data-sidebar=dark] .mm-active > a {
-    color: #fff !important
+    color: #f47822 !important
 }
 
 body[data-sidebar=dark] .mm-active > a i {
-    color: #fff !important
+    color: #f47822 !important
 }
 
 body[data-sidebar=dark] .mm-active > i {
-    color: #fff !important
+    color: #f47822 !important
 }
 
 body[data-sidebar=dark] .mm-active .active {
-    color: #fff !important
+    color: #f47822 !important
 }
 
 body[data-sidebar=dark] .mm-active .active i {
-    color: #fff !important
+    color: #f47822 !important
 }
 
 body[data-sidebar=dark] .menu-title {
-    color: #6a7187
+    color: #44773b
 }
 
 body[data-layout=horizontal] .main-content {

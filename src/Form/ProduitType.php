@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Produit;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -38,6 +39,8 @@ class ProduitType extends AbstractType
 //                'label_attr' => array('class' => 'form-label')
             ])
             ->add('image')
+            ->add('featured',CheckboxType::class, [
+                'required' => false,])
         ;
     }
 
