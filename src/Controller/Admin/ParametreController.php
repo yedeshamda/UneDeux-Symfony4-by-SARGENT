@@ -3,7 +3,6 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Parametre;
-use App\Form\ParametreType;
 use App\Repository\ParametreRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -38,6 +37,7 @@ class ParametreController extends AbstractController
         $jourfin = $parametreRepository->findOneBy(['nom' => 'JourFin']);
         $heuredebut = $parametreRepository->findOneBy(['nom' => 'HeureDebut']);
         $heurefin = $parametreRepository->findOneBy(['nom' => 'HeureFin']);
+
         if (!$instagram) {
             $instagram = new Parametre();
             $instagram->setNom('INSTAGRAM')->setValeur($request->request->get('INSTAGRAM'));
@@ -93,6 +93,7 @@ class ParametreController extends AbstractController
             $heurefin = new Parametre();
             $heurefin->setNom('HeureFin')->setValeur($request->request->get('HeureFin'));
         }
+
 
 
         if ($request->isMethod('POST')) {
@@ -172,6 +173,56 @@ class ParametreController extends AbstractController
             'jourfin' => $jourfin->getValeur(),
             'heuredebut' => $heuredebut->getValeur(),
             'heurefin' => $heurefin->getValeur(),
+        ]);
+    }
+
+    #[Route('/parametre/home', name: 'parametre_accueil', methods: ['GET', 'POST'])]
+    public function newAccueil(Request $request, ParametreRepository $parametreRepository): Response
+    {
+        $baniere1 = $parametreRepository->findOneBy(['nom' => 'BANIERE1']);
+        $baniere2 = $parametreRepository->findOneBy(['nom' => 'BANIERE3']);
+        $baniere3 = $parametreRepository->findOneBy(['nom' => 'BANIERE3']);
+
+        if (!$baniere1) {
+            $baniere1 = new Parametre();
+            $baniere1->setNom('BANIERE1')->setValeur($request->request->get('BANIERE1'));
+        }
+
+        if (!$baniere2) {
+            $baniere2 = new Parametre();
+            $baniere2->setNom('BANIERE2')->setValeur($request->request->get('BANIERE2'));
+        }
+
+        if (!$baniere3) {
+            $baniere3 = new Parametre();
+            $baniere3->setNom('BANIERE3')->setValeur($request->request->get('BANIERE3'));
+        }
+
+
+        if ($request->isMethod('POST')) {
+            if ($baniere1) {
+                $baniere1->setValeur($request->request->get('BANIERE1'));
+            }
+
+            if ($baniere2) {
+                $baniere2->setValeur($request->request->get('BANIERE2'));
+            }
+
+            if ($baniere3) {
+                $baniere3->setValeur($request->request->get('BANIERE3'));
+            }
+        }
+
+        $this->entityManager->persist($baniere1);
+        $this->entityManager->persist($baniere2);
+        $this->entityManager->persist($baniere3);
+
+
+        $this->entityManager->flush();
+        return $this->render('admin/parametre/edit.html.twig', [
+            'baniere1' => $baniere1->getValeur(),
+            'baniere2' => $baniere2->getValeur(),
+            'baniere3' => $baniere3->getValeur(),
         ]);
     }
 

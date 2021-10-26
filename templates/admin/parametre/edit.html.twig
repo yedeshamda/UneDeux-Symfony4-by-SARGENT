@@ -1,4 +1,24 @@
 {% extends 'admin/layout/base.html.twig' %}
-{% block body %}
 
+{% block body %}
+    <div class="container">
+        <form method="post">
+            <div class="row mb-3">
+                <label>Baniere d'accueil 1</label>
+                <input type="text" class="form-control" value="{{ baniere1|default('') }}" name="baniere1">
+            </div>
+            <div class="row mb-3">
+                <label>Baniere d'accueil 2</label>
+                <input type="text" class="form-control" value="{{ baniere2|default('') }}" name="baniere2">
+            </div>
+            <div class="row mb-3">
+                <label>Baniere d'accueil 3</label>
+                <input type="text" class="form-control" value="{{ baniere13|default('') }}" name="baniere3">
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Valider</button>
+            </div>
+        </form>
+    </div>
 {% endblock %}
+

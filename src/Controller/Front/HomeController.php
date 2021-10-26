@@ -5,15 +5,26 @@ namespace App\Controller\Front;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
+use App\Repository\CategorieRepository;
+use App\Repository\MarqueRepository;
+use App\Repository\ProduitRepository;
 
 #[Route('/front', name: 'front_')]
 class HomeController extends AbstractController
 {
-    #[Route('/home', name: 'home')]
-    public function index(): Response
+    #[Route('/home', name: 'home', methods: ['GET'])]
+    public function index(Request $request,ProduitRepository $produitRepository,CategorieRepository $categorieRepository,MarqueRepository $marqueRepository): Response
     {
+        $produits=$produitRepository->findAll();
+        $marques=$marqueRepository->findAll();
+        $categories=$categorieRepository->findAll();
+
+
         return $this->render('front/home/index.html.twig', [
-            'controller_name' => 'HomeController',
+            'produits' => $produits,
+            'categories' => $categories,
+            'marques' => $marques,
         ]);
     }
 }

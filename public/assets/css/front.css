@@ -340,6 +340,7 @@ header {
     font-weight: bold;
     color: black;
     font-size: 25px;
+    z-index: 1;
 }
 
 .baniere-span {
@@ -371,21 +372,78 @@ header {
 }
 
 .island1 {
-    right: 1325px;
-    top: 615px;
-    width: 1744px;
-    z-index: -1;
-    position: absolute;
-
+    background-image: url(/assets/images/island.png);
+    background-repeat: no-repeat;
+    background-position-x: -218rem;
+    background-position-y: -12rem;
 }
 
 .island2 {
-    right: -1540px;
-    top: 615px;
-    width: 1744px;
-    z-index: -1;
-    position: absolute;
-
+    background-image: url(/assets/images/island2.png);
+    background-repeat: no-repeat;
+    background-position-x: -218rem;
+    background-position-y: -12rem;
 }
 
+.bas-right{
+    position: absolute;
+    font-family: "Roboto";
+    color: #27B750;
+    font-size: 45px;
+    left: 50px;
+    top: 20px;
+    font-weight: bold;
+}
 
+.bas-left{
+    position: absolute;
+    font-family: "Roboto";
+    color: #FE8C58;
+    font-size: 40px;
+    left: 315px;
+    top: 70px;
+    font-weight: bold;
+}
+
+.bas-right-min{
+    position: absolute;
+    font-family: "Roboto";
+    color: black;
+    font-size: 30px;
+    left: 30px;
+    top: 160px;
+    font-weight: bold;
+}
+
+.bas-left-min{
+    position: absolute;
+    font-family: "Roboto";
+    color: black;
+    font-size: 30px;
+    left: 410px;
+    top: 225px;
+    font-weight: bold;
+}
+
+.swiper-container {
+    z-index: 0 !important;
+}
+
+.bor {
+    border: 1px solid #f2f2f2;
+}
+
+.social-media-baniere {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    top: 230px;
+    text-align: center;
+    z-index: 1;
+}
+
+.topicon-fixed {
+    color: #44773b;
+    font-size: 25px;
+}

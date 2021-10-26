@@ -56,6 +56,13 @@ class Categorie
     private $updatedAt;
 
     /**
+     * @ORM\Column(type="datetime",nullable=true)
+     *
+     * @var \DateTimeInterface|null
+     */
+    private $updatedAt2;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $titre;
@@ -69,6 +76,19 @@ class Categorie
      * @ORM\OneToMany(targetEntity=Produit::class, mappedBy="categorie")
      */
     private $produits;
+
+    /**
+     * @ORM\Column(type="string",nullable=true)
+     *
+     * @var string|null
+     */
+    private $imageName2;
+
+    /**
+     * @Vich\UploadableField(mapping="categories", fileNameProperty="imageName2")
+     * @var File|null
+     */
+    private $imageFile2;
 
     public function __construct()
     {
@@ -200,5 +220,33 @@ class Categorie
     public function getBaniereImageName(): ?string
     {
         return $this->baniereImageName;
+    }
+
+    public function getImageName2(): ?string
+    {
+        return $this->imageName2;
+    }
+
+    public function setImageName2(?string $imageName2): void
+    {
+        $this->imageName2 = $imageName2;
+    }
+
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $imageFile2
+     */
+    public function setImageFile2(?File $imageFile2 = null): void
+    {
+        $this->imageFile2 = $imageFile2;
+        if (null !== $imageFile2) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt2 = new \DateTimeImmutable();
+        }
+    }
+
+    public function getImageFile2(): ?File
+    {
+        return $this->imageFile2;
     }
 }
