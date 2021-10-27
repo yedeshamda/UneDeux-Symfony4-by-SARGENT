@@ -2,7 +2,7 @@
 
 {% block body %}
 
-    <div class="row">
+{#    <div class="row">
         <!-- Swiper -->
         <div class="swiper-container mb-5">
             <div class="swiper-wrapper">
@@ -11,40 +11,154 @@
                         <img src="{{ asset('images/categories/'~categorie.baniereImageName) }}" height="500px"
                              style="width:100%">
                         <div class="row">
-                            {# <span class="baniere-span-bold"> {{ categorie.nom }} </span> #}
+                            #}{# <span class="baniere-span-bold"> {{ categorie.nom }} </span> #}{#
                         </div>
                     </div>
                 {% endfor %}
             </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
         </div>
+    </div>#}
+
+    <div class="swiper mySwiper2 ">
+        <div class="swiper-wrapper">
+            {% for categorie in categories %}
+            <div class="swiper-slide">
+                <img src="{{ asset('images/categories/'~categorie.baniereImageName) }}" height="500px"
+                     style="width:100%">
+            </div>
+            {% endfor %}
+        </div>
+        <div class="swiper-button-next arrow-right1"></div>
+        <div class="swiper-button-prev arrow-left1"></div>
+        <div class="swiper-pagination pagination-baniere"></div>
     </div>
 
-    <div class="row container">
+    <div class="container mt-5">
+        <img class="settings" src="{{ asset('assets/images/settings.png') }}" alt="">
         <!-- Swiper -->
         <div class="swiper-container mb-5">
             <div class="swiper-wrapper">
                 {% for produit in produits %}
                     <div class="swiper-slide position-relative">
                         <div class="col-6">
-                            <img src="{{ asset('images/produits/'~produit.imageName) }}" height="150px"
-                                 style="width:50%">
+                            <img src="{{ asset('images/produits/'~produit.imageName) }}" height="150px" style="width:50%">
                         </div>
                         <div class="col-6">
                             <div class="row">
-                                <div class="col-6">
-                                    <h3 class=""> {{ produit.categorie.nom }} </h3>
-                                    <h4 class=""> {{ produit.nom }} </h4>
-                                    <h5 class=""> {{ produit.description }} </h5>
-                                </div>
-                                <div class="col-6">
-                                    <img src="{{ asset('images/marques/'~produit.marque.imageName) }}" height="50px">
-                                </div>
+                                <h3 class="featured-home-marque"> AGRICULTURE </h3>
+                                <h4 class="featured-home-produit"> Déplaqueuse Classen </h4>
+                                <span class="featured-home-desc"> Under normal operating conditions, the blade
+                                is slight (blade bottom is flat). In extremely hard
+                                or when cutting with a dull blade, the blade may
+                                to ride out of the ground. At this time, it may help
+                                angle the blade down. A short trial run will indicate
+                                <br><br>
+                                what blade angle is best. To do this, you will loosen
+                                the pitch adjustment bolt K and move it slightly toward the engine, then retighten bolt
+                                and nut. </span>
+                            </div>
+                            <div class="d-flex justify-content-around">
+                                <a class="button-featured-home button-details-product btn-outline-warning btn"
+                                   href="">Détails</a>
+                                <img class="marque-featured" src="{{ asset('assets/images/spons1.png') }}" alt="">
                             </div>
                         </div>
                     </div>
                 {% endfor %}
             </div>
+            <div class="swiper-button-next arrow-right2"></div>
+            <div class="swiper-button-prev arrow-left2"></div>
         </div>
+    </div>
+
+    <div class="container position-relative margin-container">
+        <div class="center-logo">
+            <img class="img-cat" src="{{ asset('assets/images/Logo.png') }}" alt="">
+        </div>
+        <div class="row">
+            {# {% for produit in produits %} #}
+            <div class="col-3">
+                <div class="card card-categorie position-relative">
+                    <div class="row" style="background-image: url(/assets/images/bleda.png);">
+
+                    </div>
+                    <div class="row">
+
+                    </div>
+                    <div class="card-body">
+                        <h5> Grande Culture</h5>
+                        what blade angle is best. To do this, you will loosen
+                        the pitch adjustment bolt K and move it slightly toward the engine, then retighten bolt and nut.
+                        {# <a class="button-details-product btn-outline-warning btn"
+                           href="{{ path('front_produit_show', {'id': produit.id}) }}">Détails</a> #}
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card card-categorie">
+
+                    <div class="card-body">
+                        <h5> Grande Culture</h5>
+                        what blade angle is best. To do this, you will loosen
+                        the pitch adjustment bolt K and move it slightly toward the engine, then retighten bolt and nut.
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card card-categorie">
+
+                    <div class="card-body">
+                        <h5> Grande Culture</h5>
+                        what blade angle is best. To do this, you will loosen
+                        the pitch adjustment bolt K and move it slightly toward the engine, then retighten bolt and nut.
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card card-categorie">
+
+                    <div class="card-body">
+                        <h5> Grande Culture</h5>
+                        what blade angle is best. To do this, you will loosen
+                        the pitch adjustment bolt K and move it slightly toward the engine, then retighten bolt and nut.
+                    </div>
+                </div>
+            </div>
+
+            <div class="navigation">
+                {# {{ knp_pagination_render(produits) }} #}
+            </div>
+        </div>
+    </div>
+
+    <div class="row swiper margin-swiper">
+        <div class="swiper-wrapper swiper-slide-background-color">
+            <div class="swiper-slide swiper-slide-background-color">
+                <img class="swiper-slide-on-footer" src="{{ asset('assets/images/spons1.png') }}" alt=""></div>
+            <div class="swiper-slide swiper-slide-background-color">
+                <img class="swiper-slide-on-footer" src="{{ asset('assets/images/spons2.png') }}" alt=""></div>
+            <div class="swiper-slide swiper-slide-background-color">
+                <img class="swiper-slide-on-footer" src="{{ asset('assets/images/spons3.png') }}" alt=""></div>
+            <div class="swiper-slide swiper-slide-background-color">
+                <img class="swiper-slide-on-footer" src="{{ asset('assets/images/spons1.png') }}" alt=""></div>
+            <div class="swiper-slide swiper-slide-background-color">
+                <img class="swiper-slide-on-footer" src="{{ asset('assets/images/spons2.png') }}" alt=""></div>
+            <div class="swiper-slide swiper-slide-background-color">
+                <img class="swiper-slide-on-footer" src="{{ asset('assets/images/spons3.png') }}" alt=""></div>
+            <div class="swiper-slide swiper-slide-background-color">
+                <img class="swiper-slide-on-footer" src="{{ asset('assets/images/spons4.png') }}" alt=""></div>
+            <div class="swiper-slide swiper-slide-background-color">
+                <img class="swiper-slide-on-footer" src="{{ asset('assets/images/spons1.png') }}" alt=""></div>
+            <div class="swiper-slide swiper-slide-background-color">
+                <img class="swiper-slide-on-footer" src="{{ asset('assets/images/spons2.png') }}" alt=""></div>
+            <div class="swiper-slide swiper-slide-background-color">
+                <img class="swiper-slide-on-footer" src="{{ asset('assets/images/spons4.png') }}" alt=""></div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
     </div>
 
     <div class="social-media-baniere">
@@ -63,6 +177,9 @@
           integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('assets/css/swiper.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/swiper.min.css') }}">
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
 {% endblock %}
 
 {% block javascripts %}
@@ -86,13 +203,65 @@
             direction: 'horizontal',
             loop: true,
 
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+            },
+
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
             // And if we need scrollbar
             scrollbar: {
                 el: '.swiper-scrollbar',
             },
-            autoplay: {
-                delay: 3000,
-            },
         })
+    </script>
+
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper('.swiper', {
+            slidesPerView: 4,
+            direction: getDirection(),
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            on: {
+                resize: function () {
+                    swiper.changeDirection(getDirection());
+                },
+            },
+        });
+
+        function getDirection() {
+            var windowWidth = window.innerWidth;
+            var direction = window.innerWidth <= 760 ? 'vertical' : 'horizontal';
+
+            return direction;
+        }
+    </script>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper(".mySwiper2", {
+            cssMode: true,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            pagination: {
+                el: ".swiper-pagination",
+            },
+            mousewheel: true,
+            keyboard: true,
+        });
     </script>
 {% endblock %}
