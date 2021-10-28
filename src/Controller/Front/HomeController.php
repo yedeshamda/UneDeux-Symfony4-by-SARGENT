@@ -27,4 +27,19 @@ class HomeController extends AbstractController
             'marques' => $marques,
         ]);
     }
+
+    #[Route('/qui_somme_nous', name: 'qui_somme_nous', methods: ['GET'])]
+    public function quiSommeNous(ProduitRepository $produitRepository,CategorieRepository $categorieRepository,MarqueRepository $marqueRepository): Response
+    {
+        $produits=$produitRepository->findAll();
+        $marques=$marqueRepository->findAll();
+        $categories=$categorieRepository->findAll();
+
+
+        return $this->render('front/home/qui_somme_nous.html.twig', [
+            'produits' => $produits,
+            'categories' => $categories,
+            'marques' => $marques,
+        ]);
+    }
 }

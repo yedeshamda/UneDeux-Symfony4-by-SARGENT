@@ -439,7 +439,8 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    top: 350px;
+    top: 550px;
+    left: 25px;
     text-align: center;
     z-index: 1;
 }
@@ -537,10 +538,10 @@ header {
     left: 175px;
 }
 
-.arrow-right1 {
+/*.arrow-right1 {
     top: 460px !important;
     left: 300px !important;
-}
+}*/
 
 .arrow-right2 {
     right: auto !important;
@@ -549,10 +550,10 @@ header {
     background-color: #f47822;
 }
 
-.arrow-left1 {
+/*.arrow-left1 {
     top: 460px !important;
     left: 130px !important;
-}
+}*/
 
 .arrow-left2 {
     right: auto !important;
@@ -561,11 +562,11 @@ header {
     background-color: #f47822;
 }
 
-.pagination-baniere {
+/*.pagination-baniere {
     left: -515px !important;
     top: 478px !important;
 
-}
+}*/
 
 .featured-home-marque {
     font-family: "Roboto";
@@ -586,4 +587,56 @@ header {
     font-size: 15px;
     color: black;
     text-align: left;
+}
+
+.cercle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #f47822;
+    margin-left: 60px;
+    margin-top: 96px;
+}
+
+.cercle-img {
+    margin: 24px;
+}
+
+.img-produit-home-featured {
+    height: 200px;
+    width: 50%;
+}
+
+.img-home {
+    left: 0px;
+    position: absolute;
+    height: 100%;
+}
+
+.quisommesnous {
+    text-align: center;
+    font-family: "Roboto";
+    color: #f47822;
+    font-weight: bold;
+
+}
+
+.bienv {
+    font-family: "Roboto";
+    font-weight: bold;
+}
+
+.bienv span {
+    color: #44773b;
+}
+
+.cat-dessus-footer {
+    color: #f47822;
+    font-family: "Roboto";
+    font-weight: bold;
+    text-align: center;
+}
+
+.cat-dessus-footer-span {
+    font-family: "Roboto";
 }

@@ -51,10 +51,14 @@
             </a>
         </li>
         <li>
-            <a href={{ path('admin_parametre_accueil') }} class="waves-effect">
-                <i class="bx bx-home-alt"></i>
-                <span key="t-ac">Page d'accueil</span>
+            <a href="javascript: void(0);" class="has-arrow waves-effect">
+                <i class="bx bx-cog"></i>
+                <span key="t-contacts">Paramétre</span>
             </a>
+            <ul class="sub-menu" aria-expanded="false">
+                <li><a href={{ path('admin_parametre_accueil') }} key="t-user-grid">Page d'accueil</a></li>
+                <li><a href={{ path('admin_parametre_a_propos') }} key="t-profile">Qui Sommes Nous ?</a></li>
+            </ul>
         </li>
     </ul>
 </div>

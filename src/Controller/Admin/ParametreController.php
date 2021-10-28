@@ -226,5 +226,43 @@ class ParametreController extends AbstractController
         ]);
     }
 
+    #[Route('/parametre/a_propos', name: 'parametre_a_propos', methods: ['GET', 'POST'])]
+    public function newAPropos(Request $request, ParametreRepository $parametreRepository): Response
+    {
+        $bienvenue = $parametreRepository->findOneBy(['nom' => 'BIENVENUE']);
+        $mission = $parametreRepository->findOneBy(['nom' => 'MISSION']);
+
+        if (!$bienvenue) {
+            $bienvenue = new Parametre();
+            $bienvenue->setNom('BIENVENUE')->setValeur($request->request->get('BIENVENUE'));
+        }
+
+        if (!$mission) {
+            $mission = new Parametre();
+            $mission->setNom('MISSION')->setValeur($request->request->get('MISSION'));
+        }
+
+
+        if ($request->isMethod('POST')) {
+            if ($bienvenue) {
+                $bienvenue->setValeur($request->request->get('BIENVENUE'));
+            }
+
+            if ($mission) {
+                $mission->setValeur($request->request->get('MISSION'));
+            }
+        }
+
+        $this->entityManager->persist($bienvenue);
+        $this->entityManager->persist($mission);
+
+
+        $this->entityManager->flush();
+        return $this->render('admin/parametre/a_propos_paramtetre.html.twig', [
+            'bienvenue' => $bienvenue->getValeur(),
+            'mission' => $mission->getValeur(),
+        ]);
+    }
+
 
 }
