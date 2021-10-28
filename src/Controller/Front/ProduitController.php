@@ -38,11 +38,23 @@ class ProduitController extends AbstractController
         ]);
     }
 
-    #[Route('/produit/{id}', name: 'produit_show', methods: ['GET'])]
-    public function show(Produit $produit): Response
+    #[Route('/produit/show/{id}', name: 'produit_show', methods: ['GET'])]
+    public function show(Request $request,int $id,ProduitRepository $produitRepository,CategorieRepository $categorieRepository,MarqueRepository $marqueRepository): Response
     {
+        $marques=$marqueRepository->findAll();
+        $categories=$categorieRepository->findAll();
+        $produitsFeatured=$produitRepository->findBy(array('featured' => true));
+        $produit=$produitRepository->find($id);
+        $produits=$produitRepository->findBy(
+            ['nom' => ['Produit1','Produit2','Produit3','Produit4']],
+        );
+
         return $this->render('front/produit/show.html.twig', [
+            'categories' => $categories,
+            'marques' => $marques,
             'produit' => $produit,
+            'produits' => $produits,
+            'produitsFeatured' => $produitsFeatured,
         ]);
     }
 }

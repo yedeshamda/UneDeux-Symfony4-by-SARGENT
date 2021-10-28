@@ -640,3 +640,45 @@ header {
 .cat-dessus-footer-span {
     font-family: "Roboto";
 }
+
+.Cat-details {
+    font-family: "Roboto";
+    color: #f47822;
+    font-weight: bold;
+}
+
+.marque-details {
+    font-family: "Roboto";
+    font-weight: bold;
+}
+
+.produit-details {
+    font-family: "Roboto";
+    font-weight: bold;
+}
+
+.desc-details {
+    font-family: "Roboto";
+}
+
+.button-details {
+    border-radius: 20px !important;
+    margin-top: 400px;
+    width: 200px;
+}
+
+.marque-details-produit {
+    margin-left: 325px;
+}
+
+.card-body-details {
+    padding-bottom: 0px !important;
+}
+.island22 {
+    background-image: url(/assets/images/island2.png);
+    background-repeat: no-repeat;
+    background-position-x: -218rem;
+    background-position-y: -5rem;
+}
+
+
