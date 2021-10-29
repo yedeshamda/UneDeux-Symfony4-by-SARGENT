@@ -245,4 +245,79 @@ class ParametreService
         }
     }
 
+    public function getImage1()
+    {
+        $image1 = $this->parametreRepository->findOneBy(['nom' => 'image1']);
+        if ($image1) {
+            return $image1->getValeur();
+        } else {
+            $image1 = new Parametre();
+            $image1->setNom('image1');
+            $image1->setValeur('');
+            $this->entityManager->persist($image1);
+            $this->entityManager->flush();
+            return $image1->getValeur();
+        }
+    }
+
+    public function getImage2()
+    {
+        $image2 = $this->parametreRepository->findOneBy(['nom' => 'image2']);
+        if ($image2) {
+            return $image2->getValeur();
+        } else {
+            $image2 = new Parametre();
+            $image2->setNom('image2');
+            $image2->setValeur('');
+            $this->entityManager->persist($image2);
+            $this->entityManager->flush();
+            return $image2->getValeur();
+        }
+    }
+
+    public function getBaniere1()
+    {
+        $baniere1 = $this->parametreRepository->findOneBy(['nom' => 'baniere1']);
+        if ($baniere1) {
+            return $baniere1->getValeur();
+        } else {
+            $baniere1 = new Parametre();
+            $baniere1->setNom('baniere1');
+            $baniere1->setValeur('');
+            $this->entityManager->persist($baniere1);
+            $this->entityManager->flush();
+            return $baniere1->getValeur();
+        }
+    }
+
+    public function getBaniere2()
+    {
+        $baniere2 = $this->parametreRepository->findOneBy(['nom' => 'baniere2']);
+        if ($baniere2) {
+            return $baniere2->getValeur();
+        } else {
+            $baniere2 = new Parametre();
+            $baniere2->setNom('baniere2');
+            $baniere2->setValeur('');
+            $this->entityManager->persist($baniere2);
+            $this->entityManager->flush();
+            return $baniere2->getValeur();
+        }
+    }
+
+    public function getBaniere3()
+    {
+        $baniere3 = $this->parametreRepository->findOneBy(['nom' => 'baniere3']);
+        if ($baniere3) {
+            return $baniere3->getValeur();
+        } else {
+            $baniere3 = new Parametre();
+            $baniere3->setNom('baniere3');
+            $baniere3->setValeur('');
+            $this->entityManager->persist($baniere3);
+            $this->entityManager->flush();
+            return $baniere3->getValeur();
+        }
+    }
+
 }

@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Service\UploaderHelper;
 
 #[Route('/admin', name: 'admin_')]
 class ParametreController extends AbstractController
@@ -95,7 +96,6 @@ class ParametreController extends AbstractController
         }
 
 
-
         if ($request->isMethod('POST')) {
             if ($facebook) {
                 $facebook->setValeur($request->request->get('FACEBOOK'));
@@ -177,40 +177,50 @@ class ParametreController extends AbstractController
     }
 
     #[Route('/parametre/home', name: 'parametre_accueil', methods: ['GET', 'POST'])]
-    public function newAccueil(Request $request, ParametreRepository $parametreRepository): Response
+    public function newAccueil(UploaderHelper $uploadhelper, Request $request, ParametreRepository $parametreRepository): Response
     {
         $baniere1 = $parametreRepository->findOneBy(['nom' => 'BANIERE1']);
-        $baniere2 = $parametreRepository->findOneBy(['nom' => 'BANIERE3']);
+        $baniere2 = $parametreRepository->findOneBy(['nom' => 'BANIERE2']);
         $baniere3 = $parametreRepository->findOneBy(['nom' => 'BANIERE3']);
 
         if (!$baniere1) {
             $baniere1 = new Parametre();
-            $baniere1->setNom('BANIERE1')->setValeur($request->request->get('BANIERE1'));
+            $baniere1->setNom('BANIERE1')->setValeur("");
         }
 
         if (!$baniere2) {
             $baniere2 = new Parametre();
-            $baniere2->setNom('BANIERE2')->setValeur($request->request->get('BANIERE2'));
+            $baniere2->setNom('BANIERE2')->setValeur("");
         }
 
         if (!$baniere3) {
             $baniere3 = new Parametre();
-            $baniere3->setNom('BANIERE3')->setValeur($request->request->get('BANIERE3'));
+            $baniere3->setNom('BANIERE3')->setValeur("");
         }
 
 
         if ($request->isMethod('POST')) {
-            if ($baniere1) {
-                $baniere1->setValeur($request->request->get('BANIERE1'));
+
+            $imageuplbaniere1 = $request->files->get('BANIERE1');
+            $imageNamebaniere1 = $uploadhelper->uploadImage($imageuplbaniere1, '', 500);
+            if ($imageuplbaniere1) {
+                $baniere1->setValeur($imageNamebaniere1);
+
             }
 
-            if ($baniere2) {
-                $baniere2->setValeur($request->request->get('BANIERE2'));
+            $imageuplbaniere2 = $request->files->get('BANIERE2');
+            $imageNamebaniere2 = $uploadhelper->uploadImage($imageuplbaniere2, '', 500);
+            if ($imageuplbaniere2) {
+                $baniere2->setValeur($imageNamebaniere2);
+
             }
 
-            if ($baniere3) {
-                $baniere3->setValeur($request->request->get('BANIERE3'));
+            $imageuplbaniere3 = $request->files->get('BANIERE3');
+            $imageNamebaniere3 = $uploadhelper->uploadImage($imageuplbaniere3, '', 500);
+            if ($imageuplbaniere3) {
+                $baniere3->setValeur($imageNamebaniere3);
             }
+
         }
 
         $this->entityManager->persist($baniere1);
@@ -220,17 +230,19 @@ class ParametreController extends AbstractController
 
         $this->entityManager->flush();
         return $this->render('admin/parametre/edit.html.twig', [
-            'baniere1' => $baniere1->getValeur(),
-            'baniere2' => $baniere2->getValeur(),
-            'baniere3' => $baniere3->getValeur(),
+            'BANIERE1' => $baniere1->getValeur(),
+            'BANIERE2' => $baniere2->getValeur(),
+            'BANIERE3' => $baniere3->getValeur(),
         ]);
     }
 
     #[Route('/parametre/a_propos', name: 'parametre_a_propos', methods: ['GET', 'POST'])]
-    public function newAPropos(Request $request, ParametreRepository $parametreRepository): Response
+    public function newAPropos(UploaderHelper $uploadhelper, Request $request, ParametreRepository $parametreRepository): Response
     {
         $bienvenue = $parametreRepository->findOneBy(['nom' => 'BIENVENUE']);
         $mission = $parametreRepository->findOneBy(['nom' => 'MISSION']);
+        $image = $parametreRepository->findOneBy(['nom' => 'image1']);
+        $image2 = $parametreRepository->findOneBy(['nom' => 'image2']);
 
         if (!$bienvenue) {
             $bienvenue = new Parametre();
@@ -242,6 +254,16 @@ class ParametreController extends AbstractController
             $mission->setNom('MISSION')->setValeur($request->request->get('MISSION'));
         }
 
+        if (!$image) {
+            $image = new Parametre();
+            $image->setNom('image1')->setValeur("");
+        }
+
+        if (!$image2) {
+            $image2 = new Parametre();
+            $image2->setNom('image2')->setValeur("");
+        }
+
 
         if ($request->isMethod('POST')) {
             if ($bienvenue) {
@@ -251,7 +273,24 @@ class ParametreController extends AbstractController
             if ($mission) {
                 $mission->setValeur($request->request->get('MISSION'));
             }
+
+            $imageupl = $request->files->get('image1');
+            $imageName = $uploadhelper->uploadImage($imageupl, '', 500);
+            if ($imageupl) {
+                $image->setValeur($imageName);
+
+            }
+
+            $imageupl2 = $request->files->get('image2');
+            $imageName2 = $uploadhelper->uploadImage($imageupl2, '', 500);
+            if ($imageupl2) {
+                $image2->setValeur($imageName2);
+
+            }
+
         }
+        $this->entityManager->persist($image);
+        $this->entityManager->persist($image2);
 
         $this->entityManager->persist($bienvenue);
         $this->entityManager->persist($mission);
@@ -261,6 +300,8 @@ class ParametreController extends AbstractController
         return $this->render('admin/parametre/a_propos_paramtetre.html.twig', [
             'bienvenue' => $bienvenue->getValeur(),
             'mission' => $mission->getValeur(),
+            'image1' => $image->getValeur(),
+            'image2' => $image2->getValeur(),
         ]);
     }
 

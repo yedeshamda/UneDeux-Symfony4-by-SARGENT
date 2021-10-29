@@ -24,14 +24,24 @@
 
     <div class="swiper mySwiper2 ">
         <div class="swiper-wrapper">
-            {% for categorie in categories %}
                 <div class="swiper-slide">
-                    <img src="{{ asset('images/categories/'~categorie.baniereImageName) }}" height="500px"
+                    <img src="{{ asset('images/parametres/'~parametre.baniere1) }}" height="500px"
                          style="width:100%">
                     <img class="img-home" src="{{ asset('assets/images/nawara.png') }}" height="500px"
                          style="width:100%">
                 </div>
-            {% endfor %}
+                <div class="swiper-slide">
+                    <img src="{{ asset('images/parametres/'~parametre.baniere2) }}" height="500px"
+                         style="width:100%">
+                    <img class="img-home" src="{{ asset('assets/images/nawara.png') }}" height="500px"
+                         style="width:100%">
+                </div>
+                <div class="swiper-slide">
+                    <img src="{{ asset('images/parametres/'~parametre.baniere3) }}" height="500px"
+                         style="width:100%">
+                    <img class="img-home" src="{{ asset('assets/images/nawara.png') }}" height="500px"
+                         style="width:100%">
+                </div>
         </div>
         <div class="swiper-button-next arrow-right1"></div>
         <div class="swiper-button-prev arrow-left1"></div>

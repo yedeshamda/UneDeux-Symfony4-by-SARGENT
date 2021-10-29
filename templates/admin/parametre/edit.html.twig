@@ -2,18 +2,18 @@
 
 {% block body %}
     <div class="container">
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <div class="row mb-3">
-                <label>Baniere d'accueil 1</label>
-                <input type="text" class="form-control" value="{{ baniere1|default('') }}" name="baniere1">
+                <label>Banière 1</label>
+                <input type="file" class="form-control" name="BANIERE1">
             </div>
             <div class="row mb-3">
-                <label>Baniere d'accueil 2</label>
-                <input type="text" class="form-control" value="{{ baniere2|default('') }}" name="baniere2">
+                <label>Banière 2</label>
+                <input type="file" class="form-control" name="BANIERE2">
             </div>
             <div class="row mb-3">
-                <label>Baniere d'accueil 3</label>
-                <input type="text" class="form-control" value="{{ baniere13|default('') }}" name="baniere3">
+                <label>Banière 3</label>
+                <input type="file" class="form-control" name="BANIERE3">
             </div>
             <div>
                 <button type="submit" class="btn btn-primary">Valider</button>

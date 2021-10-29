@@ -2,7 +2,7 @@
 
 {% block body %}
 <div class="container">
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         <div class="row mb-3">
             <label>BIENVENUE à MATEB</label>
             <input type="text" class="form-control" value="{{ bienvenue|default('') }}" name="BIENVENUE">
@@ -10,6 +10,14 @@
         <div class="row mb-3">
             <label>Les missions de MATEB</label>
             <input type="text" class="form-control" value="{{ mission|default('') }}" name="MISSION">
+        </div>
+        <div class="row mb-3">
+            <label>image 1</label>
+            <input type="file" class="form-control" name="image1">
+        </div>
+        <div class="row mb-3">
+            <label>image 2</label>
+            <input type="file" class="form-control" name="image2">
         </div>
         <div>
             <button type="submit" class="btn btn-primary">Valider</button>
