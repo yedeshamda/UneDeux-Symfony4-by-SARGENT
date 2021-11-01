@@ -33,7 +33,7 @@
             <div class="col-10 p-0">
                 <div class="container">
                     <div class="row">
-                        <div class="col-3 p-0">
+                        <div class="col-lg-3 col-md-3 col-xl-3 d-sm-block d-none p-0">
                             <div class="d-flex">
                                 <input class="w3-input w3-animate-input" type="text" style="width:135px"
                                        placeholder="Recherche...">
@@ -79,10 +79,10 @@
                             </ul>
                         </div>
 
-                        <div class="col-9">
+                        <div class="col-lg-9 col-md-9 col-xl-9 col-12">
                             <div class="row">
                                 {% for produit in produits %}
-                                    <div class="col-4">
+                                    <div class="col-6 col-sm-6 col-md-4 col-xl-4">
                                         <div class="card">
                                             <img src="{{ asset('images/produits/'~produit.imageName) }}" height="170"
                                                  class="card-img-top">
@@ -110,7 +110,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-6 p-0 position-relative bor">
+            <div class="col-12 col-md-6 col-xl-6  p-0 position-relative bor">
                 <img src="{{ asset('assets/images/left.png') }}"
                      style="width:100%">
                 <span class="bas-left">
@@ -123,7 +123,7 @@
                     <div class="row">or when cutting with a</div>
                 </span>
             </div>
-            <div class="col-6 p-0 position-relative bor">
+            <div class="col-12 col-md-6 col-xl-6 p-0 position-relative bor">
                 <img src="{{ asset('assets/images/right.png') }}"
                      style="width:100%">
                 <span class="bas-right">SEMANCE</span>
