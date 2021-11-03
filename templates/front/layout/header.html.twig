@@ -1,8 +1,9 @@
 <header class="baniere-form position-relative">
     <img src="{{ asset('assets/images/Background1.png') }}" class="img-png w-100">
     <img src="{{ asset('assets/images/Background2.png') }}" class="img-jpg w-100">
-    <div class="container">
 
+
+    <div class="container">
         <div class="topicon2-margin row d-none d-md-flex">
             <div class="col-3 div-social-media">
                 <a href="{{ parametre.youtube }}"> <i class="fab topicon fa-youtube"></i></a>
@@ -10,16 +11,17 @@
                 <a href="{{ parametre.facebook }}"><i class="fab topicon fa-facebook"></i></a>
             </div>
             <div class="col-9 div-info-contact">
-                <span class="topicon2-span"><i class="fas topicon2 fa-phone-volume" ></i>  + {{ parametre.num1 }}</span>
+                <span class="topicon2-span"><i class="fas topicon2 fa-phone-volume"></i>  + {{ parametre.num1 }}</span>
                 <span class="topicon2-span"><i class="fas topicon2 fa-envelope"></i> {{ parametre.email }}</span>
-                <span class="topicon2-span"><i class="far topicon2 fa-clock"></i> {{ parametre.jourDebut }} - {{ parametre.jourFin }} de {{ parametre.heureDebut }} à {{ parametre.heureFin }}</span>
+                <span class="topicon2-span"><i
+                            class="far topicon2 fa-clock"></i> {{ parametre.jourDebut }} - {{ parametre.jourFin }} de {{ parametre.heureDebut }} à {{ parametre.heureFin }}</span>
             </div>
         </div>
 
-        <div class="row ">
+        <div class="row d-none d-sm-flex">
             <div class="col-3">
                 <a href="{{ path('front_home') }}">
-                <img src="{{ asset('assets/images/logo_2x.png') }}" alt="" height="50" class="logo-front">
+                    <img src="{{ asset('assets/images/logo_2x.png') }}" alt="" height="50" class="logo-front">
                 </a>
             </div>
             <div class="col-7">
@@ -42,6 +44,37 @@
                     </div>
                 </nav>
             </div>
+            <div class="col-2">
+                <div class="div-search-cadre">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-xl-none d-md-none d-xxl-none row">
+            <div class="col-3 mt-4">
+                <nav role="navigation" class="nav_mobile">
+                    <div id="menuToggle">
+                        <input type="checkbox"/>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <ul id="menu_mobile">
+                            <li><a href="{{ path('front_home') }}">ACCUEIL</a></li>
+                            <li><a href="{{ path('front_produit_index') }}">NOS PRODUITS</a></li>
+                            <li><a href="{{ path('front_qui_somme_nous') }}">QUI SOMMES-NOUS ?</a></li>
+                            <li><a href="{{ path('front_contact_new') }}">NOUS CONTACTER</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+
+            <div class="col-7">
+                <a href="{{ path('front_home') }}">
+                    <img src="{{ asset('assets/images/logo_2x.png') }}" alt="" height="50" class="logo-front">
+                </a>
+            </div>
+
             <div class="col-2">
                 <div class="div-search-cadre">
                     <i class="fas fa-search"></i>
