@@ -17,12 +17,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProduitController extends AbstractController
 {
     #[Route('/produit', name: 'produit_index', methods: ['GET'])]
-    public function index(Request $request,PaginatorInterface $paginator,ProduitRepository $produitRepository,CategorieRepository $categorieRepository,MarqueRepository $marqueRepository): Response
+    public function index(Request $request, PaginatorInterface $paginator, ProduitRepository $produitRepository, CategorieRepository $categorieRepository, MarqueRepository $marqueRepository): Response
     {
-        $produits=$produitRepository->findAll();
-        $produitsFeatured=$produitRepository->findBy(array('featured' => true));
-        $marques=$marqueRepository->findAll();
-        $categories=$categorieRepository->findAll();
+        $produits = $produitRepository->findAll();
+        $produitsFeatured = $produitRepository->findBy(array('featured' => true));
+        $marques = $marqueRepository->findAll();
+        $categories = $categorieRepository->findAll();
 
         $pagination = $paginator->paginate(
             $produits, /* query NOT result */
@@ -39,14 +39,14 @@ class ProduitController extends AbstractController
     }
 
     #[Route('/produit/show/{id}', name: 'produit_show', methods: ['GET'])]
-    public function show(Request $request,int $id,ProduitRepository $produitRepository,CategorieRepository $categorieRepository,MarqueRepository $marqueRepository): Response
+    public function show(Request $request, int $id, ProduitRepository $produitRepository, CategorieRepository $categorieRepository, MarqueRepository $marqueRepository): Response
     {
-        $marques=$marqueRepository->findAll();
-        $categories=$categorieRepository->findAll();
-        $produitsFeatured=$produitRepository->findBy(array('featured' => true));
-        $produit=$produitRepository->find($id);
-        $produits=$produitRepository->findBy(
-            ['nom' => ['Produit1','Produit2','Produit3','Produit4']],
+        $marques = $marqueRepository->findAll();
+        $categories = $categorieRepository->findAll();
+        $produitsFeatured = $produitRepository->findBy(array('featured' => true));
+        $produit = $produitRepository->find($id);
+        $produits = $produitRepository->findBy(
+            ['nom' => ['Produit1', 'Produit2', 'Produit3', 'Produit4']],
         );
 
         return $this->render('front/produit/show.html.twig', [
@@ -56,5 +56,22 @@ class ProduitController extends AbstractController
             'produits' => $produits,
             'produitsFeatured' => $produitsFeatured,
         ]);
+    }
+
+    #[Route('/produit/search', name: 'produit_search', methods: ['POST'])]
+    public function searchAction(Request $request,ProduitRepository $produitRepository, CategorieRepository $categorieRepository, MarqueRepository $marqueRepository)
+    {
+        $produitsFeatured = $produitRepository->findBy(array('featured' => true));
+        $marques = $marqueRepository->findAll();
+        $categories = $categorieRepository->findAll();
+
+        $data = $request->request->get('search-name');
+        $res=$produitRepository->search($data);
+        return $this->render('front/produit/search.html.twig', array(
+            'res' => $res,
+                'categories' => $categories,
+                'marques' => $marques,
+                'produitsFeatured' => $produitsFeatured,)
+        );
     }
 }

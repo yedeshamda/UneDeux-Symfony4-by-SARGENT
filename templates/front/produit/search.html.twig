@@ -81,7 +81,7 @@
 
                         <div class="col-lg-9 col-md-9 col-xl-9 col-12">
                             <div class="row">
-                                {% for produit in produits %}
+                                {% for produit in res %}
                                     <div class="col-6 col-sm-6 col-md-4 col-xl-4">
                                         <div class="card">
                                             <img src="{{ asset('images/produits/'~produit.imageName) }}" height="170"
@@ -97,9 +97,6 @@
                                         </div>
                                     </div>
                                 {% endfor %}
-                                <div class="navigation">
-                                    {{ knp_pagination_render(produits) }}
-                                </div>
                             </div>
                         </div>
                     </div>
