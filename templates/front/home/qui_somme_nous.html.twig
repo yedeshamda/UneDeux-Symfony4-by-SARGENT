@@ -2,130 +2,79 @@
 
 {% block body %}
 
-<div class="row">
-    <div class="col-1 p-0 island1">
+    <div class="row">
+        <div class="col-1 p-0 island1">
 
-    </div>
-    <div class="col-10">
-        <div class="container mt-5">
-            <h1 class="quisommesnous"> QUI SOMMES NOUS ? </h1>
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-8">
-                            <img src="{{ asset('images/parametres/'~parametre.image1) }}" width="700px" height="300px" alt="">
+        </div>
+        <div class="col-10">
+            <div class="container mt-5">
+                <h1 class="quisommesnous"> QUI SOMMES NOUS ? </h1>
+                <div class="card big-card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-8">
+                                <img src="{{ asset('images/parametres/'~parametre.image1) }}" width="700px"
+                                     height="300px" alt="">
+                            </div>
+                            <div class="col-4">
+                                <h5 class="bienv">Bienvenue à <span> MATEB </span></h5>
+                                {{ parametre.bienvenue }}
+                            </div>
                         </div>
-                        <div class="col-4">
-                            <h5 class="bienv">Bienvenue à <span> MATEB </span></h5>
-                            {{ parametre.bienvenue }}
+
+                        <div class="row mt-5">
+                            <div class="col-4">
+                                <h5 class="bienv">Les missions de <span> MATEB </span></h5>
+                                {{ parametre.mission }}
+                            </div>
+                            <div class="col-8">
+                                <img src="{{ asset('images/parametres/'~parametre.image2) }}" width="700px"
+                                     height="300px" alt="">
+                            </div>
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    <div class="row mt-5">
-                        <div class="col-4">
-                            <h5 class="bienv">Les missions de <span> MATEB </span></h5>
-                            {{ parametre.mission }}
+            <div class="container position-relative margin-container">
+                <h1 class="quisommesnous"> NOS SERVICES </h1>
+                <div class="center-logo">
+
+                </div>
+                <div class="row">
+                    {% for categorie in categories %}
+                        <div class="col-3">
+                            <div class="card card-categorie">
+                                <div class="cercle">
+                                    <img class="cercle-img" src="{{ asset('images/categories/'~categorie.imageName2) }}" alt=""
+                                         width="50px">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="cat-dessus-footer"> {{ categorie.nom }}</h5>
+                                    <span class="cat-dessus-footer-span"> {{ categorie.description }}</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-8">
-                            <img src="{{ asset('images/parametres/'~parametre.image2) }}" width="700px" height="300px" alt="">
-                        </div>
+                    {% endfor %}
+                    <div class="navigation">
+                        {# {{ knp_pagination_render(produits) }} #}
                     </div>
                 </div>
             </div>
         </div>
+        <div class="col-1 p-0 island1">
 
-        <div class="container position-relative margin-container">
-            <h1 class="quisommesnous"> NOS SERVICES </h1>
-            <div class="center-logo">
-
-            </div>
-            <div class="row">
-                {# {% for produit in produits %} #}
-                <div class="col-3">
-                    <div class="card card-categorie">
-                        <div class="cercle">
-                            <img class="cercle-img" src="{{ asset('assets/images/agriculture.png') }}" alt="" width="50px">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="cat-dessus-footer"> Grande Culture</h5>
-                            <span class="cat-dessus-footer-span">what blade angle is best. To do this, you will loosen
-                                the pitch adjustment bolt K and move it slightly toward the engine, then retighten bolt and nut.</span>
-                            {# <a class="button-details-product btn-outline-warning btn"
-                           href="{{ path('front_produit_show', {'id': produit.id}) }}">Détails</a> #}
-                        </div>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="card card-categorie">
-                        <div class="cercle">
-                            <img class="cercle-img" src="{{ asset('assets/images/agriculture.png') }}" alt="" width="50px">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="cat-dessus-footer"> Grande Culture</h5>
-                            <span class="cat-dessus-footer-span"> what blade angle is best. To do this, you will loosen
-                                the pitch adjustment bolt K and move it slightly toward the engine, then retighten bolt and nut.</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="card card-categorie">
-                        <div class="cercle">
-                            <img class="cercle-img" src="{{ asset('assets/images/agriculture.png') }}" alt="" width="50px">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="cat-dessus-footer"> Grande Culture</h5>
-                            <span class="cat-dessus-footer-span"> what blade angle is best. To do this, you will loosen
-                                the pitch adjustment bolt K and move it slightly toward the engine, then retighten bolt and nut.</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="card card-categorie">
-                        <div class="cercle">
-                            <img class="cercle-img" src="{{ asset('assets/images/agriculture.png') }}" alt="" width="50px">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="cat-dessus-footer"> Grande Culture</h5>
-                            <span class="cat-dessus-footer-span">what blade angle is best. To do this, you will loosen
-                            the pitch adjustment bolt K and move it slightly toward the engine, then retighten bolt and nut.</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="navigation">
-                    {# {{ knp_pagination_render(produits) }} #}
-                </div>
-            </div>
         </div>
     </div>
-    <div class="col-1 p-0 island1">
-
-    </div>
-</div>
 
 
     <div class="row swiper margin-swiper">
         <div class="swiper-wrapper swiper-slide-background-color">
-            <div class="swiper-slide swiper-slide-background-color">
-                <img class="swiper-slide-on-footer" src="{{ asset('assets/images/spons1.png') }}" alt=""></div>
-            <div class="swiper-slide swiper-slide-background-color">
-                <img class="swiper-slide-on-footer" src="{{ asset('assets/images/spons2.png') }}" alt=""></div>
-            <div class="swiper-slide swiper-slide-background-color">
-                <img class="swiper-slide-on-footer" src="{{ asset('assets/images/spons3.png') }}" alt=""></div>
-            <div class="swiper-slide swiper-slide-background-color">
-                <img class="swiper-slide-on-footer" src="{{ asset('assets/images/spons1.png') }}" alt=""></div>
-            <div class="swiper-slide swiper-slide-background-color">
-                <img class="swiper-slide-on-footer" src="{{ asset('assets/images/spons2.png') }}" alt=""></div>
-            <div class="swiper-slide swiper-slide-background-color">
-                <img class="swiper-slide-on-footer" src="{{ asset('assets/images/spons3.png') }}" alt=""></div>
-            <div class="swiper-slide swiper-slide-background-color">
-                <img class="swiper-slide-on-footer" src="{{ asset('assets/images/spons4.png') }}" alt=""></div>
-            <div class="swiper-slide swiper-slide-background-color">
-                <img class="swiper-slide-on-footer" src="{{ asset('assets/images/spons1.png') }}" alt=""></div>
-            <div class="swiper-slide swiper-slide-background-color">
-                <img class="swiper-slide-on-footer" src="{{ asset('assets/images/spons2.png') }}" alt=""></div>
-            <div class="swiper-slide swiper-slide-background-color">
-                <img class="swiper-slide-on-footer" src="{{ asset('assets/images/spons4.png') }}" alt=""></div>
+            {% for marque in marques %}
+                <div class="swiper-slide swiper-slide-background-color">
+                    <img class="swiper-slide-on-footer" src="{{ asset('images/marques/'~marque.imageName) }}" alt="">
+                </div>
+            {% endfor %}
         </div>
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
@@ -143,8 +92,8 @@
     {{ parent() }}
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
-          integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+{#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
+          integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">#}
     <link rel="stylesheet" href="{{ asset('assets/css/swiper.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/swiper.min.css') }}">
     <!-- Link Swiper's CSS -->

@@ -16,13 +16,27 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/front', name: 'front_')]
 class ProduitController extends AbstractController
 {
-    #[Route('/produit', name: 'produit_index', methods: ['GET'])]
+    #[Route('/produit', name: 'produit_index', methods: ['GET','POST'])]
     public function index(Request $request, PaginatorInterface $paginator, ProduitRepository $produitRepository, CategorieRepository $categorieRepository, MarqueRepository $marqueRepository): Response
     {
-        $produits = $produitRepository->findAll();
         $produitsFeatured = $produitRepository->findBy(array('featured' => true));
         $marques = $marqueRepository->findAll();
         $categories = $categorieRepository->findAll();
+        $produits = $produitRepository->findAll();
+
+        if($request->isMethod('POST'))
+        {
+            $reqCategories = $request->request->get('categ');
+            $reqMarques = $request->request->get('marq');
+            if (empty($reqCategories) && empty($reqMarques)) {
+                $produits = $produitRepository->findAll();
+
+            } else {
+
+                $produits = $produitRepository->searchByFilter($reqCategories, $reqMarques);
+
+            }
+        }
 
         $pagination = $paginator->paginate(
             $produits, /* query NOT result */
@@ -59,19 +73,55 @@ class ProduitController extends AbstractController
     }
 
     #[Route('/produit/search', name: 'produit_search', methods: ['POST'])]
-    public function searchAction(Request $request,ProduitRepository $produitRepository, CategorieRepository $categorieRepository, MarqueRepository $marqueRepository)
+    public function searchAction(Request $request, ProduitRepository $produitRepository, CategorieRepository $categorieRepository, MarqueRepository $marqueRepository)
     {
         $produitsFeatured = $produitRepository->findBy(array('featured' => true));
         $marques = $marqueRepository->findAll();
         $categories = $categorieRepository->findAll();
 
         $data = $request->request->get('search-name');
-        $res=$produitRepository->search($data);
+        $res = $produitRepository->search($data);
         return $this->render('front/produit/search.html.twig', array(
-            'res' => $res,
+                'res' => $res,
                 'categories' => $categories,
                 'marques' => $marques,
                 'produitsFeatured' => $produitsFeatured,)
+        );
+    }
+
+    #[Route('/produit/search2', name: 'produit_search2', methods: ['POST'])]
+    public function search2Action(Request $request, ProduitRepository $produitRepository, CategorieRepository $categorieRepository, MarqueRepository $marqueRepository)
+    {
+        $produitsFeatured = $produitRepository->findBy(array('featured' => true));
+        $marques = $marqueRepository->findAll();
+        $categories = $categorieRepository->findAll();
+
+        $data = $request->request->get('search-name2');
+        $res = $produitRepository->search($data);
+        return $this->render('front/produit/search.html.twig', array(
+                'res' => $res,
+                'categories' => $categories,
+                'marques' => $marques,
+                'produitsFeatured' => $produitsFeatured,)
+        );
+    }
+
+    #[Route('/produit/filtrer', name: 'produit_filtrer', methods: ['GET'])]
+    public function filtrerAction(Request $request, CategorieRepository $categorieRepository, MarqueRepository $marqueRepository, ProduitRepository $produitRepository)
+    {
+        $marques = $marqueRepository->findAll();
+        $categories = $categorieRepository->findAll();
+        $produitsFeatured = $produitRepository->findBy(array('featured' => true));
+
+        $categories = $request->request->get('categ');
+        $marques = $request->request->get('marq');
+        $res = $produitRepository->searchByFilter($categories, $marques);
+        return $this->render('front/produit/index.html.twig', array(
+                'res' => $res,
+                'produitsFeatured' => $produitsFeatured,
+                'categories' => $categories,
+                'marques' => $marques,
+            )
         );
     }
 }

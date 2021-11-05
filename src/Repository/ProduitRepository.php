@@ -29,6 +29,27 @@ class ProduitRepository extends ServiceEntityRepository
             ;
     }
 
+    public function searchByFilter(?array $categories,?array $marques)
+    {
+        $qb= $this->createQueryBuilder('p');
+           if(!empty($categories))
+           {
+               $qb->join('p.categorie','c')
+               ->andWhere('c.slug in (:cats)')
+               ->setParameter('cats',$categories);
+           }
+           if(!empty($marques))
+           {
+               $qb->join('p.marque','m')
+               ->andWhere('m.slug in (:marqs)')
+               ->setParameter('marqs',$marques);
+           }
+
+            return $qb->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return Produit[] Returns an array of Produit objects
     //  */

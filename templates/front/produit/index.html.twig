@@ -34,27 +34,48 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-3 col-md-3 col-xl-3 d-sm-block d-none p-0">
-                            <div class="d-flex">
-                                <input class="w3-input w3-animate-input" type="text" style="width:135px"
-                                       placeholder="Recherche...">
-                                <button class="btn btn-outline-warning button-search-product" type="submit">Trouver
-                                </button>
-                            </div>
+                            <form method="POST" action="{{ path('front_produit_search2') }}">
+                                <div class="d-flex">
+                                    <input name="search-name2" class="w3-input w3-animate-input" type="text"
+                                           style="width:135px"
+                                           placeholder="Recherche...">
+                                    <button class="btn btn-outline-warning button-search-product" type="submit">
+                                        Trouver
+                                    </button>
+                                </div>
+                            </form>
                             <br>
                             <h4>Filters</h4><br>
-                            <h6>Catégories :</h6>
+                            <form  method="POST">
+                            <h5>Catégories :</h5>
                             <ul>
                                 {% for categorie in categories %}
-                                    <li><h6>{{ categorie.titre }}</h6></li>
+
+                                    <li>
+                                        <h6>
+                                            <input name="categ[]" value="{{ categorie.slug }}" type="checkbox">
+                                            <label>{{ categorie.nom }}</label>
+                                        </h6>
+                                    </li>
                                 {% endfor %}
                             </ul>
                             <br>
-                            <h6>Marques :</h6>
+                            <h5>Marques :</h5>
                             <ul>
                                 {% for marque in marques %}
-                                    <li><h6>{{ marque.nom }}</h6></li>
+                                    <h6>
+                                        <input name="marq[]" value="{{ marque.slug }}" type="checkbox">
+                                        <label>{{ marque.nom }}</label>
+                                    </h6>
                                 {% endfor %}
                             </ul>
+                            <div class="d-flex w-50">
+                                <button  class="btn w-100 btn-outline-warning button-search-product" type="submit">
+                                    Filtrer
+                                </button>
+                            </div>
+                            </form>
+                            <br>
                             <br>
                             <h4>Featured Products</h4>
                             <ul>
@@ -83,7 +104,7 @@
                             <div class="row">
                                 {% for produit in produits %}
                                     <div class="col-6 col-sm-6 col-md-4 col-xl-4">
-                                        <div class="card">
+                                        <div class="card card-produit">
                                             <img src="{{ asset('images/produits/'~produit.imageName) }}" height="170"
                                                  class="card-img-top">
                                             <div class="card-body">
@@ -141,9 +162,9 @@
     {{ parent() }}
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
-{# lehna l mochkol#}
-{#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"#}
-{#          integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">#}
+    {# lehna l mochkol #}
+    {# <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" #}
+    {# integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous"> #}
     <link rel="stylesheet" href="{{ asset('assets/css/swiper.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/swiper.min.css') }}">
 {% endblock %}

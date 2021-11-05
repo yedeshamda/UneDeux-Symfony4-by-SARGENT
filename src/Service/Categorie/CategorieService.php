@@ -35,7 +35,7 @@ class CategorieService
         return $titre;
     }
 
-    public function getDescripton()
+/*    public function getDescripton()
     {
         $categories = $this->categorieRepository->findAll();
         foreach($categories as $categorie)
@@ -43,5 +43,5 @@ class CategorieService
             $descripton = $categorie->getDescription();
         }
         return $descripton;
-    }
+    }*/
 }

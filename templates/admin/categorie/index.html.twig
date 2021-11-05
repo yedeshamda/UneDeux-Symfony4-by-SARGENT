@@ -10,6 +10,7 @@
             <th>Baniere</th>
             <th>Titre</th>
             <th>Description</th>
+            <th>Mini Image</th>
             <th>actions</th>
         </tr>
         </thead>
@@ -21,6 +22,7 @@
                 <td><img src="{{asset('images/categories/'~categorie.baniereImageName)}}" height="40"></td>
                 <td>{{ categorie.titre }}</td>
                 <td>{{ categorie.description }}</td>
+                <td><img src="{{asset('images/categories/'~categorie.imageName2)}}" height="40"></td>
                 <td>
                     <a class="btn btn-primary btn-sm" href="{{ path('admin_categorie_show', {'id': categorie.id}) }}">Détails</a>
                     <a class="btn btn-warning btn-sm" href="{{ path('admin_categorie_edit', {'id': categorie.id}) }}">Modifier</a>
