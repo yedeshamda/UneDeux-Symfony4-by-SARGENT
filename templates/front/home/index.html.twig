@@ -1,28 +1,7 @@
 {% extends 'front/layout/base.html.twig' %}
 
 {% block body %}
-
-    {# <div class="row">
-        <!-- Swiper -->
-        <div class="swiper-container mb-5">
-            <div class="swiper-wrapper">
-                {% for categorie in categories %}
-                    <div class="swiper-slide position-relative">
-                        <img src="{{ asset('images/categories/'~categorie.baniereImageName) }}" height="500px"
-                             style="width:100%">
-                        <div class="row">
-    #}{# <span class="baniere-span-bold"> {{ categorie.nom }} </span> #}{#
-</div>
-</div>
-{% endfor %}
-</div>
-<div class="swiper-button-next"></div>
-<div class="swiper-button-prev"></div>
-<div class="swiper-pagination"></div>
-</div>
-</div> #}
-
-    <div class="swiper mySwiper2 ">
+    <div class="swiper swiper-index mySwiper2 ">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
                 <img src="{{ asset('images/parametres/'~parametre.baniere1) }}" height="500px"
@@ -84,10 +63,12 @@
         <div class="center-logo">
             <img class="img-cat" src="{{ asset('assets/images/Logo.png') }}" alt="">
         </div>
-        <div class="row">
+        <div class="row item-center">
             {% for categorie in categories %}
                 <div class="col-3">
                     <div class="card card-categorie position-relative">
+                            <img class="cat-img-bot" src="{{ asset('images/categories/'~categorie.baniereImageName) }}" alt=""
+                                 width="200px">
                         <div class="cercle">
                             <img class="cercle-img" src="{{ asset('images/categories/'~categorie.imageName2) }}" alt=""
                                  width="50px">
@@ -128,8 +109,6 @@
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-{#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
-          integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">#}
     <link rel="stylesheet" href="{{ asset('assets/css/swiper.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/swiper.min.css') }}">
 
