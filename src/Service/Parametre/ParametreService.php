@@ -320,4 +320,19 @@ class ParametreService
         }
     }
 
+    public function getCatalogue()
+    {
+        $catalogue = $this->parametreRepository->findOneBy(['nom' => 'catalogue']);
+        if ($catalogue) {
+            return $catalogue->getValeur();
+        } else {
+            $catalogue = new Parametre();
+            $catalogue->setNom('catalogue');
+            $catalogue->setValeur('');
+            $this->entityManager->persist($catalogue);
+            $this->entityManager->flush();
+            return $catalogue->getValeur();
+        }
+    }
+
 }

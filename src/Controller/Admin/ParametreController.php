@@ -305,5 +305,33 @@ class ParametreController extends AbstractController
         ]);
     }
 
+    #[Route('/parametre/newCatalogue', name: 'parametre_new_catalogue', methods: ['GET', 'POST'])]
+    public function newCatalogue(UploaderHelper $uploadhelper, Request $request, ParametreRepository $parametreRepository): Response
+    {
+        $catalogue = $parametreRepository->findOneBy(['nom' => 'catalogue']);
+
+        if (!$catalogue) {
+            $catalogue = new Parametre();
+            $catalogue->setNom('catalogue')->setValeur("");
+        }
+
+
+        if ($request->isMethod('POST')) {
+            $catalogueupload = $request->files->get('catalogue');
+            $catalogueName = $uploadhelper->uploadImage($catalogueupload, '', 500);
+            if ($catalogueupload) {
+                $catalogue->setValeur($catalogueName);
+
+            }
+
+        }
+        $this->entityManager->persist($catalogue);
+
+
+        $this->entityManager->flush();
+        return $this->render('admin/parametre/index_catalogue.html.twig', [
+            'catalogue' => $catalogue->getValeur(),
+        ]);
+    }
 
 }

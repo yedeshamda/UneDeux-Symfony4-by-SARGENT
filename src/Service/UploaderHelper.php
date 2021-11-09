@@ -46,7 +46,6 @@ class UploaderHelper
     public function uploadImage(File $file, string $folderName, int $maxsize = 500): ?string
     {
 
-
         if ($file instanceof UploadedFile) {
             $originalFilename = $file->getClientOriginalName();
         } else {
