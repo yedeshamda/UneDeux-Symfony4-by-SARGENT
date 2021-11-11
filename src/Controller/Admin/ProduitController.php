@@ -2,9 +2,13 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\FicheTech;
+use App\Entity\Images;
 use App\Entity\Produit;
 use App\Form\ProduitType;
 use App\Repository\ProduitRepository;
+use App\Service\UploaderHelper;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,6 +17,14 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/admin', name: 'admin_')]
 class ProduitController extends AbstractController
 {
+
+    private EntityManagerInterface $entityManager;
+
+    public function __construct(EntityManagerInterface $entityManager)
+     {
+         $this->entityManager = $entityManager;
+     }
+
     #[Route('/produit', name: 'produit_index', methods: ['GET'])]
     public function index(ProduitRepository $produitRepository): Response
     {
@@ -22,14 +34,41 @@ class ProduitController extends AbstractController
     }
 
     #[Route('/produit/new', name: 'produit_new', methods: ['GET','POST'])]
-    public function new(Request $request): Response
+    public function new(Request $request,UploaderHelper $helper): Response
     {
         $produit = new Produit();
         $form = $this->createForm(ProduitType::class, $produit);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
+
+            //Fiche Technique
+            $fichestech=$request->files->get('produit')['fichetech'];
+            if(!empty($fichestech))
+            {
+                foreach ($fichestech as $fiche)
+                {
+                    $name=$helper->uploadImage($fiche,'ficheTechnique');
+                    $ficheTech=new FicheTech();
+                    $ficheTech->setNom($name);
+                    $produit->addFichetech($ficheTech);
+                 }
+            }
+
+            //Images Multiples
+            $images=$request->files->get('produit')['image'];
+            if(!empty($images))
+            {
+                foreach ($images as $imagesmultiple)
+                {
+                    $imagesName=$helper->uploadImage($imagesmultiple,'imageMultiple');
+                    $Images=new Images();
+                    $Images->setNom($imagesName);
+                    $produit->addImage($Images);
+                }
+            }
+
+             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($produit);
             $entityManager->flush();
 

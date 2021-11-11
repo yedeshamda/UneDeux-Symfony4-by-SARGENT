@@ -538,7 +538,7 @@ header {
 
 .center-logo {
     position: absolute;
-    left: 43%;
+    left: 47%;
     top: -15%;
 }
 
@@ -632,19 +632,21 @@ header {
     border-radius: 50%;
     background-color: #f47822;
     margin-left: 60px;
-    margin-top: -25px;
+    margin-top: -60px;
     z-index: 1;
 }
 
 .cat-img-bot {
-    width: 225px;
-    height: 100px;
-    border-radius: 20px;
+    width: 224px;
+    height: 125px;
+    border-radius: 15px;
 }
 
 .cercle-img {
     margin-left: 25px;
-    margin-top: 16px;
+    margin-top: 24px;
+    height: 46px;
+    width: 51px;
 }
 
 .img-produit-home-featured {
@@ -660,7 +662,7 @@ header {
 
 .quisommesnous {
     text-align: center;
-    font-family: "Roboto";
+    font-family: "Roboto" !important;
     color: #f47822;
     font-weight: bold;
 
@@ -866,5 +868,34 @@ header {
     -ms-transform: translate(-100%, -50%);
     transform: translate(-100%, -50%);
 }
+
+.snip1325 {
+    border-radius: 22px;
+    position: relative;
+    overflow: hidden;
+    margin: 0px;
+    min-width: 223px;
+    max-width: 315px;
+    height: 175px;
+    width: 100%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+}
+.snip1325 img {
+    height: 100%;
+    position: absolute;
+    right: 0;
+    -webkit-transition: all 2s ease-out;
+    transition: all 2s ease-out;
+}
+.snip1325:hover img,
+.snip1325.hover img {
+    -webkit-transform: translateX(130px);
+    transform: translateX(130px);
+}
+
+.featured-prod{
+    margin-top: -50px;
+}
+
 
 

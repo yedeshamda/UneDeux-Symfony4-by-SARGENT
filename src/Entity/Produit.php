@@ -80,12 +80,12 @@ class Produit
     private $marque;
 
     /**
-     * @ORM\ManyToMany(targetEntity=FicheTech::class, inversedBy="produits")
+     * @ORM\ManyToMany(targetEntity=FicheTech::class, inversedBy="produits",cascade={"persist","remove"})
      */
     private $fichetech;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Images::class, inversedBy="produits")
+     * @ORM\ManyToMany(targetEntity=Images::class, inversedBy="produits",cascade={"persist","remove"})
      */
     private $image;
 

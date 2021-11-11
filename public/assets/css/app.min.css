@@ -1,6 +1,6 @@
 @import url(css.css);
 body{
-    background-color: #e2f2df;
+    background-color: #f8f9fa;
 }
 #page-topbar {
     position: fixed;
@@ -732,10 +732,6 @@ body[data-sidebar=dark] #sidebar-menu ul li ul.sub-menu li a {
 body[data-sidebar=dark] #sidebar-menu ul li ul.sub-menu li a:hover {
     color: black;
     font-weight: bold;
-}
-
-body[data-sidebar=dark].vertical-collpsed {
-    min-height: 1760px
 }
 
 body[data-sidebar=dark].vertical-collpsed .vertical-menu #sidebar-menu > ul > li:hover > a {

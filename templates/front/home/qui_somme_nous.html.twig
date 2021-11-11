@@ -13,7 +13,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-8">
-                                <img src="{{ asset('images/parametres/'~parametre.image1) }}" width="700px"
+                                <img src="{{ asset('images/parametres/apropos/'~parametre.image1) }}" width="700px"
                                      height="300px" alt="">
                             </div>
                             <div class="col-4">
@@ -28,7 +28,7 @@
                                 {{ parametre.mission }}
                             </div>
                             <div class="col-8">
-                                <img src="{{ asset('images/parametres/'~parametre.image2) }}" width="700px"
+                                <img src="{{ asset('images/parametres/apropos/'~parametre.image2) }}" width="700px"
                                      height="300px" alt="">
                             </div>
                         </div>
@@ -44,10 +44,12 @@
                 <div class="row item-center">
                     {% for categorie in categories %}
                         <div class="col-3">
-                            <div class="card card-categorie">
+                            <div class="card card-categorie position-relative">
+                                <figure class="snip1325">
+                                        <img src="{{ asset('images/categories/'~categorie.baniereImageName) }}" alt="ls-sample4"/>
+                                </figure>
                                 <div class="cercle">
-                                    <img class="cercle-img" src="{{ asset('images/categories/'~categorie.imageName2) }}" alt=""
-                                         width="50px">
+                                    <img class="cercle-img" src="{{ asset('images/categories/'~categorie.imageName2) }}" alt="">
                                 </div>
                                 <div class="card-body">
                                     <h5 class="cat-dessus-footer"> {{ categorie.nom }}</h5>
@@ -92,8 +94,8 @@
     {{ parent() }}
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
-{#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
-          integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">#}
+    {# <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
+          integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous"> #}
     <link rel="stylesheet" href="{{ asset('assets/css/swiper.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/swiper.min.css') }}">
     <!-- Link Swiper's CSS -->
@@ -141,5 +143,12 @@
 
             return direction;
         }
+    </script>
+    <script>
+        $(".hover").mouseleave(
+            function () {
+                $(this).removeClass("hover");
+            }
+        );
     </script>
 {% endblock %}

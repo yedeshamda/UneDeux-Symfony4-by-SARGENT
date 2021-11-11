@@ -4,19 +4,19 @@
     <div class="swiper swiper-index mySwiper2 ">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
-                <img src="{{ asset('images/parametres/'~parametre.baniere1) }}" height="500px"
+                <img src="{{ asset('images/parametres/homeBanieres/'~parametre.baniere1) }}" height="500px"
                      style="width:100%">
                 <img class="img-home" src="{{ asset('assets/images/nawara.png') }}" height="500px"
                      style="width:100%">
             </div>
             <div class="swiper-slide">
-                <img src="{{ asset('images/parametres/'~parametre.baniere2) }}" height="500px"
+                <img src="{{ asset('images/parametres/homeBanieres/'~parametre.baniere2) }}" height="500px"
                      style="width:100%">
                 <img class="img-home" src="{{ asset('assets/images/nawara.png') }}" height="500px"
                      style="width:100%">
             </div>
             <div class="swiper-slide">
-                <img src="{{ asset('images/parametres/'~parametre.baniere3) }}" height="500px"
+                <img src="{{ asset('images/parametres/homeBanieres/'~parametre.baniere3) }}" height="500px"
                      style="width:100%">
                 <img class="img-home" src="{{ asset('assets/images/nawara.png') }}" height="500px"
                      style="width:100%">
@@ -67,11 +67,11 @@
             {% for categorie in categories %}
                 <div class="col-3">
                     <div class="card card-categorie position-relative">
-                            <img class="cat-img-bot" src="{{ asset('images/categories/'~categorie.baniereImageName) }}" alt=""
-                                 width="200px">
+                        <figure class="snip1325">
+                            <img src="{{ asset('images/categories/'~categorie.baniereImageName) }}" alt="ls-sample4"/>
+                        </figure>
                         <div class="cercle">
-                            <img class="cercle-img" src="{{ asset('images/categories/'~categorie.imageName2) }}" alt=""
-                                 width="50px">
+                            <img class="cercle-img" src="{{ asset('images/categories/'~categorie.imageName2) }}" alt="">
                         </div>
                         <div class="card-body">
                             <h5 class="cat-dessus-footer"> {{ categorie.nom }}</h5>
@@ -190,5 +190,13 @@
             mousewheel: true,
             keyboard: true,
         });
+    </script>
+
+    <script>
+        $(".hover").mouseleave(
+            function () {
+                $(this).removeClass("hover");
+            }
+        );
     </script>
 {% endblock %}

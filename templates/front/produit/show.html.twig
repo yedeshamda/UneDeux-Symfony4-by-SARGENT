@@ -8,10 +8,10 @@
                     <div class="swiper-slide position-relative">
                         <img src="{{ asset('images/categories/'~categorie.baniereImageName) }}" height="500px"
                              style="width:100%">
-                        <div class="row">
-                            {# <span class=""> {{ categorie.nom }} </span>
-                            <span class=""> {{ categorie.description }}.</span> #}
-                        </div>
+                        {# <div class="row">
+                            <span class=""> {{ categorie.nom }} </span>
+                            <span class=""> {{ categorie.description }}.</span>
+                        </div> #}
                     </div>
                 {% endfor %}
             </div>
@@ -38,7 +38,8 @@
                                 <div class="card-body card-body-details">
                                     <img src="{{ asset('images/produits/'~produit.imageName) }}" height="500px"
                                          width="500px">
-                                    <img class="marque-details-produit" src="{{ asset('images/marques/'~produit.marque.imageName) }}" height="100px"
+                                    <img class="marque-details-produit"
+                                         src="{{ asset('images/marques/'~produit.marque.imageName) }}" height="100px"
                                          width="150px">
                                 </div>
                             </div>
@@ -49,8 +50,8 @@
                             <h5 class="produit-details">{{ produit.nom }}</h5>
                             <span class="desc-details">{{ produit.description }}</span>
                             <div class="row">
-                                <a class="button-details btn-outline-warning btn"
-                                   href="{{ path('front_produit_show', {'id': produit.id}) }}">Demande de Devis</a>
+                                <a class="button-details btn-outline-warning btn" id="demanded">Demande
+                                    de Devis</a>
                             </div>
                         </div>
                     </div>
@@ -74,13 +75,22 @@
                         </nav>
                         <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
-                                 aria-labelledby="nav-home-tab">...
+                                 aria-labelledby="nav-home-tab">{{ produit.descriptiontech|raw }}
                             </div>
                             <div class="tab-pane fade" id="nav-profile" role="tabpanel"
                                  aria-labelledby="nav-profile-tab">...
                             </div>
                             <div class="tab-pane fade" id="nav-contact" role="tabpanel"
-                                 aria-labelledby="nav-contact-tab">...
+                                 aria-labelledby="nav-contact-tab">
+                                {{ form_start(form) }}
+                                {{ form_widget(form) }}
+                                <button class="btn btn-success btn-sm">{{ button_label|default('Ajouter') }}</button>
+                                <button type="reset" class="btn btn-danger btn-sm">
+                                    <i class="fa fa-ban"></i> Réinitialiser
+                                </button>
+                                <br>
+                                <br>
+                                {{ form_end(form) }}
                             </div>
                         </div>
                     </div>
@@ -106,7 +116,7 @@
                 </div>
             </div>
             <div class="col-1 p-0 island22">
-                <h6>Featured Products</h6>
+                <h6 class="featured-prod">Featured Products</h6>
                 <ul>
                     {% for produitFeatured in produitsFeatured %}
 
@@ -163,23 +173,15 @@
     {{ parent() }}
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
-{#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
-          integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">#}
+    {# <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
+          integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous"> #}
     <link rel="stylesheet" href="{{ asset('assets/css/swiper.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/swiper.min.css') }}">
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"
-            integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
-            crossorigin="anonymous"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.esm.js"></script>
@@ -197,6 +199,15 @@
             autoplay: {
                 delay: 3000,
             },
+        })
+    </script>
+    <script>
+        // Javascript to enable link to tab
+        $('#demanded').on('click', function () {
+            $('html, body').animate({
+                scrollTop: $("#nav-contact-tab").offset().top
+            }, 200);
+            $('#nav-contact-tab').trigger('click');
         })
     </script>
 {% endblock %}

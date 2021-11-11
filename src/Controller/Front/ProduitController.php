@@ -2,7 +2,9 @@
 
 namespace App\Controller\Front;
 
+use App\Entity\Devis;
 use App\Entity\Produit;
+use App\Form\DevisType;
 use App\Form\ProduitType;
 use App\Repository\CategorieRepository;
 use App\Repository\MarqueRepository;
@@ -52,23 +54,38 @@ class ProduitController extends AbstractController
         ]);
     }
 
-    #[Route('/produit/show/{id}', name: 'produit_show', methods: ['GET'])]
-    public function show(Request $request, int $id, ProduitRepository $produitRepository, CategorieRepository $categorieRepository, MarqueRepository $marqueRepository): Response
+    #[Route('/produit/show/{id}', name: 'produit_show', methods: ['POST','GET'])]
+    public function show(Request $request, int $id, ProduitRepository $produitRepository, CategorieRepository $categorieRepository): Response
     {
-        $marques = $marqueRepository->findAll();
         $categories = $categorieRepository->findAll();
         $produitsFeatured = $produitRepository->findBy(array('featured' => true));
         $produit = $produitRepository->find($id);
         $produits = $produitRepository->findBy(
-            ['nom' => ['Produit1', 'Produit2', 'Produit3', 'Produit4']],
+            ['categorie' => [$produit->getCategorie()]],
         );
+
+        $devi = new Devis();
+        $devi->addProduit($produit);
+        $form = $this->createForm(DevisType::class, $devi);
+        $form->handleRequest($request);
+
+        //Devis
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($devi);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('front_home', [], Response::HTTP_SEE_OTHER);
+        }
 
         return $this->render('front/produit/show.html.twig', [
             'categories' => $categories,
-            'marques' => $marques,
             'produit' => $produit,
             'produits' => $produits,
             'produitsFeatured' => $produitsFeatured,
+            //Devis
+            'devi' => $devi,
+            'form' => $form->createView(),
         ]);
     }
 

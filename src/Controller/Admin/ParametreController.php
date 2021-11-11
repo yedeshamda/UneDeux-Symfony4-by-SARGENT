@@ -202,21 +202,21 @@ class ParametreController extends AbstractController
         if ($request->isMethod('POST')) {
 
             $imageuplbaniere1 = $request->files->get('BANIERE1');
-            $imageNamebaniere1 = $uploadhelper->uploadImage($imageuplbaniere1, '', 500);
+            $imageNamebaniere1 = $uploadhelper->uploadImage($imageuplbaniere1, 'parametres/homeBanieres', 500);
             if ($imageuplbaniere1) {
                 $baniere1->setValeur($imageNamebaniere1);
 
             }
 
             $imageuplbaniere2 = $request->files->get('BANIERE2');
-            $imageNamebaniere2 = $uploadhelper->uploadImage($imageuplbaniere2, '', 500);
+            $imageNamebaniere2 = $uploadhelper->uploadImage($imageuplbaniere2, 'parametres/homeBanieres', 500);
             if ($imageuplbaniere2) {
                 $baniere2->setValeur($imageNamebaniere2);
 
             }
 
             $imageuplbaniere3 = $request->files->get('BANIERE3');
-            $imageNamebaniere3 = $uploadhelper->uploadImage($imageuplbaniere3, '', 500);
+            $imageNamebaniere3 = $uploadhelper->uploadImage($imageuplbaniere3, 'parametres/homeBanieres', 500);
             if ($imageuplbaniere3) {
                 $baniere3->setValeur($imageNamebaniere3);
             }
@@ -275,14 +275,14 @@ class ParametreController extends AbstractController
             }
 
             $imageupl = $request->files->get('image1');
-            $imageName = $uploadhelper->uploadImage($imageupl, '', 500);
+            $imageName = $uploadhelper->uploadImage($imageupl, 'parametres/apropos', 500);
             if ($imageupl) {
                 $image->setValeur($imageName);
 
             }
 
             $imageupl2 = $request->files->get('image2');
-            $imageName2 = $uploadhelper->uploadImage($imageupl2, '', 500);
+            $imageName2 = $uploadhelper->uploadImage($imageupl2, 'parametres/apropos', 500);
             if ($imageupl2) {
                 $image2->setValeur($imageName2);
 
@@ -318,7 +318,7 @@ class ParametreController extends AbstractController
 
         if ($request->isMethod('POST')) {
             $catalogueupload = $request->files->get('catalogue');
-            $catalogueName = $uploadhelper->uploadImage($catalogueupload, '', 500);
+            $catalogueName = $uploadhelper->uploadImage($catalogueupload, 'parametres/catalogue', 500);
             if ($catalogueupload) {
                 $catalogue->setValeur($catalogueName);
 
