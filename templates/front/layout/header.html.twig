@@ -19,17 +19,20 @@
         </div>
 
         <div class="row d-none d-sm-flex">
-            <div class="col-3">
+            <div class="col-2">
                 <a href="{{ path('front_home') }}">
                     <img src="{{ asset('assets/images/logo_2x.png') }}" alt="" height="50" class="logo-front">
                 </a>
             </div>
-            <div class="col-6">
+            <div class="col-8">
                 <nav id="menu" class="nav-bar navbar navbar-expand-lg">
                     <div class="collapse navbar-collapse">
                         <ul class="navbar-nav">
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ path('front_home') }}">ACCUEIL</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('front_qui_somme_nous') }}">QUI SOMMES-NOUS ?</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ path('front_produit_index') }}">NOS PRODUITS</a>
@@ -38,7 +41,7 @@
                                 <a class="nav-link" href="{{ path('front_parametre_catalogue') }}">CATALOGUE</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ path('front_qui_somme_nous') }}">QUI SOMMES-NOUS ?</a>
+                                <a class="nav-link" href="{{ path('front_blog_index') }}">ACTUALITES</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ path('front_contact_new') }}">NOUS CONTACTER</a>
@@ -47,7 +50,7 @@
                     </div>
                 </nav>
             </div>
-            <div class="col-3">
+            <div class="col-2">
                 <form method="POST" action="{{ path('front_produit_search') }}" id="content">
                     <input type="text" name="search-name" class="input-search" id="search-input">
                     <button type="reset" class="search" id="search-btn"></button>
@@ -65,9 +68,10 @@
                         <span></span>
                         <ul id="menu_mobile">
                             <li><a href="{{ path('front_home') }}">ACCUEIL</a></li>
+                            <li><a href="{{ path('front_qui_somme_nous') }}">QUI SOMMES-NOUS ?</a></li>
                             <li><a href="{{ path('front_produit_index') }}">NOS PRODUITS</a></li>
                             <li><a href="{{ path('front_parametre_catalogue') }}">CATALOGUE</a></li>
-                            <li><a href="{{ path('front_qui_somme_nous') }}">QUI SOMMES-NOUS ?</a></li>
+                            <li><a href="{{ path('front_blog_index') }}">ACTUALITES</a></li>
                             <li><a href="{{ path('front_contact_new') }}">NOUS CONTACTER</a></li>
                         </ul>
                     </div>

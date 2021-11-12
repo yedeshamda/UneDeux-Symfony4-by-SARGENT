@@ -7,7 +7,6 @@
             <tr>
                 <th>Nom</th>
                 <th>Image</th>
-                <th>Slug</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -18,7 +17,6 @@
                 <td>
                     <img src="{{asset('images/marques/'~marque.imageName)}}" height="40">
                 </td>
-                <td>{{ marque.slug }}</td>
                 <td>
                     <a class="btn btn-primary btn-sm" href="{{ path('admin_marque_show', {'id': marque.id}) }}">Détails</a>
                     <a class="btn btn-warning btn-sm" href="{{ path('admin_marque_edit', {'id': marque.id}) }}">Modifier</a>

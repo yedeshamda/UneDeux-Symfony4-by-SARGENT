@@ -21,6 +21,14 @@
             <td>{{ devi.email }}</td>
         </tr>
         <tr>
+            <th>Produit</th>
+            <td>
+                {% for prod in devi.produits %}
+                    {{ prod.nom }}
+                {% endfor %}
+            </td>
+        </tr>
+        <tr>
             <th>Message</th>
             <td>{{ devi.message }}</td>
         </tr>

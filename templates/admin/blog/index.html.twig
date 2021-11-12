@@ -6,7 +6,6 @@
         <thead>
             <tr>
                 <th>Titre</th>
-                <th>Slug</th>
                 <th>Image</th>
                 <th>Date Création</th>
                 <th>actions</th>
@@ -16,7 +15,6 @@
         {% for blog in blogs %}
             <tr>
                 <td>{{ blog.titre }}</td>
-                <td>{{ blog.slug }}</td>
                 <td><img src="{{asset('images/blogs/'~blog.imageName)}}" height="40"></td>
                 <td>{{ blog.datecreation ? blog.datecreation|date('Y-m-d') : '' }}</td>
                 <td>

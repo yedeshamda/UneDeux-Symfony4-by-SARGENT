@@ -1,0 +1,277 @@
+{% extends 'front/layout/base.html.twig' %}
+{% block body %}
+    <div class="social-media-baniere">
+        <a href="{{ parametre.youtube }}"> <i class="fab topicon-fixed fa-youtube"></i></a>
+        <a href="{{ parametre.instagram }}"><i class="fab topicon-fixed fa-instagram"></i></a>
+        <a href="{{ parametre.facebook }}"><i class="fab topicon-fixed fa-facebook"></i></a>
+    </div>
+
+    <div>
+        <div class="row mt-5">
+            <div class="col-1 p-0 island1">
+
+            </div>
+            <div class="col-10 p-0">
+                <div class="container">
+                    <div class="row justify-center">
+{#                        {% for blog in blogs %}
+                            <div class="card big-card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <img src="{{ asset('images/blogs/'~blog.imageName) }}" width="700px"
+                                                 height="300px" alt="">
+                                        </div>
+                                        <div class="col-4">
+                                            <h2>{{ blog.titre }}</h2>
+                                            {{ blog.description|raw }}
+                                            {{ blog.datecreation ? blog.datecreation|date('Y-m-d') : '' }}
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        {% endfor %}#}
+                        <div class='container'>
+                            <div class='blog-posts'>
+                                <div class='post featured'>
+                                    <a href='#'>
+                                        <div class='image' style='background-image: url(https://unsplash.it/600/400/?random)'>
+                                            <div class='time'>
+                                                <div class='date'>04</div>
+                                                <div class='month'>APR</div>
+                                            </div>
+                                        </div>
+                                        <div class='content'>
+                                            <h1>Multiply created make behold fourth yielding living male very god.</h1>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas illo tempore at eveniet adipisci harum error deserunt in sint aspernatur magni asperiores explicabo corporis ratione praesentium illum magnam esse ipsa dignissimos quaerat perferendis dolor vero? Maiores hic modi optio eaque...</p>
+                                            <div class='meta'>
+                                                <div class='icon-comment'>22 Comments</div>
+                                                <ul class='tags'>
+                                                    <li></li>
+                                                    <li></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class='row cf'>
+                                    <div class='post'>
+                                        <a href='#'>
+                                            <div class='image'>
+                                                <div class='time'>
+                                                    <div class='date'>
+                                                        4
+                                                    </div>
+                                                    <div class='month'>MAR</div>
+                                                </div>
+                                            </div>
+                                            <div class='content'>
+                                                <h1>Man called gathering us great subdue unto herb sixth forth.</h1>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam a nostrum nihil nulla hic laborum illum...</p>
+                                                <div class='meta'>
+                                                    <div class='icon-comment'>22 Comments</div>
+                                                    <ul class='tags'>
+                                                        <li></li>
+                                                        <li></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class='post'>
+                                        <a href='#'>
+                                            <div class='image'>
+                                                <div class='time'>
+                                                    <div class='date'>
+                                                        29
+                                                    </div>
+                                                    <div class='month'>MAR</div>
+                                                </div>
+                                            </div>
+                                            <div class='content'>
+                                                <h1>Man called gathering us great subdue unto herb sixth forth.</h1>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam a nostrum nihil nulla hic laborum illum...</p>
+                                                <div class='meta'>
+                                                    <div class='icon-comment'>22 Comments</div>
+                                                    <ul class='tags'>
+                                                        <li></li>
+                                                        <li></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class='post'>
+                                        <a href='#'>
+                                            <div class='image'>
+                                                <div class='time'>
+                                                    <div class='date'>
+                                                        13
+                                                    </div>
+                                                    <div class='month'>MAR</div>
+                                                </div>
+                                            </div>
+                                            <div class='content'>
+                                                <h1>Man called gathering us great subdue unto herb sixth forth.</h1>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam a nostrum nihil nulla hic laborum illum...</p>
+                                                <div class='meta'>
+                                                    <div class='icon-comment'>22 Comments</div>
+                                                    <ul class='tags'>
+                                                        <li></li>
+                                                        <li></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class='row cf'>
+                                    <div class='post'>
+                                        <a href='#'>
+                                            <div class='image'>
+                                                <div class='time'>
+                                                    <div class='date'>
+                                                        2
+                                                    </div>
+                                                    <div class='month'>MAR</div>
+                                                </div>
+                                            </div>
+                                            <div class='content'>
+                                                <h1>Man called gathering us great subdue unto herb sixth forth.</h1>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam a nostrum nihil nulla hic laborum illum...</p>
+                                                <div class='meta'>
+                                                    <div class='icon-comment'>22 Comments</div>
+                                                    <ul class='tags'>
+                                                        <li></li>
+                                                        <li></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class='post'>
+                                        <a href='#'>
+                                            <div class='image'>
+                                                <div class='time'>
+                                                    <div class='date'>
+                                                        16
+                                                    </div>
+                                                    <div class='month'>MAR</div>
+                                                </div>
+                                            </div>
+                                            <div class='content'>
+                                                <h1>Man called gathering us great subdue unto herb sixth forth.</h1>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam a nostrum nihil nulla hic laborum illum...</p>
+                                                <div class='meta'>
+                                                    <div class='icon-comment'>22 Comments</div>
+                                                    <ul class='tags'>
+                                                        <li></li>
+                                                        <li></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class='row cf'>
+                                    <div class='post'>
+                                        <a href='#'>
+                                            <div class='image'>
+                                                <div class='time'>
+                                                    <div class='date'>
+                                                        27
+                                                    </div>
+                                                    <div class='month'>MAR</div>
+                                                </div>
+                                            </div>
+                                            <div class='content'>
+                                                <h1>Man called gathering us great subdue unto herb sixth forth.</h1>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam a nostrum nihil nulla hic laborum illum...</p>
+                                                <div class='meta'>
+                                                    <div class='icon-comment'>22 Comments</div>
+                                                    <ul class='tags'>
+                                                        <li></li>
+                                                        <li></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class='post'>
+                                        <a href='#'>
+                                            <div class='image'>
+                                                <div class='time'>
+                                                    <div class='date'>
+                                                        14
+                                                    </div>
+                                                    <div class='month'>MAR</div>
+                                                </div>
+                                            </div>
+                                            <div class='content'>
+                                                <h1>Man called gathering us great subdue unto herb sixth forth.</h1>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam a nostrum nihil nulla hic laborum illum...</p>
+                                                <div class='meta'>
+                                                    <div class='icon-comment'>22 Comments</div>
+                                                    <ul class='tags'>
+                                                        <li></li>
+                                                        <li></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class='post'>
+                                        <a href='#'>
+                                            <div class='image'>
+                                                <div class='time'>
+                                                    <div class='date'>
+                                                        21
+                                                    </div>
+                                                    <div class='month'>MAR</div>
+                                                </div>
+                                            </div>
+                                            <div class='content'>
+                                                <h1>Man called gathering us great subdue unto herb sixth forth.</h1>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam a nostrum nihil nulla hic laborum illum...</p>
+                                                <div class='meta'>
+                                                    <div class='icon-comment'>22 Comments</div>
+                                                    <ul class='tags'>
+                                                        <li></li>
+                                                        <li></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-1 p-0 island2">
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        function rand(min, max) {
+            return Math.floor(Math.random() * max) + min;
+        }
+
+        document.querySelectorAll('.post:not(.featured)').forEach((post) => {
+            post.querySelector('.image').style.backgroundImage = `url("https://unsplash.it/300/300/?image=${rand(100, 1000)}")`;
+        });
+    </script>
+{% endblock %}

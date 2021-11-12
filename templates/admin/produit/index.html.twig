@@ -5,10 +5,9 @@
     <table id="table_id" class="table table-striped">
         <thead>
             <tr>
+                <th>Date Création</th>
                 <th>Nom</th>
                 <th>Description</th>
-                <th>Date Création</th>
-                <th>Slug</th>
                 <th>Image</th>
                 <th>Marque</th>
                 <th>Catégorie</th>
@@ -18,10 +17,9 @@
         <tbody>
         {% for produit in produits %}
             <tr>
+                <td>{{ produit.datecreation ? produit.datecreation|date('Y-m-d') : '' }}</td>
                 <td>{{ produit.nom }}</td>
                 <td>{{ produit.description }}</td>
-                <td>{{ produit.datecreation ? produit.datecreation|date('Y-m-d') : '' }}</td>
-                <td>{{ produit.slug }}</td>
                 <td><img src="{{asset('images/produits/'~produit.imageName)}}" height="40"></td>
                 <td>{{ produit.marque.nom }}</td>
                 <td>{{ produit.categorie.nom }}</td>

@@ -11,8 +11,10 @@ use App\Repository\MarqueRepository;
 use App\Repository\ProduitRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/front', name: 'front_')]
@@ -140,5 +142,12 @@ class ProduitController extends AbstractController
                 'marques' => $marques,
             )
         );
+    }
+
+    #[Route('/produit/download/{file}', name: 'produit_download_file', methods: ['GET'])]
+    public function downloadFileAction(string $file){
+        $response = new BinaryFileResponse('images/ficheTechnique/' . $file);
+        $response->setContentDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT,$file);
+        return $response;
     }
 }

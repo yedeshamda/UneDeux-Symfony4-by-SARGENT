@@ -9,24 +9,12 @@
         </center>
         <br>
         <tr>
-            <th>Nom</th>
-            <td>{{ produit.nom }}</td>
-        </tr>
-        <tr>
-            <th>Description</th>
-            <td>{{ produit.description }}</td>
-        </tr>
-        <tr>
             <th>Date Création</th>
             <td>{{ produit.datecreation ? produit.datecreation|date('Y-m-d') : '' }}</td>
         </tr>
         <tr>
-            <th>Slug</th>
-            <td>{{ produit.slug }}</td>
-        </tr>
-        <tr>
-            <th>Description Technique</th>
-            <td>{{ produit.descriptiontech|raw }}</td>
+            <th>Nom</th>
+            <td>{{ produit.nom }}</td>
         </tr>
         <tr>
             <th>Marque</th>
@@ -35,6 +23,41 @@
         <tr>
             <th>Catégorie</th>
             <td>{{ produit.categorie.nom }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ produit.description }}</td>
+        </tr>
+
+        <tr>
+            <th>Description Technique</th>
+            <td>{{ produit.descriptiontech|raw }}</td>
+        </tr>
+        <tr>
+            <th>Fiches Techniques</th>
+            <td class="ul-depannage">
+                <ul>
+                    {% for fiche in produit.fichetech %}
+                        {% set val = ( val | default(0) ) + 1 %}
+                        <li>
+                            <i class="fa fa-file-pdf me-1"></i>
+                            <a href="{{path('front_produit_download_file',{'file':fiche.nom})}}">{{ 'Fiche Technique ' ~ val }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <th>Images</th>
+            <td>
+                <ul>
+                    {% for img in produit.image %}
+                        <a href="{{ asset('images/imageMultiple/'~img.nom) }}" data-fancybox="gallery" data-caption="Optional caption">
+                            <img src="{{ asset('images/imageMultiple/'~img.nom) }}" height="50px">
+                        </a>
+                    {% endfor %}
+                </ul>
+            </td>
         </tr>
         </tbody>
     </table>
@@ -47,4 +70,15 @@
     </center>
     <a href="{{ path('admin_produit_index') }}">back to list</a>
     <br>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/fancybox.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="{{ asset('assets/js/fancybox.umd.js') }}"></script>
 {% endblock %}

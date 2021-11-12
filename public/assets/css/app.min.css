@@ -4923,6 +4923,11 @@ div.dataTables_wrapper div.dataTables_filter input {
     margin: 0 auto
 }
 
+.ul-depannage ul {
+    list-style: none;
+    padding-left: 0;
+}
+
 .invoice-title .logo-dark {
     display: block !important;
 }

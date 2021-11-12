@@ -9,7 +9,6 @@
             <th>Prenom</th>
             <th>Tel</th>
             <th>Email</th>
-            <th>Message</th>
             <th>actions</th>
         </tr>
         </thead>
@@ -20,7 +19,6 @@
                 <td>{{ contact.prenom }}</td>
                 <td>{{ contact.tel }}</td>
                 <td>{{ contact.email }}</td>
-                <td>{{ contact.message }}</td>
                 <td>
                     <a class="btn btn-primary btn-sm" href="{{ path('admin_contact_show', {'id': contact.id}) }}">Détails</a>
                     <a class="btn btn-warning btn-sm" href="{{ path('admin_contact_edit', {'id': contact.id}) }}">Modifier</a>

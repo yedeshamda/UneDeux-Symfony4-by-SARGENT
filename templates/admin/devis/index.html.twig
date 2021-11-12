@@ -4,14 +4,14 @@
 
     <table id="table_id" class="table table-striped">
         <thead>
-            <tr>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Tel</th>
-                <th>Email</th>
-                <th>Message</th>
-                <th>actions</th>
-            </tr>
+        <tr>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Tel</th>
+            <th>Email</th>
+            <th>Produit</th>
+            <th>actions</th>
+        </tr>
         </thead>
         <tbody>
         {% for devi in devis %}
@@ -20,10 +20,15 @@
                 <td>{{ devi.prenom }}</td>
                 <td>{{ devi.tel }}</td>
                 <td>{{ devi.email }}</td>
-                <td>{{ devi.message }}</td>
+                <td>
+                    {% for prod in devi.produits %}
+                        {{ prod.nom }}
+                    {% endfor %}
+                </td>
                 <td>
                     <a class="btn btn-primary btn-sm" href="{{ path('admin_devis_show', {'id': devi.id}) }}">Détails</a>
-                    <a class="btn btn-warning btn-sm" href="{{ path('admin_devis_edit', {'id': devi.id}) }}">Modifier</a>
+                    <a class="btn btn-warning btn-sm"
+                       href="{{ path('admin_devis_edit', {'id': devi.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
