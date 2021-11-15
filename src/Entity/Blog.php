@@ -62,6 +62,22 @@ class Blog
      */
     private $updatedAt;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $type;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $imageVideo;
+
+    /**
+     * @Vich\UploadableField(mapping="blogs", fileNameProperty="imageVideo")
+     * @var File|null
+     */
+    private $imageVideoFile;
+
     public function __construct()
     {
         $this->datecreation=new \DateTimeImmutable();
@@ -139,4 +155,46 @@ class Blog
 
         return $this;
     }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(?string $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $imageVideoFile
+     */
+    public function setImageVideoFile(?File $imageVideoFile = null): void
+    {
+        $this->imageVideoFile = $imageVideoFile;
+        if (null !== $imageVideoFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    public function getImageVideoFile(): ?File
+    {
+        return $this->imageVideoFile;
+    }
+
+    public function setImageVideo(?string $imageVideo): void
+    {
+        $this->imageVideo = $imageVideo;
+    }
+
+    public function getImageVideo(): ?string
+    {
+        return $this->imageVideo;
+    }
+
 }

@@ -8,13 +8,13 @@
             <img src="{{asset('images/blogs/'~blog.imageName)}}" height="160">
         </center>
         <br>
+        <tr>
+            <th>Date Création</th>
+            <td>{{ blog.datecreation ? blog.datecreation|date('Y-m-d') : '' }}</td>
+        </tr>
             <tr>
                 <th>Titre</th>
                 <td>{{ blog.titre }}</td>
-            </tr>
-            <tr>
-                <th>Slug</th>
-                <td>{{ blog.slug }}</td>
             </tr>
             <tr>
                 <th>Description</th>
@@ -22,10 +22,6 @@
                     {% autoescape false %}
                     {{ blog.description|raw }}</td>
                 {% endautoescape %}
-            </tr>
-            <tr>
-                <th>Date Création</th>
-                <td>{{ blog.datecreation ? blog.datecreation|date('Y-m-d') : '' }}</td>
             </tr>
         </tbody>
     </table>
@@ -36,6 +32,6 @@
     <a class="btn btn-primary btn-sm" href="{{ path('admin_blog_edit', {'id': blog.id}) }}">Modifer</a>
     <br><br>
     </center>
-    <a href="{{ path('admin_blog_index') }}">back to list</a>
+    <a href="{{ path('admin_blog_index') }}">Précédent</a>
     <br>
 {% endblock %}

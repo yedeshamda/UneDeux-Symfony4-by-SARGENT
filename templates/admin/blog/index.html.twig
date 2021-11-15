@@ -5,18 +5,18 @@
     <table id="table_id" class="table table-striped">
         <thead>
             <tr>
+                <th>Date Création</th>
                 <th>Titre</th>
                 <th>Image</th>
-                <th>Date Création</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for blog in blogs %}
             <tr>
+                <td>{{ blog.datecreation ? blog.datecreation|date('Y-m-d') : '' }}</td>
                 <td>{{ blog.titre }}</td>
                 <td><img src="{{asset('images/blogs/'~blog.imageName)}}" height="40"></td>
-                <td>{{ blog.datecreation ? blog.datecreation|date('Y-m-d') : '' }}</td>
                 <td>
                     <a class="btn btn-primary btn-sm" href="{{ path('admin_blog_show', {'id': blog.id}) }}">Détails</a>
                     <a class="btn btn-warning btn-sm" href="{{ path('admin_blog_edit', {'id': blog.id}) }}">Modifier</a>

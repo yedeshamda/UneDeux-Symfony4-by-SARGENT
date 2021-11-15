@@ -1,4 +1,7 @@
 {
+    "alchemy/binary-driver": {
+        "version": "v5.2.0"
+    },
     "antishov/doctrine-extensions-bundle": {
         "version": "1.4",
         "recipe": {
@@ -100,6 +103,9 @@
     "egulias/email-validator": {
         "version": "3.1.1"
     },
+    "evenement/evenement": {
+        "version": "v3.0.1"
+    },
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.5"
     },
@@ -142,6 +148,9 @@
     "myclabs/deep-copy": {
         "version": "1.10.2"
     },
+    "neutron/temporary-filesystem": {
+        "version": "3.0"
+    },
     "nikic/php-parser": {
         "version": "v4.13.0"
     },
@@ -162,6 +171,9 @@
     },
     "phar-io/version": {
         "version": "3.1.0"
+    },
+    "php-ffmpeg/php-ffmpeg": {
+        "version": "v0.18.0"
     },
     "phpdocumentor/reflection-common": {
         "version": "2.2.0"
@@ -502,6 +514,9 @@
     "symfony/polyfill-php81": {
         "version": "v1.23.0"
     },
+    "symfony/polyfill-uuid": {
+        "version": "v1.23.0"
+    },
     "symfony/process": {
         "version": "v5.3.7"
     },
@@ -597,6 +612,9 @@
             "./config/packages/twig.yaml",
             "./templates/base.html.twig"
         ]
+    },
+    "symfony/uid": {
+        "version": "v5.3.10"
     },
     "symfony/validator": {
         "version": "4.3",

@@ -26,14 +26,16 @@ class BlogController extends AbstractController
     public function index(BlogRepository $blogRepository): Response
     {
         return $this->render('admin/blog/index.html.twig', [
-            'blogs' => $blogRepository->findAll(),
+            'blogs' => $blogRepository->findByBlog(),
         ]);
     }
+
 
     #[Route('/blog/new', name: 'blog_new', methods: ['GET','POST'])]
     public function new(Request $request): Response
     {
         $blog = new Blog();
+        $blog->setType("blog");
         $form = $this->createForm(BlogType::class, $blog);
         $form->handleRequest($request);
 

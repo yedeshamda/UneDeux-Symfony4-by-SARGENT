@@ -27,8 +27,7 @@ class BlogController extends AbstractController
     public function index(BlogRepository $blogRepository,VideoRepository $videoRepository): Response
     {
         return $this->render('front/blog/index.html.twig', [
-            'blogs' => $blogRepository->findAll(),
-            'videos' => $videoRepository->findAll(),
+            'blogs' => $blogRepository->findByCreationDate(),
         ]);
     }
 
