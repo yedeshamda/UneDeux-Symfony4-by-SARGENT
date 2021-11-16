@@ -8,10 +8,10 @@
                 <div class="swiper-slide position-relative">
                     <img src="{{ asset('images/categories/'~categorie.baniereImageName) }}" height="500px"
                          style="width:100%">
-                    {# <div class="row">
-                            <span class=""> {{ categorie.nom }} </span>
-                            <span class=""> {{ categorie.description }}.</span>
-                        </div> #}
+                    <div class="col-3 info-cat-baniere">
+                        <span class="h1-baniere">{{ categorie.nom }}</span> <br>
+                        <span class="h2-baniere">{{ categorie.description }}</span>
+                    </div>
                 </div>
             {% endfor %}
         </div>
@@ -29,7 +29,7 @@
         <div class="col-1 p-0 island1">
 
         </div>
-        <div class="col-10 p-0">
+        <div class="col-9 p-0">
             <div class="container">
 
                 <div class="row mb-5">
@@ -124,7 +124,9 @@
 
             </div>
         </div>
-        <div class="col-1 p-0 island22">
+
+
+        <div class="col-2 p-0 island22">
             <h6 class="featured-prod">Featured Products</h6>
             <ul>
                 {% for produitFeatured in produitsFeatured %}
@@ -132,7 +134,7 @@
                     <li>
                         <div class="row">
                             <div class="col-6">
-                                <img src="{{ asset('images/produits/'~produitFeatured.imageName) }}"
+                                <img class="featured-mini" src="{{ asset('images/produits/'~produitFeatured.imageName) }}"
                                      height="40" width="30"
                                      class="card-img-top">
                             </div>
@@ -144,7 +146,6 @@
                     </li>
 
                 {% endfor %}
-
             </ul>
         </div>
     </div>

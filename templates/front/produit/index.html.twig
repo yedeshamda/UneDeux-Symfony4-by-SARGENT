@@ -9,6 +9,10 @@
                     <div class="swiper-slide position-relative">
                         <img src="{{ asset('images/categories/'~categorie.baniereImageName) }}" height="500px"
                              style="width:100%">
+                        <div class="col-3 info-cat-baniere">
+                            <span class="h1-baniere">{{ categorie.nom }}</span> <br>
+                            <span class="h2-baniere">{{ categorie.description }}</span>
+                        </div>
                     </div>
                 {% endfor %}
             </div>
@@ -42,34 +46,34 @@
                             </form>
                             <br>
                             <h4>Filters</h4><br>
-                            <form  method="POST">
-                            <h5>Catégories :</h5>
-                            <ul>
-                                {% for categorie in categories %}
+                            <form method="POST">
+                                <h5>Catégories :</h5>
+                                <ul>
+                                    {% for categorie in categories %}
 
-                                    <li>
+                                        <li>
+                                            <h6>
+                                                <input name="categ[]" value="{{ categorie.slug }}" type="checkbox">
+                                                <label>{{ categorie.nom }}</label>
+                                            </h6>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                                <br>
+                                <h5>Marques :</h5>
+                                <ul>
+                                    {% for marque in marques %}
                                         <h6>
-                                            <input name="categ[]" value="{{ categorie.slug }}" type="checkbox">
-                                            <label>{{ categorie.nom }}</label>
+                                            <input name="marq[]" value="{{ marque.slug }}" type="checkbox">
+                                            <label>{{ marque.nom }}</label>
                                         </h6>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                            <br>
-                            <h5>Marques :</h5>
-                            <ul>
-                                {% for marque in marques %}
-                                    <h6>
-                                        <input name="marq[]" value="{{ marque.slug }}" type="checkbox">
-                                        <label>{{ marque.nom }}</label>
-                                    </h6>
-                                {% endfor %}
-                            </ul>
-                            <div class="d-flex w-50">
-                                <button  class="btn w-100 btn-outline-warning button-search-product" type="submit">
-                                    Filtrer
-                                </button>
-                            </div>
+                                    {% endfor %}
+                                </ul>
+                                <div class="d-flex w-50">
+                                    <button class="btn w-100 btn-outline-warning button-search-product" type="submit">
+                                        Filtrer
+                                    </button>
+                                </div>
                             </form>
                             <br>
                             <br>

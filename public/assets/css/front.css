@@ -725,8 +725,8 @@ header {
 .island22 {
     background-image: url(/assets/images/island2.png);
     background-repeat: no-repeat;
-    background-position-x: -218rem;
-    background-position-y: -5rem;
+    background-position-x: 8rem;
+    background-position-y: 5rem;
 }
 
 /* Search */
@@ -1072,6 +1072,65 @@ header {
 
 .cf:after {
     clear: both;
+}
+
+.mateb-baniere {
+    position: absolute !important;
+    left: 140px !important;
+    top: 50px !important;
+    z-index: 1;
+}
+
+.materiel-baniere {
+    position: absolute !important;
+    left: 140px !important;
+    top: 220px !important;
+    z-index: 1;
+}
+
+.quisommesnous-baniere-button {
+    position: absolute !important;
+    left: 150px !important;
+    top: 270px !important;
+    z-index: 1;
+    font-size: 25px;
+}
+
+.info-cat-baniere {
+    position: absolute !important;
+    left: 115px !important;
+    top: 55px !important;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(4px);
+    background-color: rgba(0,0,0, 0.4);
+    padding-left: 20px;
+    padding-right: 15px;
+}
+
+.h1-baniere{
+    font-size: 60px;
+    color: white;
+    font-family: "Roboto" !important;
+    font-weight: bold;
+    text-align: left;
+}
+
+.h2-baniere{
+    font-size: 20px;
+    color: white;
+    font-family: "Roboto" !important;
+    text-align: left;
+}
+
+.td-center {
+    text-align: center !important;
+}
+
+.featured-mini{
+    width: 90%;
+    height: 65PX;
 }
 
 

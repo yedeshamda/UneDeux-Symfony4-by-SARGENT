@@ -23,7 +23,7 @@
                 <td><img src="{{asset('images/produits/'~produit.imageName)}}" height="40"></td>
                 <td>{{ produit.marque.nom }}</td>
                 <td>{{ produit.categorie.nom }}</td>
-                <td>
+                <td class="td-center">
                     <a class="btn btn-primary btn-sm" href="{{ path('admin_produit_show', {'id': produit.id}) }}">Détails</a>
                     <a class="btn btn-warning btn-sm" href="{{ path('admin_produit_edit', {'id': produit.id}) }}">Modifier</a>
                 </td>

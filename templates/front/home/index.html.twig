@@ -1,7 +1,7 @@
 {% extends 'front/layout/base.html.twig' %}
 
 {% block body %}
-    <div class="swiper swiper-index mySwiper2 ">
+    <div class="swiper swiper-index mySwiper2 position-relative">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
                 <img src="{{ asset('images/parametres/homeBanieres/'~parametre.baniere1) }}" height="500px"
@@ -22,6 +22,10 @@
                      style="width:100%">
             </div>
         </div>
+        <img class="mateb-baniere" src="{{ asset('assets/images/MATEB.png') }}" alt="">
+        <img class="materiel-baniere" src="{{ asset('assets/images/MATERIELS ET ÉQUIPEMENT BICHIOU.png') }}" alt="">
+        <a class="quisommesnous-baniere-button btn-outline-warning btn"
+           href="{{ path('front_qui_somme_nous') }}">Qui Sommes Nous ?</a>
         <div class="swiper-button-next arrow-right1"></div>
         <div class="swiper-button-prev arrow-left1"></div>
         <div class="swiper-pagination pagination-baniere"></div>

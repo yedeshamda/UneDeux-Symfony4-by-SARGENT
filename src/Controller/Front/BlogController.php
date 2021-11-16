@@ -7,6 +7,7 @@ use App\Form\BlogType;
 use App\Repository\BlogRepository;
 use App\Repository\VideoRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,10 +25,18 @@ class BlogController extends AbstractController
     }
 
     #[Route('/blog/', name: 'blog_index', methods: ['GET'])]
-    public function index(BlogRepository $blogRepository,VideoRepository $videoRepository): Response
+    public function index(Request $request,PaginatorInterface $paginator,BlogRepository $blogRepository,VideoRepository $videoRepository): Response
     {
+        $blog = $blogRepository->findByCreationDate();
+
+        $pagination = $paginator->paginate(
+            $blog, /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            6 /*limit per page*/
+        );
+
         return $this->render('front/blog/index.html.twig', [
-            'blogs' => $blogRepository->findByCreationDate(),
+            'blogs' => $pagination,
         ]);
     }
 
