@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="1OnRRph" resname="ACCUEIL">
+        <source>ACCUEIL</source>
+        <target>HOME</target>
+      </trans-unit>
+      <trans-unit id="WcsROto" resname="QUI SOMMES-NOUS ?">
+        <source>QUI SOMMES-NOUS ?</source>
+        <target>WHO WE ARE ?</target>
+      </trans-unit>
+      <trans-unit id="OAEWZiR" resname="NOS PRODUITS">
+        <source>NOS PRODUITS</source>
+        <target>PRODUCTS</target>
+      </trans-unit>
+      <trans-unit id="p1e8_LY" resname="CATALOGUE">
+        <source>CATALOGUE</source>
+        <target>CATALOG</target>
+      </trans-unit>
+      <trans-unit id="hdSEEg1" resname="ACTUALITES">
+        <source>ACTUALITES</source>
+        <target>NEWS</target>
+      </trans-unit>
+      <trans-unit id="mTm.tHT" resname="NOUS CONTACTER">
+        <source>NOUS CONTACTER</source>
+        <target>CONTACT US</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

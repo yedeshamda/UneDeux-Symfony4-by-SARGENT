@@ -10,14 +10,21 @@
                 <a href="{{ parametre.instagram }}"><i class="fab topicon fa-instagram"></i></a>
                 <a href="{{ parametre.facebook }}"><i class="fab topicon fa-facebook"></i></a>
             </div>
-            <div class="col-9 div-info-contact">
+            <div class="col-9 div-info-contact position-relative">
                 <span class="topicon2-span"><i class="fas topicon2 fa-phone-volume"></i>  + {{ parametre.num1 }}</span>
                 <span class="topicon2-span"><i class="fas topicon2 fa-envelope"></i> {{ parametre.email }}</span>
-                <span class="topicon2-span"><i
-                            class="far topicon2 fa-clock"></i> {{ parametre.jourDebut }} - {{ parametre.jourFin }} de {{ parametre.heureDebut }} à {{ parametre.heureFin }}</span>
+                <span class="topicon2-span"><i class="far topicon2 fa-clock"></i> {{ parametre.jourDebut }} - {{ parametre.jourFin }} de {{ parametre.heureDebut }} à {{ parametre.heureFin }}</span>
+
+                     <div class="flag-div">
+                        <a href="">
+                            {% set locale = app.request.locale %}
+                            <img class="flag" src="{{ asset('assets/images/'~locale~'.png') }}" alt="{{ locale }}">
+                            {{ locale|language_name('fr') }}
+                         </a>
+                    </div>
+
             </div>
         </div>
-
         <div class="row d-none d-sm-flex">
             <div class="col-2">
                 <a href="{{ path('front_home') }}">
@@ -29,22 +36,27 @@
                     <div class="collapse navbar-collapse">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ path('front_home') }}">ACCUEIL</a>
+                                <a class="nav-link" href="{{ path('front_home') }}">{% trans %}ACCUEIL{% endtrans %}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ path('front_qui_somme_nous') }}">QUI SOMMES-NOUS ?</a>
+                                <a class="nav-link"
+                                   href="{{ path('front_qui_somme_nous') }}">{% trans %}QUI SOMMES-NOUS ?{% endtrans %}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ path('front_produit_index') }}">NOS PRODUITS</a>
+                                <a class="nav-link"
+                                   href="{{ path('front_produit_index') }}">{% trans %}NOS PRODUITS{% endtrans %}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ path('front_parametre_catalogue') }}">CATALOGUE</a>
+                                <a class="nav-link"
+                                   href="{{ path('front_parametre_catalogue') }}">{% trans %}CATALOGUE{% endtrans %}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ path('front_blog_index') }}">ACTUALITES</a>
+                                <a class="nav-link"
+                                   href="{{ path('front_blog_index') }}">{% trans %}ACTUALITES{% endtrans %}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ path('front_contact_new') }}">NOUS CONTACTER</a>
+                                <a class="nav-link"
+                                   href="{{ path('front_contact_new') }}">{% trans %}NOUS CONTACTER{% endtrans %}</a>
                             </li>
                         </ul>
                     </div>

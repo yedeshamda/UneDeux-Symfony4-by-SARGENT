@@ -6,6 +6,7 @@ twig:
         categorie: '@App\Service\Categorie\CategorieService'
         produit: '@App\Service\Produit\ProduitService'
         marque: '@App\Service\Marque\MarqueService'
+        locales: '%app.locales%'
 
 when@test:
     twig:

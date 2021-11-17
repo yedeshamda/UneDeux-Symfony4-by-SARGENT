@@ -24,7 +24,7 @@ class BlogController extends AbstractController
         $this->entityManager = $entityManager;
     }
 
-    #[Route('/blog/', name: 'blog_index', methods: ['GET'])]
+    #[Route('/blog', name: 'blog_index', methods: ['GET'])]
     public function index(Request $request,PaginatorInterface $paginator,BlogRepository $blogRepository,VideoRepository $videoRepository): Response
     {
         $blog = $blogRepository->findByCreationDate();
