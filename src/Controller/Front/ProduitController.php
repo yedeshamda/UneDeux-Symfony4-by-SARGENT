@@ -56,6 +56,30 @@ class ProduitController extends AbstractController
         ]);
     }
 
+    #[Route('/produitCategorie/{id}', name: 'produit_categorie_index', methods: ['GET','POST'])]
+    public function indexCategorie(int $id,Request $request, PaginatorInterface $paginator, ProduitRepository $produitRepository, CategorieRepository $categorieRepository): Response
+    {
+        $categories = $categorieRepository->findAll();
+
+        $categorie = $categorieRepository->find($id);
+        $produitsByCategorie = $produitRepository->findBy(
+            ['categorie' => [$categorie]],
+        );
+
+
+        $pagination = $paginator->paginate(
+            $produitsByCategorie, /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            9 /*limit per page*/
+        );
+
+        return $this->render('front/produit/indexCategorie.html.twig', [
+            'produitsByCategorie' => $pagination,
+            'categories' => $categories,
+            'categorie' => $categorie,
+        ]);
+    }
+
     #[Route('/produit/show/{id}', name: 'produit_show', methods: ['POST','GET'])]
     public function show(Request $request, int $id, ProduitRepository $produitRepository, CategorieRepository $categorieRepository): Response
     {

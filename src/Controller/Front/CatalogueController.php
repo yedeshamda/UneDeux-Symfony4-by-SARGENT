@@ -14,9 +14,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class CatalogueController extends AbstractController
 {
     #[Route('/parametre/catalogue', name: 'parametre_catalogue', methods: ['GET','POST'])]
-    public function new(Request $request): Response
+    public function new(Request $request,CategorieRepository $categorieRepository): Response
     {
+        $categories = $categorieRepository->findAll();
         return $this->renderForm('front/parametre/index_catalogue.html.twig', [
+            'categories' => $categories,
         ]);
     }
 }
