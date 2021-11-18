@@ -11,7 +11,7 @@ use App\Repository\CategorieRepository;
 use App\Repository\MarqueRepository;
 use App\Repository\ProduitRepository;
 
-#[Route('/front', name: 'front_')]
+#[Route('/{_locale<en|fr>}', name: 'front_')]
 class HomeController extends AbstractController
 {
     #[Route('/home', name: 'home', methods: ['GET'])]

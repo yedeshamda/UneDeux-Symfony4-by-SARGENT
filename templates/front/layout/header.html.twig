@@ -15,12 +15,15 @@
                 <span class="topicon2-span"><i class="fas topicon2 fa-envelope"></i> {{ parametre.email }}</span>
                 <span class="topicon2-span"><i class="far topicon2 fa-clock"></i> {{ parametre.jourDebut }} - {{ parametre.jourFin }} de {{ parametre.heureDebut }} à {{ parametre.heureFin }}</span>
 
-                     <div class="flag-div">
-                        <a href="">
+                    <div class="desktop">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuButtonlng" data-bs-toggle="dropdown" aria-expanded="false">
                             {% set locale = app.request.locale %}
                             <img class="flag" src="{{ asset('assets/images/'~locale~'.png') }}" alt="{{ locale }}">
-                            {{ locale|language_name('fr') }}
-                         </a>
+                        </a>
+                        <ul class="dropdown-menu bg-white flag-div-after" aria-labelledby="dropdownMenuButtonlng">
+                            <li><a class="dropdown-item" href="{{ path('change_locale',{'locale': 'fr'}) }}"><img src="{{ asset('assets/images/fr.png') }}" width="30px"> Français </a></li>
+                            <li><a class="dropdown-item" href="{{ path('change_locale',{'locale': 'en'}) }}"><img src="{{ asset('assets/images/en.png') }}" width="30px"> Anglais </a></li>
+                        </ul>
                     </div>
 
             </div>

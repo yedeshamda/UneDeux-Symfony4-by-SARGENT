@@ -50,8 +50,7 @@
                         <h5 class="produit-details">{{ produit.nom }}</h5>
                         <span class="desc-details">{{ produit.description }}</span>
                         <div class="row">
-                            <a class="button-details btn-outline-warning btn" id="demanded">Demande
-                                de Devis</a>
+                            <a class="button-details btn-outline-warning btn" id="demanded">{% trans %}Demande de Devis{% endtrans %}</a>
                         </div>
                     </div>
                 </div>
@@ -61,15 +60,15 @@
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
                             <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab"
                                     data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
-                                    aria-selected="true">Description
+                                    aria-selected="true">{% trans %}Description{% endtrans %}
                             </button>
                             <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab"
                                     data-bs-target="#nav-profile" type="button" role="tab"
-                                    aria-controls="nav-profile" aria-selected="false">Fiche Techhnique
+                                    aria-controls="nav-profile" aria-selected="false">{% trans %}Fiche Techhnique{% endtrans %}
                             </button>
                             <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab"
                                     data-bs-target="#nav-contact" type="button" role="tab"
-                                    aria-controls="nav-contact" aria-selected="false">Demande Devis
+                                    aria-controls="nav-contact" aria-selected="false">{% trans %}Demande Devis{% endtrans %}
                             </button>
                         </div>
                     </nav>
@@ -95,7 +94,7 @@
                             {{ form_widget(form) }}
                             <button class="btn btn-success btn-sm">{{ button_label|default('Ajouter') }}</button>
                             <button type="reset" class="btn btn-danger btn-sm">
-                                <i class="fa fa-ban"></i> Réinitialiser
+                                <i class="fa fa-ban"></i> {% trans %}Réinitialiser{% endtrans %}
                             </button>
                             <br>
                             <br>
@@ -104,7 +103,7 @@
                     </div>
                 </div>
 
-                <h1>PRODUIT ASSOCIE</h1>
+                <h1>{% trans %}PRODUIT ASSOCIE{% endtrans %}</h1>
                 <div class="row">
                     {% for produit in produits %}
                         <div class="col-3">
@@ -127,7 +126,7 @@
 
 
         <div class="col-2 p-0 island22">
-            <h6 class="featured-prod">Featured Products</h6>
+            <h6 class="featured-prod">{% trans %}Featured Products{% endtrans %}</h6>
             <ul>
                 {% for produitFeatured in produitsFeatured %}
 
