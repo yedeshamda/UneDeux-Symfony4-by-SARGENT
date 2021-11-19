@@ -26,4 +26,19 @@ Filtrer: Filter
 Détails: Details
 'CONTACT INFO': 'CONTACT INFO'
 'MATERIELS ET ÉQUIPEMENT BICHIOU': 'BICHIOU MATERIALS AND EQUIPMENT'
-'Prenom': 'mdrrrr'
+Prenom: 'First Name'
+Nom: 'Last Name'
+Tel: Phone
+Email: E-mail
+Message: Message
+'*Prenom': '*First Name'
+'*Nom': '*Last Name'
+'*Entrez votre numéro de téléphone': '*Enter your phone number'
+'*Entrez votre E-mail': '*Enter your E-mail'
+'*Entrez un message': '*Enter a message'
+'Envoyer un message': 'Send a message'
+Envoyer: Send
+Ajouter: Add
+Recherche...: Research...
+'Fiche Technique': 'Technical sheet '
+

@@ -14,15 +14,11 @@
             <div class="col-10 p-0">
                 <div class="container">
                     <div class="row justify-center">
-                        {#
-                        <img src="{{ asset('images/blogs/'~blog.imageName) }}" width="700px" height="300px" alt="">
-                        {{ blog.datecreation ? blog.datecreation|date('Y-m-d') : '' }}
-                        #}
                         <div class='container'>
                             <div class='blog-posts'>
                                 {% for blog in blogs %}
                                     <div class='post featured'>
-                                        <a href='#'>
+                                        <a href='{{ path('front_blog_show', {'id': blog.id}) }}'>
                                             {% if blog.type == 'blog' %}
                                             <div class='image' style="background-image: url('/images/blogs/{{ blog.imageName }}');">
                                                 <div class='time'>
@@ -89,7 +85,11 @@
                                             {% endif %}
                                             <div class='content'>
                                                 <h1>{{ blog.titre }}</h1>
-                                                <p>{{ blog.description|raw }}</p>
+                                                {% if app.request.locale == 'fr' %}
+                                                    <p class="threeline">{{ blog.description|raw }}</p>
+                                                {% elseif app.request.locale == 'en' %}
+                                                    <p class="threeline">{{ blog.descriptionEnglish|raw }}</p>
+                                                {% endif %}
                                             </div>
                                         </a>
                                     </div>

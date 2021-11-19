@@ -9,9 +9,13 @@
                     <div class="swiper-slide position-relative">
                         <img src="{{ asset('images/categories/'~categorie.baniereImageName) }}" height="500px"
                              style="width:100%">
-                        <div class="col-3 info-cat-baniere">
-                            <span class="h1-baniere">{{ categorie.nom }}</span> <br>
-                            <span class="h2-baniere">{{ categorie.description }}</span>
+                        <div class="col-3 info-cat-baniere w-50">
+                            <p class="h1-baniere">{{ categorie.nom }}</p> <br>
+                            {% if app.request.locale == 'fr' %}
+                                <p class="h2-baniere">{{ categorie.description }}</p>
+                            {% elseif app.request.locale == 'en' %}
+                                <p class="h2-baniere">{{ categorie.descriptionEnglish }}</p>
+                            {% endif %}
                         </div>
                     </div>
                 {% endfor %}
@@ -37,8 +41,7 @@
                             <form method="POST" action="{{ path('front_produit_search2') }}">
                                 <div class="d-flex">
                                     <input name="search-name2" class="w3-input w3-animate-input" type="text"
-                                           style="width:135px"
-                                           placeholder="Recherche...">
+                                           style="width:135px" placeholder={{ 'Recherche...'|trans }}>
                                     <button class="btn btn-outline-warning button-search-product" type="submit">
                                         {% trans %}Trouver{% endtrans %}
                                     </button>
@@ -80,21 +83,22 @@
                             <h4>{% trans %}Featured Products{% endtrans %}</h4>
                             <ul>
                                 {% for produitFeatured in produitsFeatured %}
-
-                                    <li>
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <img src="{{ asset('images/produits/'~produitFeatured.imageName) }}"
-                                                     height="70"
-                                                     class="card-img-top">
+                                    <a href="{{ path('front_produit_show', {'id': produitFeatured.id}) }}">
+                                        <li>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <img src="{{ asset('images/produits/'~produitFeatured.imageName) }}"
+                                                         height="70"
+                                                         class="card-img-top">
+                                                </div>
+                                                <div class="col-6 p-0">
+                                                    <img src="{{ asset('images/marques/'~produitFeatured.marque.imageName) }}"
+                                                         class="card-img-top featured-mini-marque2">
+                                                    <h5>{{ produitFeatured.nom }}</h5>
+                                                </div>
                                             </div>
-                                            <div class="col-6 p-0">
-                                                <h5>{{ produitFeatured.nom }}</h5>
-                                                <h6>{{ produitFeatured.description }}</h6>
-                                            </div>
-                                        </div>
-                                    </li>
-
+                                        </li>
+                                    </a>
                                 {% endfor %}
 
                             </ul>
@@ -108,10 +112,15 @@
                                             <img src="{{ asset('images/produits/'~produit.imageName) }}" height="170"
                                                  class="card-img-top">
                                             <div class="card-body">
-                                                <h5>{{ produit.marque.nom }}</h5>
+                                                <img class="featured-mini-marque card-img-top"
+                                                     src="{{ asset('images/marques/'~produit.marque.imageName) }}">
                                                 <h6>{{ produit.nom }}</h6>
                                                 <h7>{{ produit.categorie.nom }}</h7>
-                                                <p class="card-text">{{ produit.description }}.</p>
+                                                {% if app.request.locale == 'fr' %}
+                                                    <p class="threeline">{{ produit.description }}</p>
+                                                {% elseif app.request.locale == 'en' %}
+                                                    <p class="threeline">{{ produit.descriptionEnglish }}</p>
+                                                {% endif %}
                                                 <a class="button-details-product btn-outline-warning btn"
                                                    href="{{ path('front_produit_show', {'id': produit.id}) }}">{% trans %}Détails{% endtrans %}</a>
                                             </div>

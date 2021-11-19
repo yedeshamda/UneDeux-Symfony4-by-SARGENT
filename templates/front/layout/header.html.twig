@@ -13,7 +13,14 @@
             <div class="col-9 div-info-contact position-relative">
                 <span class="topicon2-span"><i class="fas topicon2 fa-phone-volume"></i>  + {{ parametre.num1 }}</span>
                 <span class="topicon2-span"><i class="fas topicon2 fa-envelope"></i> {{ parametre.email }}</span>
-                <span class="topicon2-span"><i class="far topicon2 fa-clock"></i> {{ parametre.jourDebut }} - {{ parametre.jourFin }} de {{ parametre.heureDebut }} à {{ parametre.heureFin }}</span>
+                <span class="topicon2-span"><i class="far topicon2 fa-clock"></i>
+                                                    {% if app.request.locale == 'fr' %}
+                                                        {{ parametre.jourDebut }} - {{ parametre.jourFin }} de {{ parametre.heureDebut }} à {{ parametre.heureFin }}
+                                                    {% elseif app.request.locale == 'en' %}
+                                                        {{ parametre.dayDebut }} - {{ parametre.dayFin }} from {{ parametre.timeDebut }} to {{ parametre.timeFin }}
+                                                    {% endif %}
+
+                </span>
 
                     <div class="desktop">
                         <a class="nav-link dropdown-toggle flech-flag" href="#" id="dropdownMenuButtonlng" data-bs-toggle="dropdown" aria-expanded="false">

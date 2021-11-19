@@ -99,6 +99,16 @@ class Produit
      */
     private $featured;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $descriptionEnglish;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $descriptiontechEnglish;
+
     public function __construct()
     {
         $this->fichetech = new ArrayCollection();
@@ -307,6 +317,30 @@ class Produit
     public function setFeatured(bool $featured): self
     {
         $this->featured = $featured;
+
+        return $this;
+    }
+
+    public function getDescriptionEnglish(): ?string
+    {
+        return $this->descriptionEnglish;
+    }
+
+    public function setDescriptionEnglish(?string $descriptionEnglish): self
+    {
+        $this->descriptionEnglish = $descriptionEnglish;
+
+        return $this;
+    }
+
+    public function getDescriptiontechEnglish(): ?string
+    {
+        return $this->descriptiontechEnglish;
+    }
+
+    public function setDescriptiontechEnglish(?string $descriptiontechEnglish): self
+    {
+        $this->descriptiontechEnglish = $descriptiontechEnglish;
 
         return $this;
     }

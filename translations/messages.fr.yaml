@@ -26,4 +26,19 @@ Filtrer: Filtrer
 Détails: Détails
 'CONTACT INFO': 'INFORMATIONS DE CONTACT'
 'MATERIELS ET ÉQUIPEMENT BICHIOU': 'MATERIELS ET ÉQUIPEMENT BICHIOU'
-'Prenom': 'aaa'
+Prenom: Prenom
+Nom: Nom
+Tel: Tel
+Email: E-mail
+Message: Message
+'*Prenom': '*Prenom'
+'*Nom': '*Nom'
+'*Tel': '*Entrez votre numéro de téléphone'
+'*Email': '*Entrez votre E-mail'
+'*Message': '*Entrez un message'
+'Envoyer un message': 'Envoyer un message'
+Envoyer: Envoyer
+Ajouter: Ajouter
+Recherche...: Recherche...
+'Fiche Technique': 'Fiche Technique '
+

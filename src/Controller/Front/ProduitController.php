@@ -57,9 +57,10 @@ class ProduitController extends AbstractController
     }
 
     #[Route('/produitCategorie/{id}', name: 'produit_categorie_index', methods: ['GET','POST'])]
-    public function indexCategorie(int $id,Request $request, PaginatorInterface $paginator, ProduitRepository $produitRepository, CategorieRepository $categorieRepository): Response
+    public function indexCategorie(MarqueRepository $marqueRepository,int $id,Request $request, PaginatorInterface $paginator, ProduitRepository $produitRepository, CategorieRepository $categorieRepository): Response
     {
         $categories = $categorieRepository->findAll();
+        $marques = $marqueRepository->findAll();
 
         $categorie = $categorieRepository->find($id);
         $produitsByCategorie = $produitRepository->findBy(
@@ -77,12 +78,46 @@ class ProduitController extends AbstractController
             'produitsByCategorie' => $pagination,
             'categories' => $categories,
             'categorie' => $categorie,
+            'marques' => $marques,
+        ]);
+    }
+
+    #[Route('/produitMarque/{id}', name: 'produit_marque_index', methods: ['GET','POST'])]
+    public function indexMarque(MarqueRepository $marqueRepository,int $id,Request $request, PaginatorInterface $paginator, ProduitRepository $produitRepository, CategorieRepository $categorieRepository): Response
+    {
+        $categories = $categorieRepository->findAll();
+        $marques = $marqueRepository->findAll();
+
+        $categorie = $categorieRepository->find($id);
+        $marque = $marqueRepository->find($id);
+        $produitsByCategorie = $produitRepository->findBy(
+            ['categorie' => [$categorie]],
+        );
+
+        $produitsByMarque = $produitRepository->findBy(
+            ['marque' => [$marque]],
+        );
+
+
+        $pagination = $paginator->paginate(
+            $produitsByMarque, /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            9 /*limit per page*/
+        );
+
+        return $this->render('front/produit/indexMarque.html.twig', [
+            'produitsByCategorie' => $produitsByCategorie,
+            'categories' => $categories,
+            'categorie' => $categorie,
+            'marques' => $marques,
+            'produitsByMarque' => $pagination,
         ]);
     }
 
     #[Route('/produit/show/{id}', name: 'produit_show', methods: ['POST','GET'])]
-    public function show(Request $request, int $id, ProduitRepository $produitRepository, CategorieRepository $categorieRepository): Response
+    public function show(MarqueRepository $marqueRepository,Request $request, int $id, ProduitRepository $produitRepository, CategorieRepository $categorieRepository): Response
     {
+        $marques = $marqueRepository->findAll();
         $categories = $categorieRepository->findAll();
         $produitsFeatured = $produitRepository->findBy(array('featured' => true));
         $produit = $produitRepository->find($id);
@@ -111,6 +146,7 @@ class ProduitController extends AbstractController
             'produitsFeatured' => $produitsFeatured,
             //Devis
             'devi' => $devi,
+            'marques' => $marques,
             'form' => $form->createView(),
         ]);
     }

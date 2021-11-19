@@ -78,6 +78,11 @@ class Blog
      */
     private $imageVideoFile;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $descriptionEnglish;
+
     public function __construct()
     {
         $this->datecreation=new \DateTimeImmutable();
@@ -195,6 +200,18 @@ class Blog
     public function getImageVideo(): ?string
     {
         return $this->imageVideo;
+    }
+
+    public function getDescriptionEnglish(): ?string
+    {
+        return $this->descriptionEnglish;
+    }
+
+    public function setDescriptionEnglish(?string $descriptionEnglish): self
+    {
+        $this->descriptionEnglish = $descriptionEnglish;
+
+        return $this;
     }
 
 }

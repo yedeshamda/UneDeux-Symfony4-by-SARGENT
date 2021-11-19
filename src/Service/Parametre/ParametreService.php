@@ -216,33 +216,25 @@ class ParametreService
     public function getBienvenue()
     {
         $bienvenue = $this->parametreRepository->findOneBy(['nom' => 'BIENVENUE']);
-        if ($bienvenue) {
-            return $bienvenue->getValeur();
-        } else {
-            $bienvenue = new Parametre();
-            $bienvenue->setNom('BIENVENUE');
-            $bienvenue->setValeur('Au nom de toute l’équipe de MATEB, nous vous souhaitons la bienvenue sur votre site MATEB.TN et nous vous remercions d’avoir pris le temps de le visiter. Avant toute chose, ce qu’il faut savoir sur MATEB.tn :
-            MATEB est 100 % tunisien. MATEB est conçu et créé pour le marché tunisien MATEB est le résultat d’une passion pour le matériel agricole et BTP. MATEB c’est beaucoup de choses à la fois.');
-            $this->entityManager->persist($bienvenue);
-            $this->entityManager->flush();
-            return $bienvenue->getValeur();
-        }
+        return $bienvenue->getValeur();
+    }
+
+    public function getWelcome()
+    {
+        $bienvenue = $this->parametreRepository->findOneBy(['nom' => 'BIENVENUE']);
+        return $bienvenue->getValeurEnglish();
     }
 
     public function getMission()
     {
         $mission = $this->parametreRepository->findOneBy(['nom' => 'MISSION']);
-        if ($mission) {
-            return $mission->getValeur();
-        } else {
-            $mission = new Parametre();
-            $mission->setNom('MISSION');
-            $mission->setValeur('Au nom de toute l’équipe de MATEB, nous vous souhaitons la bienvenue sur votre site MATEB.TN et nous vous remercions d’avoir pris le temps de le visiter. Avant toute chose, ce qu’il faut savoir sur MATEB.tn :
-            MATEB est 100 % tunisien. MATEB est conçu et créé pour le marché tunisien MATEB est le résultat d’une passion pour le matériel agricole et BTP. MATEB c’est beaucoup de choses à la fois.');
-            $this->entityManager->persist($mission);
-            $this->entityManager->flush();
-            return $mission->getValeur();
-        }
+        return $mission->getValeur();
+    }
+
+    public function getMissionen()
+    {
+        $mission = $this->parametreRepository->findOneBy(['nom' => 'MISSION']);
+        return $mission->getValeurEnglish();
     }
 
     public function getImage1()
@@ -333,6 +325,38 @@ class ParametreService
             $this->entityManager->flush();
             return $catalogue->getValeur();
         }
+    }
+
+    public function getDayDebut()
+    {
+        $jourDebut = $this->parametreRepository->findOneBy(['nom' => 'JourDebut']);
+        return $jourDebut->getValeurEnglish();
+    }
+
+    public function getDayFin()
+    {
+        $jourFin = $this->parametreRepository->findOneBy(['nom' => 'JourFin']);
+        return $jourFin->getValeurEnglish();
+
+    }
+
+    public function getTimeDebut()
+    {
+        $heureDebut = $this->parametreRepository->findOneBy(['nom' => 'HeureDebut']);
+        return $heureDebut->getValeurEnglish();
+    }
+
+
+    public function getTimeFin()
+    {
+        $heureFin = $this->parametreRepository->findOneBy(['nom' => 'HeureFin']);
+        return $heureFin->getValeurEnglish();
+    }
+
+    public function getAddres()
+    {
+        $adresse = $this->parametreRepository->findOneBy(['nom' => 'ADRESSE']);
+        return $adresse->getValeurEnglish();
     }
 
 }

@@ -4,18 +4,21 @@
     <div class="row">
         <!-- Swiper -->
         <div class=" swiper-container mb-5">
-            <div class="swiper-slide position-relative">
-                <img src="{{ asset('images/categories/'~categorie.baniereImageName) }}" height="500px"
-                     style="width:100%">
-                <div class="col-3 info-cat-baniere w-50">
-                    <span class="h1-baniere">{{ categorie.nom }}</span> <br>
-                    {% if app.request.locale == 'fr' %}
-                        <span class="h2-baniere">{{ categorie.description }}</span>
-                    {% elseif app.request.locale == 'en' %}
-                        <span class="h2-baniere">{{ categorie.descriptionEnglish }}</span>
-                    {% endif %}
-
-                </div>
+            <div class="swiper-wrapper">
+                {% for categorie in categories %}
+                    <div class="swiper-slide position-relative">
+                        <img src="{{ asset('images/categories/'~categorie.baniereImageName) }}" height="500px"
+                             style="width:100%">
+                        <div class="col-3 info-cat-baniere w-50">
+                            <p class="h1-baniere">{{ categorie.nom }}</p> <br>
+                            {% if app.request.locale == 'fr' %}
+                                <p class="h2-baniere">{{ categorie.description }}</p>
+                            {% elseif app.request.locale == 'en' %}
+                                <p class="h2-baniere">{{ categorie.descriptionEnglish }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -36,7 +39,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="row">
-                            {% for produit in produitsByCategorie %}
+                            {% for produit in produitsByMarque %}
                                 <div class="col-6 col-sm-6 col-md-4 col-xl-4">
                                     <div class="card card-produit">
                                         <img src="{{ asset('images/produits/'~produit.imageName) }}" height="170"
@@ -58,7 +61,7 @@
                                 </div>
                             {% endfor %}
                             <div class="navigation">
-                                {{ knp_pagination_render(produitsByCategorie) }}
+                                {{ knp_pagination_render(produitsByMarque) }}
                             </div>
                         </div>
                     </div>

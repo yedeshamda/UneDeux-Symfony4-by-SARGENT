@@ -17,6 +17,7 @@ class ContactType extends AbstractType
             ->add('nom',null, [
                 'attr' => ['class' => 'input-contact',
                     'placeholder' => '*Nom'],
+                'translation_domain' => 'messages'
             ])
             ->add('prenom',null, [
                 'attr' => ['class' => 'input-contact',
@@ -26,14 +27,17 @@ class ContactType extends AbstractType
             ->add('tel',TelType::class, [
                 'attr' => ['class' => 'input-contact',
                     'placeholder' => '*Entrez votre numéro de téléphone'],
+                'translation_domain' => 'messages'
             ])
             ->add('email',null, [
                 'attr' => ['class' => 'input-contact',
                     'placeholder' => '*Entrez votre E-mail'],
+                'translation_domain' => 'messages'
             ])
             ->add('message',TextareaType::class, [
                 'attr' => ['class' => 'input-contact-textareaType',
                     'placeholder' => '*Entrez un message'],
+                'translation_domain' => 'messages'
             ])
         ;
     }

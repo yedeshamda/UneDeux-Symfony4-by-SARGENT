@@ -68,6 +68,7 @@ class ParametreController extends AbstractController
         if (!$adresse) {
             $adresse = new Parametre();
             $adresse->setNom('ADRESSE')->setValeur($request->request->get('ADRESSE'));
+            $adresse->setNom('ADRESSE')->setValeurEnglish($request->request->get('ADDRES'));
         }
         if (!$ville) {
             $ville = new Parametre();
@@ -80,19 +81,23 @@ class ParametreController extends AbstractController
         if (!$jourdebut) {
             $jourdebut = new Parametre();
             $jourdebut->setNom('JourDebut')->setValeur($request->request->get('JourDebut'));
+            $jourdebut->setNom('JourDebut')->setValeurEnglish($request->request->get('DayDebut'));
         }
         if (!$jourfin) {
             $jourfin = new Parametre();
             $jourfin->setNom('JourFin')->setValeur($request->request->get('JourFin'));
+            $jourfin->setNom('JourFin')->setValeurEnglish($request->request->get('DayFin'));
         }
         if (!$heuredebut) {
             $heuredebut = new Parametre();
             $heuredebut->setNom('HeureDebut')->setValeur($request->request->get('HeureDebut'));
+            $heuredebut->setNom('HeureDebut')->setValeurEnglish($request->request->get('TimeDebut'));
         }
 
         if (!$heurefin) {
             $heurefin = new Parametre();
             $heurefin->setNom('HeureFin')->setValeur($request->request->get('HeureFin'));
+            $heurefin->setNom('HeureFin')->setValeurEnglish($request->request->get('TimeFin'));
         }
 
 
@@ -121,6 +126,7 @@ class ParametreController extends AbstractController
             }
             if ($adresse) {
                 $adresse->setValeur($request->request->get('ADRESSE'));
+                $adresse->setValeurEnglish($request->request->get('ADDRES'));
             }
             if ($ville) {
                 $ville->setValeur($request->request->get('VILLE'));
@@ -129,17 +135,21 @@ class ParametreController extends AbstractController
                 $email->setValeur($request->request->get('EMAIL'));
             }
             if ($jourdebut) {
+                $jourdebut->setValeurEnglish($request->request->get('DayDebut'));
                 $jourdebut->setValeur($request->request->get('JourDebut'));
             }
             if ($jourfin) {
+                $jourfin->setValeurEnglish($request->request->get('DayFin'));
                 $jourfin->setValeur($request->request->get('JourFin'));
             }
             if ($heuredebut) {
+                $heuredebut->setValeurEnglish($request->request->get('TimeDebut'));
                 $heuredebut->setValeur($request->request->get('HeureDebut'));
             }
 
             if ($heurefin) {
-                $heurefin->setValeur($request->request->get('HeureFin'));
+                $heurefin->setValeurEnglish($request->request->get('HeureFin'));
+                $heurefin->setValeur($request->request->get('TimeFin'));
             }
         }
 
@@ -167,12 +177,17 @@ class ParametreController extends AbstractController
             'tel1' => $tel1->getValeur(),
             'tel2' => $tel2->getValeur(),
             'adresse' => $adresse->getValeur(),
+            'addres' => $adresse->getValeurEnglish(),
             'ville' => $ville->getValeur(),
             'email' => $email->getValeur(),
             'jourdebut' => $jourdebut->getValeur(),
             'jourfin' => $jourfin->getValeur(),
             'heuredebut' => $heuredebut->getValeur(),
             'heurefin' => $heurefin->getValeur(),
+            'daydebut' => $jourdebut->getValeurEnglish(),
+            'dayfin' => $jourfin->getValeurEnglish(),
+            'timedebut' => $heuredebut->getValeurEnglish(),
+            'timefin' => $heurefin->getValeurEnglish(),
         ]);
     }
 
@@ -247,11 +262,13 @@ class ParametreController extends AbstractController
         if (!$bienvenue) {
             $bienvenue = new Parametre();
             $bienvenue->setNom('BIENVENUE')->setValeur($request->request->get('BIENVENUE'));
+            $bienvenue->setNom('BIENVENUE')->setValeurEnglish($request->request->get('WELCOME'));
         }
 
         if (!$mission) {
             $mission = new Parametre();
             $mission->setNom('MISSION')->setValeur($request->request->get('MISSION'));
+            $mission->setNom('MISSION')->setValeur($request->request->get('MISSIONEN'));
         }
 
         if (!$image) {
@@ -268,10 +285,12 @@ class ParametreController extends AbstractController
         if ($request->isMethod('POST')) {
             if ($bienvenue) {
                 $bienvenue->setValeur($request->request->get('BIENVENUE'));
+                $bienvenue->setValeurEnglish($request->request->get('WELCOME'));
             }
 
             if ($mission) {
                 $mission->setValeur($request->request->get('MISSION'));
+                $mission->setValeurEnglish($request->request->get('MISSIONEN'));
             }
 
             $imageupl = $request->files->get('image1');
@@ -299,7 +318,9 @@ class ParametreController extends AbstractController
         $this->entityManager->flush();
         return $this->render('admin/parametre/a_propos_paramtetre.html.twig', [
             'bienvenue' => $bienvenue->getValeur(),
+            'welcome' => $bienvenue->getValeurEnglish(),
             'mission' => $mission->getValeur(),
+            'missionen' => $mission->getValeurEnglish(),
             'image1' => $image->getValeur(),
             'image2' => $image2->getValeur(),
         ]);

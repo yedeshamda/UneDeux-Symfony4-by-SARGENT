@@ -27,6 +27,11 @@ class Parametre
      */
     private $valeur;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $ValeurEnglish;
+
 
     public function getId(): ?int
     {
@@ -55,6 +60,18 @@ class Parametre
     public function setValeur(?string $valeur): self
     {
         $this->valeur = $valeur;
+
+        return $this;
+    }
+
+    public function getValeurEnglish(): ?string
+    {
+        return $this->ValeurEnglish;
+    }
+
+    public function setValeurEnglish(?string $ValeurEnglish): self
+    {
+        $this->ValeurEnglish = $ValeurEnglish;
 
         return $this;
     }

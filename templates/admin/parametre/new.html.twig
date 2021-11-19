@@ -29,7 +29,24 @@
         </div>
         <div class="row mb-3">
             <label>ADRESSE</label>
-            <input type="text" class="form-control" value="{{ adresse|default('') }}" name="ADRESSE">
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
+                        en Français
+                    </button>
+                    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
+                        en Anglais
+                    </button>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show nav-desc active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <input type="text" class="form-control" value="{{ adresse|default('') }}" name="ADRESSE">
+                </div>
+                <div class="tab-pane fade nav-fiche" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <input type="text" class="form-control" value="{{ addres|default('') }}" name="ADDRES">
+                </div>
+            </div>
         </div>
         <div class="row mb-3">
             <label>VILLE</label>
@@ -41,19 +58,87 @@
         </div>
         <div class="row mb-3">
             <label>JourDebut</label>
-            <input type="text" class="form-control" value="{{ jourdebut|default('') }}" name="JourDebut">
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <button class="nav-link active" id="nav-home-tab2" data-bs-toggle="tab" data-bs-target="#nav-home2" type="button" role="tab" aria-controls="nav-home2" aria-selected="true">
+                        en Français
+                    </button>
+                    <button class="nav-link" id="nav-profile-tab2" data-bs-toggle="tab" data-bs-target="#nav-profile2" type="button" role="tab" aria-controls="nav-profile2" aria-selected="false">
+                        en Anglais
+                    </button>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show nav-desc active" id="nav-home2" role="tabpanel" aria-labelledby="nav-home-tab2">
+                    <input type="text" class="form-control" value="{{ jourdebut|default('') }}" name="JourDebut">
+                </div>
+                <div class="tab-pane fade nav-fiche" id="nav-profile2" role="tabpanel" aria-labelledby="nav-profile-tab2">
+                    <input type="text" class="form-control" value="{{ daydebut|default('') }}" name="DayDebut">
+                </div>
+            </div>
         </div>
         <div class="row mb-3">
             <label>JourFin</label>
-            <input type="text" class="form-control" value="{{ jourfin|default('') }}" name="JourFin">
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <button class="nav-link active" id="nav-home-tab3" data-bs-toggle="tab" data-bs-target="#nav-home3" type="button" role="tab" aria-controls="nav-home3" aria-selected="true">
+                        en Français
+                    </button>
+                    <button class="nav-link" id="nav-profile-tab3" data-bs-toggle="tab" data-bs-target="#nav-profile3" type="button" role="tab" aria-controls="nav-profile3" aria-selected="false">
+                        en Anglais
+                    </button>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show nav-desc active" id="nav-home3" role="tabpanel" aria-labelledby="nav-home-tab3">
+                    <input type="text" class="form-control" value="{{ jourfin|default('') }}" name="JourFin">
+                </div>
+                <div class="tab-pane fade nav-fiche" id="nav-profile3" role="tabpanel" aria-labelledby="nav-profile-tab3">
+                    <input type="text" class="form-control" value="{{ dayfin|default('') }}" name="DayFin">
+                </div>
+            </div>
         </div>
         <div class="row mb-3">
             <label>HeureDebut</label>
-            <input type="text" class="form-control" value="{{ heuredebut|default('') }}" name="HeureDebut">
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <button class="nav-link active" id="nav-home-tab4" data-bs-toggle="tab" data-bs-target="#nav-home4" type="button" role="tab" aria-controls="nav-home4" aria-selected="true">
+                        en Français
+                    </button>
+                    <button class="nav-link" id="nav-profile-tab4" data-bs-toggle="tab" data-bs-target="#nav-profile4" type="button" role="tab" aria-controls="nav-profile4" aria-selected="false">
+                        en Anglais
+                    </button>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show nav-desc active" id="nav-home4" role="tabpanel" aria-labelledby="nav-home-tab4">
+                    <input type="text" class="form-control" value="{{ heuredebut|default('') }}" name="HeureDebut">
+                </div>
+                <div class="tab-pane fade nav-fiche" id="nav-profile4" role="tabpanel" aria-labelledby="nav-profile-tab4">
+                    <input type="text" class="form-control" value="{{ timedebut|default('') }}" name="TimeDebut">
+                </div>
+            </div>
         </div>
         <div class="row mb-3">
             <label>HeureFin</label>
-            <input type="text" class="form-control" value="{{ heurefin|default('') }}" name="HeureFin">
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <button class="nav-link active" id="nav-home-tab5" data-bs-toggle="tab" data-bs-target="#nav-home5" type="button" role="tab" aria-controls="nav-home5" aria-selected="true">
+                        en Français
+                    </button>
+                    <button class="nav-link" id="nav-profile-tab5" data-bs-toggle="tab" data-bs-target="#nav-profile5" type="button" role="tab" aria-controls="nav-profile5" aria-selected="false">
+                        en Anglais
+                    </button>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show nav-desc active" id="nav-home5" role="tabpanel" aria-labelledby="nav-home-tab5">
+                    <input type="text" class="form-control" value="{{ heurefin|default('') }}" name="HeureFin">
+                </div>
+                <div class="tab-pane fade nav-fiche" id="nav-profile5" role="tabpanel" aria-labelledby="nav-profile-tab5">
+                    <input type="text" class="form-control" value="{{ timefin|default('') }}" name="TimeFin">
+                </div>
+            </div>
         </div>
         <div>
             <button type="submit" class="btn btn-primary">Valider</button>

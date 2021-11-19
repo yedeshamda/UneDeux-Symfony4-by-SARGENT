@@ -16,7 +16,9 @@ class BlogType extends AbstractType
     {
         $builder
             ->add('titre')
-            ->add('description',CKEditorType::class)
+            ->add('description',CKEditorType::class, [
+                'label' => false
+            ])
             ->add('imageFile',VichImageType::class, [
                 'required' => false,
                 'allow_delete' => false,
@@ -26,6 +28,9 @@ class BlogType extends AbstractType
                 'image_uri' => true,
                 'asset_helper' => true,
                 'label' => 'Image'
+            ])
+            ->add('descriptionEnglish',CKEditorType::class, [
+                'label' => false
             ])
         ;
     }

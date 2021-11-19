@@ -13,11 +13,11 @@ class DevisType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nom')
-            ->add('prenom')
-            ->add('tel')
-            ->add('email')
-            ->add('message',TextareaType::class)
+            ->add('nom',null, ['translation_domain' => 'messages'])
+            ->add('prenom',null, ['translation_domain' => 'messages'])
+            ->add('tel',null, ['translation_domain' => 'messages'])
+            ->add('email',null, ['translation_domain' => 'messages'])
+            ->add('message',TextareaType::class, ['translation_domain' => 'messages'])
         ;
     }
 

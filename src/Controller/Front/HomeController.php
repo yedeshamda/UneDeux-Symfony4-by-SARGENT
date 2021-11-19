@@ -21,15 +21,9 @@ class HomeController extends AbstractController
         $marques=$marqueRepository->findAll();
         $categories=$categorieRepository->findAll();
 
-        $pagination = $paginator->paginate(
-            $categories, /* query NOT result */
-            $request->query->getInt('page', 1), /*page number*/
-            4 /*limit per page*/
-        );
-
         return $this->render('front/home/index.html.twig', [
             'produits' => $produits,
-            'categories' => $pagination,
+            'categories' => $categories,
             'marques' => $marques,
         ]);
     }

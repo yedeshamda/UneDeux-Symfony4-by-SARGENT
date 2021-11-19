@@ -1,180 +1,207 @@
 {% extends 'front/layout/base.html.twig' %}
 {% block body %}
-<div class="row">
-    <!-- Swiper -->
-    <div class="swiper-container mb-5">
-        <div class="swiper-wrapper">
-            {% for categorie in categories %}
-                <div class="swiper-slide position-relative">
-                    <img src="{{ asset('images/categories/'~categorie.baniereImageName) }}" height="500px"
-                         style="width:100%">
-                    <div class="col-3 info-cat-baniere">
-                        <span class="h1-baniere">{{ categorie.nom }}</span> <br>
-                        <span class="h2-baniere">{{ categorie.description }}</span>
+    <div class="row">
+        <!-- Swiper -->
+        <div class="swiper-container mb-5">
+            <div class="swiper-wrapper">
+                {% for categorie in categories %}
+                    <div class="swiper-slide position-relative">
+                        <img src="{{ asset('images/categories/'~categorie.baniereImageName) }}" height="500px"
+                             style="width:100%">
+                        <div class="col-3 info-cat-baniere w-50">
+                            <span class="h1-baniere">{{ categorie.nom }}</span> <br>
+                            {% if app.request.locale == 'fr' %}
+                                <span class="h2-baniere">{{ categorie.description }}</span>
+                            {% elseif app.request.locale == 'en' %}
+                                <span class="h2-baniere">{{ categorie.descriptionEnglish }}</span>
+                            {% endif %}
+                        </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
     </div>
-</div>
-<div class="social-media-baniere">
-    <a href="{{ parametre.youtube }}"> <i class="fab topicon-fixed fa-youtube"></i></a>
-    <a href="{{ parametre.instagram }}"><i class="fab topicon-fixed fa-instagram"></i></a>
-    <a href="{{ parametre.facebook }}"><i class="fab topicon-fixed fa-facebook"></i></a>
-</div>
+    <div class="social-media-baniere">
+        <a href="{{ parametre.youtube }}"> <i class="fab topicon-fixed fa-youtube"></i></a>
+        <a href="{{ parametre.instagram }}"><i class="fab topicon-fixed fa-instagram"></i></a>
+        <a href="{{ parametre.facebook }}"><i class="fab topicon-fixed fa-facebook"></i></a>
+    </div>
 
 
-<div>
-    <div class="row mt-5">
-        <div class="col-1 p-0 island1">
+    <div>
+        <div class="row mt-5">
+            <div class="col-1 p-0 island1">
 
-        </div>
-        <div class="col-9 p-0">
-            <div class="container">
+            </div>
+            <div class="col-9 p-0">
+                <div class="container">
 
-                <div class="row mb-5">
-                    <div class="col-6">
-                        <div class="card">
-                            <div class="card-body card-body-details">
-                                <img src="{{ asset('images/produits/'~produit.imageName) }}" height="500px"
-                                     width="500px">
-                                <img class="marque-details-produit"
-                                     src="{{ asset('images/marques/'~produit.marque.imageName) }}" height="100px"
-                                     width="150px">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <h3 class="Cat-details">{{ produit.categorie.nom }}</h3>
-                        <h4 class="marque-details">{{ produit.marque.nom }}</h4>
-                        <h5 class="produit-details">{{ produit.nom }}</h5>
-                        <span class="desc-details">{{ produit.description }}</span>
-                        <div class="row">
-                            <a class="button-details btn-outline-warning btn" id="demanded">{% trans %}Demande de Devis{% endtrans %}</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row mb-5">
-                    <nav>
-                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                            <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab"
-                                    data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
-                                    aria-selected="true">{% trans %}Description{% endtrans %}
-                            </button>
-                            <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab"
-                                    data-bs-target="#nav-profile" type="button" role="tab"
-                                    aria-controls="nav-profile" aria-selected="false">{% trans %}Fiche Techhnique{% endtrans %}
-                            </button>
-                            <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab"
-                                    data-bs-target="#nav-contact" type="button" role="tab"
-                                    aria-controls="nav-contact" aria-selected="false">{% trans %}Demande Devis{% endtrans %}
-                            </button>
-                        </div>
-                    </nav>
-                    <div class="tab-content" id="nav-tabContent">
-                        <div class="tab-pane fade show nav-desc active" id="nav-home" role="tabpanel"
-                             aria-labelledby="nav-home-tab">{{ produit.descriptiontech|raw }}
-                        </div>
-                        <div class="tab-pane fade nav-fiche" id="nav-profile" role="tabpanel"
-                             aria-labelledby="nav-profile-tab">
-                            <ul>
-                                {% for fiche in produit.fichetech %}
-                                    {% set val = ( val | default(0) ) + 1 %}
-                                    <li>
-                                        <i class="fa fa-file-pdf me-1"></i>
-                                        <a href="{{path('front_produit_download_file',{'file':fiche.nom})}}">{{ 'Fiche Technique ' ~ val }}</a>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                        <div class="tab-pane fade nav-form" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                            {{ form_start(form) }}
-                            {{ form_widget(form) }}
-                            <button class="btn btn-success btn-sm">{{ button_label|default('Ajouter') }}</button>
-                            <button type="reset" class="btn btn-danger btn-sm">
-                                <i class="fa fa-ban"></i> {% trans %}Réinitialiser{% endtrans %}
-                            </button>
-                            <br>
-                            <br>
-                            {{ form_end(form) }}
-                        </div>
-                    </div>
-                </div>
-
-                <h1>{% trans %}PRODUIT ASSOCIE{% endtrans %}</h1>
-                <div class="row">
-                    {% for produit in produits %}
-                        <div class="col-3">
+                    <div class="row mb-5">
+                        <div class="col-6">
                             <div class="card">
-                                <img src="{{ asset('images/produits/'~produit.imageName) }}" height="170"
-                                     class="card-img-top">
-                                <div class="card-body">
-                                    <h5>{{ produit.marque.nom }}</h5>
-                                    <h6>{{ produit.nom }}</h6>
-                                    <h7>{{ produit.categorie.nom }}</h7>
-                                    <p class="card-text">{{ produit.description }}.</p>
+                                <div class="card-body card-body-details">
+                                    <img src="{{ asset('images/produits/'~produit.imageName) }}" height="500px"
+                                         width="500px">
+                                    <a href="{{ path('front_produit_marque_index', {'id': produit.marque.id}) }}">
+                                    <img class="marque-details-produit"
+                                         src="{{ asset('images/marques/'~produit.marque.imageName) }}" height="100px"
+                                         width="150px">
+                                    </a>
                                 </div>
                             </div>
                         </div>
-                    {% endfor %}
-                </div>
+                        <div class="col-6">
+                            <h3 class="Cat-details">{{ produit.categorie.nom }}</h3>
+                            <h5 class="produit-details">{{ produit.nom }}</h5>
+                            {% if app.request.locale == 'fr' %}
+                                <span class="desc-details">{{ produit.description }}</span>
+                            {% elseif app.request.locale == 'en' %}
+                                <span class="desc-details">{{ produit.descriptionEnglish }}</span>
+                            {% endif %}
+                            <div class="row">
+                                <a class="button-details btn-outline-warning btn"
+                                   id="demanded">{% trans %}Demande de Devis{% endtrans %}</a>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="row mb-5">
+                        <nav>
+                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab"
+                                        data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
+                                        aria-selected="true">{% trans %}Description{% endtrans %}
+                                </button>
+                                <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab"
+                                        data-bs-target="#nav-profile" type="button" role="tab"
+                                        aria-controls="nav-profile"
+                                        aria-selected="false">{% trans %}Fiche Techhnique{% endtrans %}
+                                </button>
+                                <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab"
+                                        data-bs-target="#nav-contact" type="button" role="tab"
+                                        aria-controls="nav-contact"
+                                        aria-selected="false">{% trans %}Demande Devis{% endtrans %}
+                                </button>
+                            </div>
+                        </nav>
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show nav-desc active" id="nav-home" role="tabpanel"
+                                 aria-labelledby="nav-home-tab">
+                                {% if app.request.locale == 'fr' %}
+                                    {{ produit.descriptiontech|raw }}
+                                {% elseif app.request.locale == 'en' %}
+                                    {{ produit.descriptiontechEnglish|raw }}
+                                {% endif %}
+                            </div>
+                            <div class="tab-pane fade nav-fiche" id="nav-profile" role="tabpanel"
+                                 aria-labelledby="nav-profile-tab">
+                                <ul>
+                                    {% for fiche in produit.fichetech %}
+                                        {% set val = ( val | default(0) ) + 1 %}
+                                        <li>
+                                            <i class="fa fa-file-pdf me-1"></i>
+                                            <a href="{{ path('front_produit_download_file',{'file':fiche.nom}) }}">{{ 'Fiche Technique'|trans ~ val }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="tab-pane fade nav-form" id="nav-contact" role="tabpanel"
+                                 aria-labelledby="nav-contact-tab">
+                                {{ form_start(form) }}
+                                {{ form_widget(form) }}
+                                <button class="btn btn-success btn-sm">{{ button_label|default('Ajouter')|trans }}</button>
+                                <button type="reset" class="btn btn-danger btn-sm">
+                                    <i class="fa fa-ban"></i> {% trans %}Réinitialiser{% endtrans %}
+                                </button>
+                                <br>
+                                <br>
+                                {{ form_end(form) }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <h1 class="police-class">{% trans %}PRODUIT ASSOCIE{% endtrans %}</h1>
+                    <div class="row">
+                        {% for produit in produits %}
+                            <div class="col-4 ">
+                                <a href="{{ path('front_produit_show', {'id': produit.id}) }}">
+                                    <div class="card">
+                                        <img src="{{ asset('images/produits/'~produit.imageName) }}" height="170"
+                                             class="card-img-top">
+                                        <div class="card-body">
+                                            <img src="{{ asset('images/marques/'~produit.marque.imageName) }}"
+                                                 class="card-img-top featured-mini-marque2">
+                                            <h6>{{ produit.nom }}</h6>
+                                            <h7>{{ produit.categorie.nom }}</h7>
+                                            {% if app.request.locale == 'fr' %}
+                                                <p class="card-text threeline">{{ produit.description }}.</p>
+                                            {% elseif app.request.locale == 'en' %}
+                                                <p class="card-text threeline">{{ produit.descriptionEnglish }}.</p>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="col-2 p-0 island22">
+                <h6 class="featured-prod">{% trans %}Featured Products{% endtrans %}</h6>
+                <ul>
+                    {% for produitFeatured in produitsFeatured %}
+                        <a href="{{ path('front_produit_show', {'id': produitFeatured.id}) }}">
+                            <li>
+                                <div class="row mb-4">
+                                    <div class="col-6">
+                                        <img class="featured-mini"
+                                             src="{{ asset('images/produits/'~produitFeatured.imageName) }}"
+                                             height="40" width="30"
+                                             class="card-img-top">
+                                    </div>
+                                    <div class="col-6 p-0">
+                                        <img class="featured-mini-marque card-img-top"
+                                             src="{{ asset('images/marques/'~produitFeatured.marque.imageName) }}">
+                                        <h6>{{ produitFeatured.nom }}</h6>
+                                    </div>
+                                </div>
+                            </li>
+                        </a>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
 
-
-        <div class="col-2 p-0 island22">
-            <h6 class="featured-prod">{% trans %}Featured Products{% endtrans %}</h6>
-            <ul>
-                {% for produitFeatured in produitsFeatured %}
-
-                    <li>
-                        <div class="row">
-                            <div class="col-6">
-                                <img class="featured-mini" src="{{ asset('images/produits/'~produitFeatured.imageName) }}"
-                                     height="40" width="30"
-                                     class="card-img-top">
-                            </div>
-                            <div class="col-6 p-0">
-                                <h6>{{ produitFeatured.nom }}</h6>
-                                {{ produitFeatured.description }}
-                            </div>
-                        </div>
-                    </li>
-
-                {% endfor %}
-            </ul>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-6 p-0 position-relative bor">
-            <img src="{{ asset('assets/images/left.png') }}"
-                 style="width:100%">
-            <span class="bas-left">
+        <div class="row">
+            <div class="col-6 p-0 position-relative bor">
+                <img src="{{ asset('assets/images/left.png') }}"
+                     style="width:100%">
+                <span class="bas-left">
                     <div class="row">CULTURE </div>
                     <div class="row">   OLÉICULE</div>
                 </span>
-            <span class="bas-left-min">
+                <span class="bas-left-min">
                     <div class="row">blade bottom is flat.</div>
                    <div class="row">In extremely hard</div>
                     <div class="row">or when cutting with a</div>
                 </span>
-        </div>
-        <div class="col-6 p-0 position-relative bor">
-            <img src="{{ asset('assets/images/right.png') }}"
-                 style="width:100%">
-            <span class="bas-right">SEMANCE</span>
-            <span class="bas-right-min">
+            </div>
+            <div class="col-6 p-0 position-relative bor">
+                <img src="{{ asset('assets/images/right.png') }}"
+                     style="width:100%">
+                <span class="bas-right">SEMANCE</span>
+                <span class="bas-right-min">
                     <div class="row">blade bottom is flat.</div>
                    <div class="row">In extremely hard</div>
                     <div class="row">or when cutting with a</div>
                 </span>
+            </div>
         </div>
-    </div>
 
-</div>
+    </div>
 {% endblock %}
 
 {% block stylesheets %}

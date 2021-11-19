@@ -18,9 +18,17 @@ class ProduitType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('description',TextareaType::class)
+            ->add('description',TextareaType::class, [
+                'label' => false,
+            ])
+            ->add('descriptionEnglish',TextareaType::class, [
+                'label' => false,
+            ])
             ->add('descriptiontech',CKEditorType::class, [
-                'label' => 'Description Technique',
+                'label' => false,
+            ])
+            ->add('descriptiontechEnglish',CKEditorType::class, [
+                'label' => false,
             ])
             ->add('categorie')
             ->add('marque')

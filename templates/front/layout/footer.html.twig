@@ -43,7 +43,13 @@
 
                     <div class="w-100">
                         <a href=""> <span> {% trans %}INFORMATIONS DE CONTACT{% endtrans %}</span></a>
-                        <a class="span-footer" href=""> {{ parametre.adresse }}</a>
+                        <a class="span-footer" href="">
+                            {% if app.request.locale == 'fr' %}
+                                {{ parametre.adresse }}
+                            {% elseif app.request.locale == 'en' %}
+                                {{ parametre.addres }}
+                            {% endif %}
+                        </a>
                     </div>
                     <div class="w-100">
                         <div class="num-footer">

@@ -90,6 +90,11 @@ class Categorie
      */
     private $imageFile2;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $descriptionEnglish;
+
     public function __construct()
     {
         $this->produits = new ArrayCollection();
@@ -248,5 +253,17 @@ class Categorie
     public function getImageFile2(): ?File
     {
         return $this->imageFile2;
+    }
+
+    public function getDescriptionEnglish(): ?string
+    {
+        return $this->descriptionEnglish;
+    }
+
+    public function setDescriptionEnglish(?string $descriptionEnglish): self
+    {
+        $this->descriptionEnglish = $descriptionEnglish;
+
+        return $this;
     }
 }

@@ -26,7 +26,12 @@ class CategorieType extends AbstractType
                 'label' => 'Image'
             ])
             ->add('titre')
-            ->add('description',TextareaType::class)
+            ->add('description',TextareaType::class, [
+                'label' => false
+            ])
+            ->add('descriptionEnglish',TextareaType::class, [
+                'label' => false
+            ])
             ->add('imageFile2',VichImageType::class, [
                 'required' => false,
                 'allow_delete' => false,

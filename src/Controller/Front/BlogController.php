@@ -43,4 +43,15 @@ class BlogController extends AbstractController
         ]);
     }
 
+    #[Route('/blog/{id}', name: 'blog_show', methods: ['GET'])]
+    public function show(Blog $blog,CategorieRepository $categorieRepository): Response
+    {
+        $categories = $categorieRepository->findAll();
+
+        return $this->render('front/blog/show.html.twig', [
+            'categories' => $categories,
+            'blog' => $blog,
+        ]);
+    }
+
 }
