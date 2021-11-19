@@ -1,10 +1,8 @@
 {% extends 'front/layout/base.html.twig' %}
 
 {% block body %}
-        <div class="row">
-            <div class="_df_book" webgl="true"
-                 source="{{ asset('images/parametres/catalogue/'~parametre.catalogue) }}"
-                 id="df_manual_book">
+        <div class="row catalogue-z-index">
+            <div class="_df_book" webgl="true" source="{{ asset('images/parametres/catalogue/'~parametre.catalogue) }}" id="df_manual_book">
             </div>
         </div>
 {% endblock %}

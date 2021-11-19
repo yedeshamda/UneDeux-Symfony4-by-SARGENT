@@ -21,6 +21,7 @@ class ContactType extends AbstractType
             ->add('prenom',null, [
                 'attr' => ['class' => 'input-contact',
                     'placeholder' => '*Prenom'],
+                'translation_domain' => 'messages'
             ])
             ->add('tel',TelType::class, [
                 'attr' => ['class' => 'input-contact',

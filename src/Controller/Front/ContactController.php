@@ -4,6 +4,7 @@ namespace App\Controller\Front;
 
 use App\Entity\Contact;
 use App\Form\ContactType;
+use App\Repository\CategorieRepository;
 use App\Repository\ContactRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,8 +16,9 @@ class ContactController extends AbstractController
 {
 
     #[Route('/contact/new', name: 'contact_new', methods: ['GET','POST'])]
-    public function new(Request $request): Response
+    public function new(Request $request,CategorieRepository $categorieRepository): Response
     {
+        $categories = $categorieRepository->findAll();
         $contact = new Contact();
         $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
@@ -30,6 +32,7 @@ class ContactController extends AbstractController
         }
 
         return $this->renderForm('front/contact/new.html.twig', [
+            'categories' => $categories,
             'contact' => $contact,
             'form' => $form,
         ]);

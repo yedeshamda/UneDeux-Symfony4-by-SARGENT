@@ -5,6 +5,7 @@ namespace App\Controller\Front;
 use App\Entity\Blog;
 use App\Form\BlogType;
 use App\Repository\BlogRepository;
+use App\Repository\CategorieRepository;
 use App\Repository\VideoRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -25,8 +26,9 @@ class BlogController extends AbstractController
     }
 
     #[Route('/blog', name: 'blog_index', methods: ['GET'])]
-    public function index(Request $request,PaginatorInterface $paginator,BlogRepository $blogRepository,VideoRepository $videoRepository): Response
+    public function index(Request $request,PaginatorInterface $paginator,BlogRepository $blogRepository,VideoRepository $videoRepository,CategorieRepository $categorieRepository): Response
     {
+        $categories = $categorieRepository->findAll();
         $blog = $blogRepository->findByCreationDate();
 
         $pagination = $paginator->paginate(
@@ -36,6 +38,7 @@ class BlogController extends AbstractController
         );
 
         return $this->render('front/blog/index.html.twig', [
+            'categories' => $categories,
             'blogs' => $pagination,
         ]);
     }

@@ -16,7 +16,7 @@
                 <span class="topicon2-span"><i class="far topicon2 fa-clock"></i> {{ parametre.jourDebut }} - {{ parametre.jourFin }} de {{ parametre.heureDebut }} à {{ parametre.heureFin }}</span>
 
                     <div class="desktop">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuButtonlng" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle flech-flag" href="#" id="dropdownMenuButtonlng" data-bs-toggle="dropdown" aria-expanded="false">
                             {% set locale = app.request.locale %}
                             <img class="flag" src="{{ asset('assets/images/'~locale~'.png') }}" alt="{{ locale }}">
                         </a>
@@ -46,8 +46,29 @@
                                    href="{{ path('front_qui_somme_nous') }}">{% trans %}QUI SOMMES-NOUS ?{% endtrans %}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link"
-                                   href="{{ path('front_produit_index') }}">{% trans %}NOS PRODUITS{% endtrans %}</a>
+                                <div class="dropdown">
+                                    <a  data-bs-toggle="dropdown" id="dropdownMenuButton1" class="nav-link dropdown-toggle flech" href="#">{% trans %}NOS PRODUITS{% endtrans %}</a>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <li class="dropend">
+                                            <a class="dropdown-item  flech2" data-bs-toggle="dropdown"  href="#">PAR ACTIVITE</a>
+                                            <ul class="dropdown-menu second-level">
+
+                                              {% for categorie in categories %}
+                                                <li class="multi-level">
+                                                    <a href="{{ path('front_produit_categorie_index', {'id': categorie.id}) }}">
+                                                            {{ categorie.nom }}
+                                                    </a>
+                                                </li>
+                                                {% endfor %}
+
+                                            </ul>
+                                        </li>
+                                        <li><a class="dropdown-item" href="{{ path('front_produit_index') }}">NOS PRODUITS</a></li>
+                                    </ul>
+                                </div>
+
+
+
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link"

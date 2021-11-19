@@ -23,9 +23,10 @@
             </div>
         </div>
         <img class="mateb-baniere" src="{{ asset('assets/images/MATEB.png') }}" alt="">
-        <img class="materiel-baniere" src="{{ asset('assets/images/MATERIELS ET ÉQUIPEMENT BICHIOU.png') }}" alt="">
+        <span class="materiel-baniere">{% trans %}MATERIELS ET ÉQUIPEMENT BICHIOU{% endtrans %}</span>
+
         <a class="quisommesnous-baniere-button btn-outline-warning btn"
-           href="{{ path('front_qui_somme_nous') }}">Qui Sommes Nous ?</a>
+           href="{{ path('front_qui_somme_nous') }}">{% trans %}Qui Sommes Nous ?{% endtrans %}</a>
         <div class="swiper-button-next arrow-right1"></div>
         <div class="swiper-button-prev arrow-left1"></div>
         <div class="swiper-pagination pagination-baniere"></div>
@@ -50,7 +51,7 @@
                             </div>
                             <div class="d-flex justify-content-around">
                                 <a class="button-featured-home button-details-product btn-outline-warning btn"
-                                   href="{{ path('front_produit_show', {'id': produit.id}) }}">Détails</a>
+                                   href="{{ path('front_produit_show', {'id': produit.id}) }}">{% trans %}Détails{% endtrans %}</a>
                                 <img class="marque-featured"
                                      src="{{ asset('images/marques/'~produit.marque.imageName) }}" alt="">
                             </div>

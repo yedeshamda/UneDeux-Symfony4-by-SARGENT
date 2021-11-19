@@ -40,27 +40,27 @@
                                            style="width:135px"
                                            placeholder="Recherche...">
                                     <button class="btn btn-outline-warning button-search-product" type="submit">
-                                        Trouver
+                                        {% trans %}Trouver{% endtrans %}
                                     </button>
                                 </div>
                             </form>
                             <br>
-                            <h4>Filters</h4><br>
-                            <h6>Catégories :</h6>
+                            <h4>{% trans %}Filters{% endtrans %}</h4><br>
+                            <h6>{% trans %}Catégories :{% endtrans %}</h6>
                             <ul>
                                 {% for categorie in categories %}
                                     <li><h6>{{ categorie.titre }}</h6></li>
                                 {% endfor %}
                             </ul>
                             <br>
-                            <h6>Marques :</h6>
+                            <h6>{% trans %}Marques :{% endtrans %}</h6>
                             <ul>
                                 {% for marque in marques %}
                                     <li><h6>{{ marque.nom }}</h6></li>
                                 {% endfor %}
                             </ul>
                             <br>
-                            <h4>Featured Products</h4>
+                            <h4>{% trans %}Featured Products{% endtrans %}</h4>
                             <ul>
                                 {% for produitFeatured in produitsFeatured %}
 
@@ -96,7 +96,7 @@
                                                 <h7>{{ produit.categorie.nom }}</h7>
                                                 <p class="card-text">{{ produit.description }}.</p>
                                                 <a class="button-details-product btn-outline-warning btn"
-                                                   href="{{ path('front_produit_show', {'id': produit.id}) }}">Détails</a>
+                                                   href="{{ path('front_produit_show', {'id': produit.id}) }}">{% trans %}Détails{% endtrans %}</a>
                                             </div>
                                         </div>
                                     </div>
