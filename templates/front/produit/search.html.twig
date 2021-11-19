@@ -47,7 +47,7 @@
                                                 <h6>{{ produit.nom }}</h6>
                                                 <h7>{{ produit.categorie.nom }}</h7>
                                                 {% if app.request.locale == 'fr' %}
-                                                    <p class="threeline">{{ produit.description }}</p>
+                                                    <p class="threeline3">{{ produit.description }}</p>
                                                 {% elseif app.request.locale == 'en' %}
                                                     <p class="threeline">{{ produit.descriptionEnglish }}</p>
                                                 {% endif %}
