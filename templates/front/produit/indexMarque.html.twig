@@ -9,7 +9,7 @@
                     <div class="swiper-slide position-relative">
                         <img src="{{ asset('images/categories/'~categorie.baniereImageName) }}" height="500px"
                              style="width:100%">
-                        <div class="col-3 info-cat-baniere w-50">
+                        <div class="col-3 info-cat-baniere">
                             <p class="h1-baniere">{{ categorie.nom }}</p> <br>
                             {% if app.request.locale == 'fr' %}
                                 <p class="h2-baniere">{{ categorie.description }}</p>
@@ -49,7 +49,7 @@
                                             <h6>{{ produit.nom }}</h6>
                                             <h7>{{ produit.categorie.nom }}</h7>
                                             {% if app.request.locale == 'fr' %}
-                                                <p class="card-text threeline">{{ produit.description }}.</p>
+                                                <p class="card-text threeline4">{{ produit.description }}.</p>
                                             {% elseif app.request.locale == 'en' %}
                                                 <p class="card-text threeline">{{ produit.descriptionEnglish }}.</p>
                                             {% endif %}

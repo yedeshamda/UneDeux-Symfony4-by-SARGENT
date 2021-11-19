@@ -1137,6 +1137,8 @@ header {
     background-color: rgba(0,0,0, 0.4);
     padding-left: 20px;
     padding-right: 15px;
+    max-width: 50%;
+    width: fit-content;
 }
 
 .h1-baniere{
@@ -1296,7 +1298,31 @@ header {
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    height: 70px;
+    height: 80px;
+}
+.threeline2{
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 90px;
+}
+.threeline3{
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 90px;
+}
+.threeline4{
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 90px;
 }
 
 .police-class{
