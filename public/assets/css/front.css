@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900);
 @import url(https://raw.github.com/FortAwesome/Font-Awesome/master/docs/assets/css/font-awesome.min.css);
 
 body {
@@ -7,11 +8,11 @@ body {
     margin: 0;
     padding: 0;
     background-color: white;
-    font-family: "Roboto" !important;
+    font-family: "Roboto", sans-serif; !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Roboto" !important;
+    font-family: "Roboto", sans-serif; !important;
 }
 
 a {
@@ -76,6 +77,7 @@ header {
     color: #f47822;
     font-size: 25px;
     margin-right: 3px;
+    display: flex;
 }
 
 .topicon2-span {
@@ -83,6 +85,7 @@ header {
     font-family: "Roboto";
     font-weight: bold;
     font-size: 15px;
+    display: flex;
 }
 
 .topicon2-margin {
@@ -273,7 +276,17 @@ header {
     margin-bottom: 25px;
     z-index: 1;
 }
+.bannier_home{
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
 
+}
+.slide_title{
+    color: #61c40b;
+    font-size: 10em;
+    font-weight: 700;
+}
 .black-behind-form {
     background: #262625;
     background-image: url(/assets/images/phone.png);
@@ -448,7 +461,7 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    top: 550px;
+    top: 50%;
     left: 25px;
     text-align: center;
     z-index: 1;
@@ -553,9 +566,9 @@ header {
 }
 
 .center-logo {
-    position: absolute;
-    left: 47%;
-    top: -15%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
 }
 
 .item-center {
@@ -575,7 +588,7 @@ header {
 }
 
 .button-featured-home {
-    height: 20px;
+    height: 35px;
     margin-left: -95px;
     margin-top: 50px;
 }
@@ -590,8 +603,11 @@ header {
     width: 100px;
     top: -40px;
     left: 115px;
+    display: block;
 }
-
+#search-form{
+    display: none;
+}
 /*.arrow-right1 {
     top: 460px !important;
     left: 300px !important;
@@ -700,9 +716,7 @@ header {
 }
 
 .img-home {
-    left: 0px;
-    position: absolute;
-    height: 100%;
+
 }
 
 .quisommesnous {
@@ -1083,29 +1097,7 @@ header {
     height: auto;
 }*/
 
-@media screen and (max-width: 840px) {
-    .row {
-        display: block !important;
-    }
-    .row .post {
-        width: 100%;
-        margin: 0;
-    }
-}
-@media screen and (max-width: 600px) {
-    .content {
-        width: 70% !important;
-    }
 
-    .image {
-        width: 30% !important;
-    }
-
-    h1 {
-        text-overflow: inherit;
-        white-space: normal;
-    }
-}
 /* clearfix */
 .cf:before,
 .cf:after {
@@ -1121,14 +1113,14 @@ header {
 
 .mateb-baniere {
     position: absolute !important;
-    left: 140px !important;
+    left: 9% !important;
     top: 50px !important;
     z-index: 1;
 }
 
 .materiel-baniere {
     position: absolute !important;
-    left: 155px !important;
+    left: 10% !important;
     top: 216px !important;
     z-index: 1;
     font-family: "Roboto" !important;
@@ -1138,9 +1130,9 @@ header {
 }
 
 .quisommesnous-baniere-button {
-    position: absolute !important;
-    left: 150px !important;
-    top: 270px !important;
+    position: absolute;
+    left: 10%;
+    top: 270px ;
     z-index: 1;
     font-size: 25px;
 }

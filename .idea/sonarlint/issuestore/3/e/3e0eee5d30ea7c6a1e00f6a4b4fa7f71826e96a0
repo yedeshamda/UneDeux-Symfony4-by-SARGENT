@@ -1,0 +1,4 @@
+
+n	php:S3776"TRefactor this function to reduce its Cognitive Complexity from 40 to the 15 allowed.(¶Ø£öÿÿÿÿÿ
+s	php:S1192Ü"XDefine a constant instead of duplicating this literal "parametres/homeBanieres" 3 times.(ëê™øÿÿÿÿ
+Œphp:S138"sThis function "new" has 154 lines, which is greater than the 150 lines authorized. Split it into smaller functions.(¶Ø£öÿÿÿÿÿ

@@ -1,0 +1,4 @@
+
+W	php:S1226N"BIntroduce a new variable instead of reusing the parameter "$user".(ò§ÓÕ
+k	php:S11171"QRename "$entityManager" which has the same name as the field declared at line 23.(¸”¶Åùÿÿÿÿ
+l	php:S1117‰"QRename "$entityManager" which has the same name as the field declared at line 23.(¸”¶Åùÿÿÿÿ

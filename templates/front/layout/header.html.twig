@@ -129,10 +129,15 @@
 
             <div class="col-2">
                 <div class="div-search-cadre">
-                    <i class="fas fa-search"></i>
+                    <i id="toggle-search" class="fas fa-search"></i>
                 </div>
             </div>
         </div>
-
+        <form id="search-form" action="">
+            <fieldset>
+                <input name="search-terms" type="search" placeholder="{{ 'Recherche...'|trans }}" />
+            </fieldset>
+            <input type="submit" value="Ok" />
+        </form>
     </div>
 </header>

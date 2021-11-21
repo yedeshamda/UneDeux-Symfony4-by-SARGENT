@@ -1,13 +1,16 @@
-<div class="row swiper margin-swiper">
-    <div class="swiper-wrapper swiper-slide-background-color">
-        {% for marque in marques %}
-            <div class="swiper-slide swiper-slide-background-color">
-                <a href="{{ path('front_produit_marque_index', {'id': marque.id}) }}">
-                    <img class="swiper-slide-on-footer" src="{{ asset('images/marques/'~marque.imageName) }}" alt="">
-                </a>
-            </div>
-        {% endfor %}
+<div class="row overflow-hidden">
+    <div class="marque_swiper margin-swiper">
+        <div class="swiper-wrapper swiper-slide-background-color">
+            {% for marque in marques %}
+                <div class="swiper-slide swiper-slide-background-color">
+                    <a href="{{ path('front_produit_marque_index', {'id': marque.id}) }}">
+                        <img class="swiper-slide-on-footer" src="{{ asset('images/marques/'~marque.imageName) }}"
+                             alt="">
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="swiper-button-next swiper-button-prev-footer"></div>
+        <div class="swiper-button-prev swiper-button-prev-footer"></div>
     </div>
-    <div class="swiper-button-next swiper-button-prev-footer"></div>
-    <div class="swiper-button-prev swiper-button-prev-footer"></div>
 </div>
