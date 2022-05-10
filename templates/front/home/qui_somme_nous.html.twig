@@ -1,186 +1,43 @@
 {% extends 'front/layout/base.html.twig' %}
 
 {% block body %}
-
-    <div class="row">
-        <div class="col-1 p-0 island1">
-
-        </div>
-        <div class="col-10">
-            <div class="container mt-5">
-                <h1 class="quisommesnous">{% trans %}QUI SOMMES NOUS ?{% endtrans %}</h1>
-                <div class="card big-card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-8">
-                                <img src="{{ asset('images/parametres/apropos/'~parametre.image1) }}" width="700px"
-                                     height="300px" alt="">
-                            </div>
-                            <div class="col-4">
-                                <h5 class="bienv">{% trans %}Bienvenue à{% endtrans %}<span> MATEB </span></h5>
-                                {% if app.request.locale == 'fr' %}
-                                    {{ parametre.bienvenue }}
-                                {% elseif app.request.locale == 'en' %}
-                                    {{ parametre.welcome }}
-                                {% endif %}
-
-                            </div>
-                        </div>
-
-                        <div class="row mt-5">
-                            <div class="col-4">
-                                <h5 class="bienv">{% trans %}Les missions de{% endtrans %}<span> MATEB </span></h5>
-                                {% if app.request.locale == 'fr' %}
-                                    {{ parametre.mission }}
-                                {% elseif app.request.locale == 'en' %}
-                                    {{ parametre.missionen }}
-                                {% endif %}
-                            </div>
-                            <div class="col-8">
-                                <img src="{{ asset('images/parametres/apropos/'~parametre.image2) }}" width="700px"
-                                     height="300px" alt="">
-                            </div>
-                        </div>
+    <section class="banner_area">
+        <div class="banner_inner d-flex align-items-center">
+            <div class="container">
+                <div class="banner_content d-md-flex justify-content-between align-items-center">
+                    <div class="mb-3 mb-md-0">
+                        <h2>QUI SOMMES-NOUS ?</h2>
+                     </div>
+                    <div class="page_link">
+                        <a href="{{ path('front_home') }}">ACCUEIL</a>
+                        <a href="{{ path('front_qui_somme_nous') }}">QUI SOMMES-NOUS ?</a>
                     </div>
                 </div>
             </div>
-            {# CAT  Swiper #}
-            <div class="position-relative margin-container overflow-hidden">
-                <h1 class="quisommesnous">{% trans %}NOS SERVICES{% endtrans %}</h1>
-                <div class="center-logo">
-
-                </div>
-                <div class="row item-center swiper2 margin-swiper">
-                    <div class="swiper-wrapper swiper-slide-background-color2">
-                        {% for categorie in categories %}
-                            <div class="swiper-slide swiper-slide-background-color2">
-                                <div class="col-3">
-                                    <a href="{{ path('front_produit_categorie_index', {'id': categorie.id}) }}">
-                                    <div class="card card-categorie position-relative">
-                                        <figure class="snip1325">
-                                            <img src="{{ asset('images/categories/'~categorie.baniereImageName) }}"
-                                                 alt="ls-sample4"/>
-                                        </figure>
-                                        <div class="cercle">
-                                            <img class="cercle-img"
-                                                 src="{{ asset('images/categories/'~categorie.imageName2) }}" alt="">
-                                        </div>
-                                        <div class="card-body">
-                                            <h5 class="cat-dessus-footer"> {{ categorie.nom }}</h5>
-                                            {% if app.request.locale == 'fr' %}
-                                                <p class="cat-dessus-footer-span threeline"> {{ categorie.description }}</p>
-                                            {% elseif app.request.locale == 'en' %}
-                                                <p class="cat-dessus-footer-span threeline"> {{ categorie.descriptionEnglish }}</p>
-                                            {% endif %}
-                                         </div>
-                                    </div>
-                                    </a>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
-                    <div class="swiper-button-next swiper-button-prev2 arrow-right3 "></div>
-                    <div class="swiper-button-prev swiper-button-prev2 arrow-left3"></div>
-                </div>
-            </div>
-            {# /CAT  Swiper #}
         </div>
-        <div class="col-1 p-0 island1">
+    </section>
+    <section class="sample-text-area">
+        <div class="container">
+            <h3 class="text-heading title_color">UNE DEUX</h3>
+            <p class="sample-text">
+                UNE DEUX propose une plateforme de location de location ouverte aux particuliers et aux professionnels.
+                Les Services sont fournis par UNE DEUX rue place champollion 13800 Istres,France.
+                La plateforme UNE DEUX met en relation des Propriétaires et des Locataires pour faciliter la Co-Navigation ou la Location d'Embarcations ainsi que la gestion des paiements entre Utilisateurs. Les Services sont accessibles sur le site UNE DEUX via l'adresse suivante www.immotunisie.fr déclinée aussi selon la langue choisie par l'utilisateur. Une application mobile immotunisie est aussi disponible.
+                Les Services sont décrits en détail dans «CGU» : désigne les Conditions Générales d'Utilisation de UNE DEUX consultables à tout moment sur la plateforme.
+                UNE DEUX est responsable du traitement des données à caractère personnel collectées lors de votre utilisation de nos Services et de notre site, depuis n'importe quel outil de connexion. En vous inscrivant sur la plateforme UNE DEUX, vous acceptez le dit traitement des données à caractère personnel en garantissant aussi l'exactitude de toutes les données que vous fournirez à notre Service.
 
+            </p>
         </div>
-    </div>
-
-
-    {% include 'front/layout/marques.html.twig' %}
-
-    <div class="social-media-baniere">
-        <a href="{{ parametre.youtube }}"> <i class="fab topicon-fixed fa-youtube"></i></a>
-        <a href="{{ parametre.instagram }}"><i class="fab topicon-fixed fa-instagram"></i></a>
-        <a href="{{ parametre.facebook }}"><i class="fab topicon-fixed fa-facebook"></i></a>
-    </div>
-
+    </section>
 {% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
-    <!-- Link Swiper's CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
 
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"
-            integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.esm.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.esm.bundle.js"></script>
-
-
-    <!-- Swiper JS -->
-    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-    <!-- Initialize Swiper -->
-    <script>
-        var swiper = new Swiper('.swiper', {
-            slidesPerView: 4,
-            direction: getDirection(),
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            on: {
-                resize: function () {
-                    swiper.changeDirection(getDirection());
-                },
-            },
-        });
-
-        function getDirection() {
-            var windowWidth = window.innerWidth;
-            var direction = window.innerWidth <= 760 ? 'vertical' : 'horizontal';
-
-            return direction;
-        }
-    </script>
-    <script>
-        $(".hover").mouseleave(
-            function () {
-                $(this).removeClass("hover");
-            }
-        );
-    </script>
-
-    <script>
-        var swiper2 = new Swiper('.swiper2', {
-            slidesPerView: 3,
-            direction: getDirection(),
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            on: {
-                resize: function () {
-                    swiper2.changeDirection(getDirection());
-                },
-            },
-        });
-
-        function getDirection() {
-            var windowWidth = window.innerWidth;
-            var direction = window.innerWidth <= 760 ? 'vertical' : 'horizontal';
-
-            return direction;
-        }
-    </script>
 
 {% endblock %}

@@ -1,18 +1,339 @@
 {% extends 'admin/layout/base.html.twig' %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/Malek FENINA/Desktop/MATEB/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/Malek FENINA/Desktop/MATEB/templates/home/index_catalogue.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
-</div>
+{% block title %}WeProvide Admin!
 {% endblock %}
+
+{% block body %}
+	<div
+		class="col-md-12">
+		<!-- AREA CHART -->
+		<div class="card card-primary">
+			<div class="card-header">
+				<h3 class="card-title">Nombre de livraisons par mois</h3>
+
+				<div class="card-tools">
+					<button type="button" class="btn btn-tool" data-card-widget="collapse">
+						<i class="fas fa-minus"></i>
+					</button>
+					<button type="button" class="btn btn-tool" data-card-widget="remove">
+						<i class="fas fa-times"></i>
+					</button>
+				</div>
+			</div>
+			<div class="card-body">
+				<div class="chart">
+					<canvas id="myAreaChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+				</div>
+			</div>
+			<!-- /.card-body -->
+		</div>
+		<!-- /.card -->
+
+		<!-- PIE CHART -->
+		<div class="card card-danger">
+			<div class="card-header">
+				<h3 class="card-title">Nombre d'utilisateurs par rôle</h3>
+
+				<div class="card-tools">
+					<button type="button" class="btn btn-tool" data-card-widget="collapse">
+						<i class="fas fa-minus"></i>
+					</button>
+					<button type="button" class="btn btn-tool" data-card-widget="remove">
+						<i class="fas fa-times"></i>
+					</button>
+				</div>
+			</div>
+			<div class="card-body">
+				<canvas id="myPieChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+			</div>
+			<!-- /.card-body -->
+		</div>
+		<!-- /.card -->
+
+		<!-- BAR CHART -->
+		<div class="card card-success">
+			<div class="card-header">
+				<h3 class="card-title">Nombre de livraisons</h3>
+
+				<div class="card-tools">
+					<button type="button" class="btn btn-tool" data-card-widget="collapse">
+						<i class="fas fa-minus"></i>
+					</button>
+					<button type="button" class="btn btn-tool" data-card-widget="remove">
+						<i class="fas fa-times"></i>
+					</button>
+				</div>
+			</div>
+			<div class="card-body">
+				<div class="chart">
+					<canvas id="myBarChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+				</div>
+			</div>
+			<!-- /.card-body -->
+		</div>
+		<!-- /.card -->
+
+	</div>
+	<!-- /.col (LEFT) -->
+
+</div>
+<!-- /.col (RIGHT) -->
+<!-- ChartJS -->
+<script src="{{ asset("plugins/chart.js/Chart.min.js") }}"></script>
+<script>
+	// Area Chart Example
+var ctx = document.getElementById("myAreaChart");
+var myLineChart = new Chart(ctx, {
+type: 'line',
+data: {
+labels: [
+"Jan",
+"Feb",
+"Mar",
+"Apr",
+"May",
+"Jun",
+"Jul",
+"Aug",
+"Sep",
+"Oct",
+"Nov",
+"Dec"
+],
+datasets: [
+{
+label: "nombre de livraisons par mois",
+lineTension: 0.3,
+backgroundColor: "rgba(78, 115, 223, 0.05)",
+borderColor: "rgba(78, 115, 223, 1)",
+pointRadius: 3,
+pointBackgroundColor: "rgba(78, 115, 223, 1)",
+pointBorderColor: "rgba(78, 115, 223, 1)",
+pointHoverRadius: 3,
+pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+pointHitRadius: 10,
+pointBorderWidth: 2,
+data: [
+{{ jan }},
+{{ feb }},
+{{ mar }},
+{{ apr }},
+{{ may }},
+{{ juin }},
+{{ jui }},
+{{ aout }},
+{{ sept }},
+{{ oct }},
+{{ nov }},
+{{ dec }}
+]
+}
+]
+},
+options: {
+maintainAspectRatio: false,
+layout: {
+padding: {
+left: 10,
+right: 25,
+top: 25,
+bottom: 0
+}
+},
+scales: {
+xAxes: [
+{
+time: {
+unit: 'date'
+},
+gridLines: {
+display: false,
+drawBorder: false
+},
+ticks: {
+maxTicksLimit: 7
+}
+}
+],
+yAxes: [
+{
+ticks: {
+maxTicksLimit: 5,
+padding: 10
+},
+gridLines: {
+color: "rgb(234, 236, 244)",
+zeroLineColor: "rgb(234, 236, 244)",
+drawBorder: false,
+borderDash: [2],
+zeroLineBorderDash: [2]
+}
+}
+]
+},
+legend: {
+display: false
+},
+tooltips: {
+backgroundColor: "rgb(255,255,255)",
+bodyFontColor: "#858796",
+titleMarginBottom: 10,
+titleFontColor: '#6e707e',
+titleFontSize: 14,
+borderColor: '#dddfeb',
+borderWidth: 1,
+xPadding: 15,
+yPadding: 15,
+displayColors: false,
+intersect: false,
+mode: 'index',
+caretPadding: 10
+}
+}
+});
+
+// Set new default font family and font color to mimic Bootstrap's default styling
+Chart.defaults.global.defaultFontFamily = 'Nunito',
+'-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+Chart.defaults.global.defaultFontColor = '#858796';
+
+// Pie Chart Example
+var ctx = document.getElementById("myPieChart");
+var myPieChart = new Chart(ctx, {
+type: 'doughnut',
+data: {
+labels: [
+"Clients",
+"Admins",
+"Livreurs",
+"Prestataires",
+"Restaurants"
+],
+datasets: [
+{
+data: [
+{{ clients }},
+{{ admins }},
+{{ livreurs }},
+{{ prestataires }},
+{{ restaurants }}
+],
+backgroundColor: [
+'#4e73df', '#1cc88a', '#36b9cc'
+],
+hoverBackgroundColor: [
+'#2e59d9', '#17a673', '#2c9faf'
+],
+hoverBorderColor: "rgba(234, 236, 244, 1)"
+}
+]
+},
+options: {
+maintainAspectRatio: false,
+tooltips: {
+backgroundColor: "rgb(255,255,255)",
+bodyFontColor: "#858796",
+borderColor: '#dddfeb',
+borderWidth: 1,
+xPadding: 15,
+yPadding: 15,
+displayColors: false,
+caretPadding: 10
+},
+legend: {
+display: false
+},
+cutoutPercentage: 80
+}
+});
+
+// Bar Chart Example
+var ctx = document.getElementById("myBarChart");
+var myLineChart = new Chart(ctx, {
+type: 'horizontalBar',
+data: {
+labels: [
+"Aujourdhui", "Ce mois", "Cette année"
+],
+datasets: [
+{
+label: "nombre de livraisons",
+lineTension: 0.3,
+backgroundColor: "#0275d8",
+borderColor: "#0275d8",
+pointRadius: 3,
+pointBackgroundColor: "#0275d8",
+pointBorderColor: "#0275d8",
+pointHoverRadius: 3,
+pointHoverBackgroundColor: "#0275d8",
+pointHoverBorderColor: "#0275d8",
+pointHitRadius: 10,
+pointBorderWidth: 2,
+data: [{{ daily }}, {{ monthly }}, {{ yearly }}]
+}
+]
+},
+options: {
+responsive: true,
+maintainAspectRatio: false,
+layout: {
+padding: {
+left: 10,
+right: 25,
+top: 25,
+bottom: 0
+}
+},
+scales: {
+xAxes: [
+{
+time: {
+unit: 'date'
+},
+gridLines: {
+display: false,
+drawBorder: false
+},
+ticks: {
+maxTicksLimit: 7
+}
+}
+],
+yAxes: [
+{
+ticks: {
+maxTicksLimit: 5,
+padding: 10
+},
+gridLines: {
+color: "rgb(234, 236, 244)",
+zeroLineColor: "rgb(234, 236, 244)",
+drawBorder: false,
+borderDash: [2],
+zeroLineBorderDash: [2]
+}
+}
+]
+},
+legend: {
+display: false
+},
+tooltips: {
+backgroundColor: "rgb(255,255,255)",
+bodyFontColor: "#858796",
+titleMarginBottom: 10,
+titleFontColor: '#6e707e',
+titleFontSize: 14,
+borderColor: '#dddfeb',
+borderWidth: 1,
+xPadding: 15,
+yPadding: 15,
+displayColors: false,
+intersect: false,
+mode: 'index',
+caretPadding: 10
+}
+}
+});
+</script>{% endblock %}

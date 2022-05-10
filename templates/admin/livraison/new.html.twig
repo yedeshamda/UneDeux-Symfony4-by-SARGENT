@@ -1,0 +1,39 @@
+{% extends 'admin/layout/base.html.twig' %}
+
+{% block body %}
+	<!-- Content Wrapper. Contains page content -->
+	<div
+		class="container">
+		<!-- Content Header (Page header) -->
+		<section class="content-header">
+			<div class="container-fluid">
+				<div class="row mb-2">
+					<div class="col-sm-6">
+						<h1>Ajouter une Livraison</h1>
+					</div>
+				</div>
+			</div>
+			<!-- /.container-fluid -->
+		</section>
+
+		<!-- Main content -->
+		<section class="content">
+			<div class="row">
+				<div class="col-12">
+					<div class="card">
+						<div class="card-body">
+							{{ include('admin/livraison/_form.html.twig') }}
+
+							<a class="btn btn-info" href="{{ path('app_livraison_index') }}">back to list</a>
+						</div>
+						<!-- /.card-body -->
+					</div>
+					<!-- /.card -->
+				</div>
+				<!-- /.col -->
+			</div>
+			<!-- /.row -->
+		</section>
+		<!-- /.content -->
+	</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'front/layout/base.html.twig' %}
+{% block body %}
+    <div class="container">
+    <h1>Bienvenu Chez notre boutique Une Deux</h1>
+
+    <table class="table">
+        <tbody>
+        <center>
+        <img src="{{ asset('images/users/'~app.user.photo.photoName|default('')) }}" height="160">
+        </center>
+        <br>
+            <tr>
+                <th>Email</th>
+                <td>{{ app.user.email }}</td>
+            </tr>
+            <tr>
+                <th>Roles</th>
+                {% if app.user.roles[0]=="ROLE_ADMIN" %}
+                    <td>ADMIN</td>
+                {% else %}
+                    <td>Utilisateur</td>
+                {% endif %}
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ app.user.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ app.user.prenom }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <div class="float-right">
+    <a class="main_btn" href="{{ path('front_user_edit', {'id': user.id}) }}">Modifer vos informations</a>
+    </div>
+    <div class="float-left">
+    <a class="main_btn" href="{{ path('front_user_edit_password', {'id': user.id}) }}">Changer votre mot de passe</a>
+    </div>
+    </div>
+{% endblock %}

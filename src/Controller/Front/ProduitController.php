@@ -2,10 +2,6 @@
 
 namespace App\Controller\Front;
 
-use App\Entity\Devis;
-use App\Entity\Produit;
-use App\Form\DevisType;
-use App\Form\ProduitType;
 use App\Repository\CategorieRepository;
 use App\Repository\MarqueRepository;
 use App\Repository\ProduitRepository;
@@ -82,38 +78,6 @@ class ProduitController extends AbstractController
         ]);
     }
 
-    #[Route('/produitMarque/{id}', name: 'produit_marque_index', methods: ['GET','POST'])]
-    public function indexMarque(MarqueRepository $marqueRepository,int $id,Request $request, PaginatorInterface $paginator, ProduitRepository $produitRepository, CategorieRepository $categorieRepository): Response
-    {
-        $categories = $categorieRepository->findAll();
-        $marques = $marqueRepository->findAll();
-
-        $categorie = $categorieRepository->find($id);
-        $marque = $marqueRepository->find($id);
-        $produitsByCategorie = $produitRepository->findBy(
-            ['categorie' => [$categorie]],
-        );
-
-        $produitsByMarque = $produitRepository->findBy(
-            ['marque' => [$marque]],
-        );
-
-
-        $pagination = $paginator->paginate(
-            $produitsByMarque, /* query NOT result */
-            $request->query->getInt('page', 1), /*page number*/
-            9 /*limit per page*/
-        );
-
-        return $this->render('front/produit/indexMarque.html.twig', [
-            'produitsByCategorie' => $produitsByCategorie,
-            'categories' => $categories,
-            'categorie' => $categorie,
-            'marques' => $marques,
-            'produitsByMarque' => $pagination,
-        ]);
-    }
-
     #[Route('/produit/show/{id}', name: 'produit_show', methods: ['POST','GET'])]
     public function show(MarqueRepository $marqueRepository,Request $request, int $id, ProduitRepository $produitRepository, CategorieRepository $categorieRepository): Response
     {
@@ -125,29 +89,12 @@ class ProduitController extends AbstractController
             ['categorie' => [$produit->getCategorie()]],
         );
 
-        $devi = new Devis();
-        $devi->addProduit($produit);
-        $form = $this->createForm(DevisType::class, $devi);
-        $form->handleRequest($request);
-
-        //Devis
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($devi);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('front_home', [], Response::HTTP_SEE_OTHER);
-        }
-
         return $this->render('front/produit/show.html.twig', [
             'categories' => $categories,
             'produit' => $produit,
             'produits' => $produits,
             'produitsFeatured' => $produitsFeatured,
-            //Devis
-            'devi' => $devi,
             'marques' => $marques,
-            'form' => $form->createView(),
         ]);
     }
 
@@ -203,6 +150,39 @@ class ProduitController extends AbstractController
             )
         );
     }
+
+    #[Route('/produitMarque/{id}', name: 'produit_marque_index', methods: ['GET','POST'])]
+    public function indexMarque(MarqueRepository $marqueRepository,int $id,Request $request, PaginatorInterface $paginator, ProduitRepository $produitRepository, CategorieRepository $categorieRepository): Response
+    {
+        $categories = $categorieRepository->findAll();
+        $marques = $marqueRepository->findAll();
+
+        $categorie = $categorieRepository->find($id);
+        $marque = $marqueRepository->find($id);
+        $produitsByCategorie = $produitRepository->findBy(
+            ['categorie' => [$categorie]],
+        );
+
+        $produitsByMarque = $produitRepository->findBy(
+            ['marque' => [$marque]],
+        );
+
+
+        $pagination = $paginator->paginate(
+            $produitsByMarque, /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            9 /*limit per page*/
+        );
+
+        return $this->render('front/produit/indexMarque.html.twig', [
+            'produitsByCategorie' => $produitsByCategorie,
+            'categories' => $categories,
+            'categorie' => $categorie,
+            'marques' => $marques,
+            'produitsByMarque' => $pagination,
+        ]);
+    }
+
 
     #[Route('/produit/download/{file}', name: 'produit_download_file', methods: ['GET'])]
     public function downloadFileAction(string $file){

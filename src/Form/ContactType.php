@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Contact;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -15,30 +16,27 @@ class ContactType extends AbstractType
     {
         $builder
             ->add('nom',null, [
-                'attr' => ['class' => 'input-contact',
-                    'placeholder' => '*Nom'],
-                'translation_domain' => 'messages'
-            ])
+                'attr' => ['class' => 'app-form-control',
+                    'placeholder' => '*Nom',
+                    'value'=> 'Ben Foulen'],
+             ])
             ->add('prenom',null, [
-                'attr' => ['class' => 'input-contact',
-                    'placeholder' => '*Prenom'],
-                'translation_domain' => 'messages'
-            ])
+                'attr' => ['class' => 'app-form-control',
+                    'placeholder' => '*Prenom',
+                'value'=> 'Foulen'],
+             ])
             ->add('tel',TelType::class, [
-                'attr' => ['class' => 'input-contact',
-                    'placeholder' => '*Entrez votre numéro de téléphone'],
-                'translation_domain' => 'messages'
-            ])
-            ->add('email',null, [
-                'attr' => ['class' => 'input-contact',
+                'attr' => ['class' => 'app-form-control',
+                    'placeholder' => '*Numéro de téléphone'],
+             ])
+            ->add('email',EmailType::class, [
+                'attr' => ['class' => 'app-form-control',
                     'placeholder' => '*Entrez votre E-mail'],
-                'translation_domain' => 'messages'
-            ])
+             ])
             ->add('message',TextareaType::class, [
-                'attr' => ['class' => 'input-contact-textareaType',
+                'attr' => ['class' => 'app-form-control',
                     'placeholder' => '*Entrez un message'],
-                'translation_domain' => 'messages'
-            ])
+             ])
         ;
     }
 

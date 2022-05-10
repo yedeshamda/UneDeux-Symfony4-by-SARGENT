@@ -73,7 +73,7 @@ class Categorie
     private $description;
 
     /**
-     * @ORM\OneToMany(targetEntity=Produit::class, mappedBy="categorie")
+     * @ORM\OneToMany(targetEntity=Produit::class, mappedBy="categorie",cascade={"persist","remove"})
      */
     private $produits;
 

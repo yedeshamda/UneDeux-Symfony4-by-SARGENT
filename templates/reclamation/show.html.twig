@@ -1,0 +1,66 @@
+{% extends 'admin/layout/basee.html.twig' %}
+
+{% block body %}
+    <h1>Reclamation</h1>
+
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Idrec</th>
+                <td>{{ reclamation.idrec }}</td>
+            </tr>
+            <tr>
+                <th>Iduser</th>
+                <td>{{ reclamation.iduser }}</td>
+            </tr>
+            <tr>
+                <th>Sujetrec</th>
+                <td>{{ reclamation.sujetrec }}</td>
+            </tr>
+            <tr>
+                <th>Libelleproduit</th>
+                <td>{{ reclamation.libelleproduit }}</td>
+            </tr>
+            <tr>
+                <th>Descriptionrec</th>
+                <td>{{ reclamation.descriptionrec }}</td>
+            </tr>
+            <tr>
+                <th>Imgrec</th>
+                <td> <img src="{{ asset('uploads/images/' ~ reclamation.imgrec ) }} " alt="" style="width: 200px; height: 200px"> </td>
+            </tr>
+            <tr>
+                <th>Statusrec</th>
+                <td>{{ reclamation.statusrec }}</td>
+            </tr>
+            <tr>
+                <th>Daterec</th>
+                <td>{{ reclamation.daterec ? reclamation.daterec|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Datetraitement</th>
+                <td>{{ reclamation.datetraitement ? reclamation.datetraitement|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Nomprenomuser</th>
+                <td>{{ reclamation.nomprenomuser }}</td>
+            </tr>
+            <tr>
+                <th>Emailuser</th>
+                <td>{{ reclamation.emailuser }}</td>
+            </tr>
+            <tr>
+                <th>Reponse</th>
+                <td>{{ reclamation.reponse }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_reclamation_index') }}">back to list</a>
+    <a href="{{ path('app_reclamation_edit', {'idrec': reclamation.idrec}) }}">Modifer</a>
+    <a href="{{ path('listpdf', {'id': reclamation.idrec}) }}">Imprimer</a>
+
+
+    {{ include('reclamation/_delete_form.html.twig') }}
+{% endblock %}

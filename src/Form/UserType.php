@@ -15,16 +15,21 @@ class UserType extends AbstractType
         $builder
             ->add('email')
             //->add('roles')
-            ->add('password',PasswordType::class, [
+            ->add('password', PasswordType::class, [
                 'label' => 'Mot de passe',
             ])
             ->add('nom')
             ->add('prenom')
-            ->add('photo',UserPhotoType::class, [
+            ->add('photo', UserPhotoType::class, [
                 'required' => false,
                 'label' => 'Image'
             ])
-        ;
+            ->add('Commandes', EntityType::class, [
+                'class' => Commandes::class,
+                'choice_label' => 'id',
+                'multiple' => true,
+                'expanded' => true,
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

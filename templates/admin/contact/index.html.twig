@@ -1,6 +1,6 @@
 {% extends 'admin/layout/base.html.twig' %}
 {% block body %}
-    <h1>Liste des Contacts</h1>
+    <h1>Liste des Categories</h1>
 
     <table id="table_id" class="table table-striped">
         <thead>
@@ -21,7 +21,6 @@
                 <td>{{ contact.email }}</td>
                 <td>
                     <a class="btn btn-primary btn-sm" href="{{ path('admin_contact_show', {'id': contact.id}) }}">Détails</a>
-                    <a class="btn btn-warning btn-sm" href="{{ path('admin_contact_edit', {'id': contact.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -33,6 +32,7 @@
     </table>
 {% endblock %}
 
+
 {% block stylesheets %}
     {{ parent() }}
     <link href="{{ asset('assets/css/datatables.min.css') }}" rel="stylesheet" type="text/css">
@@ -41,8 +41,7 @@
 {% block javascripts %}
     {{ parent() }}
     <!-- DataTable-->
-    <script src="{{ asset('assets/js/pdfmake.min.js') }}"></script>
-    <script src="{{ asset('assets/js/vfs_fonts.js') }}"></script>
+
     <script src="{{ asset('assets/js/datatables.min.js') }}"></script>
 
     <script>

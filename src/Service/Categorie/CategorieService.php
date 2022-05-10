@@ -35,13 +35,4 @@ class CategorieService
         return $titre;
     }
 
-/*    public function getDescripton()
-    {
-        $categories = $this->categorieRepository->findAll();
-        foreach($categories as $categorie)
-        {
-            $descripton = $categorie->getDescription();
-        }
-        return $descripton;
-    }*/
 }

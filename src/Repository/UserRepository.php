@@ -20,6 +20,15 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
+    public function getallusersAdmin()
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.roles = :val')
+            ->setParameter('val', '["ROLE_ADMIN"]')
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Produit[] Returns an array of Produit objects
     //  */

@@ -1,0 +1,48 @@
+{{ form_start(form) }}
+
+<section class="checkout_area section_gap">
+    <div class="container">
+        <div class="returning_customer">
+            <div class="check_title">
+                <h2>
+                    Déjà client?
+                    <a href="{{ path('app_user_login') }}">Cliquez ici pour vous se connecter</a>
+                </h2>
+            </div>
+            <p>
+                Si vous êtes un nouveau client, veuillez passer à la section Facturation et expédition.
+            </p>
+            <div class="row contact_form">
+                <div class="col-md-6 form-group p_star">
+                    {{ form_widget(form.email) }}
+                 </div>
+                <div class="col-md-6 form-group p_star">
+                    {{ form_widget(form.password) }}
+                </div>
+                <div class="col-md-6 form-group p_star">
+                    {{ form_widget(form.nom) }}
+                </div>
+                <div class="col-md-6 form-group p_star">
+                    {{ form_widget(form.prenom) }}
+                </div>
+                <div class="col-md-6 form-group p_star">
+                    {{ form_widget(form.photo) }}
+                 </div>
+
+                <div class="col-md-12 form-group">
+                    <button type="submit" value="submit" class="btn submit_btn">
+                        {{ button_label|default('S’Inscrire') }}
+                    </button>
+{#                    <div class="creat_account">
+                        <input type="checkbox" id="f-option" name="selector">
+                        <label for="f-option">Remember me</label>
+                    </div>
+                    <a class="lost_pass" href="#">Lost your password?</a>#}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{{ form_end(form) }}

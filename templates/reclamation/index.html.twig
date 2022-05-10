@@ -1,0 +1,54 @@
+
+{% extends 'admin/layout/basee.html.twig' %}
+{% block body %}
+    <h1>Reclamation index</h1>
+
+    <table  class="table table-striped">
+        <thead>
+            <tr>
+
+                <th>Sujetrec</th>
+                <th>Libelleproduit</th>
+                <th>Descriptionrec</th>
+                <th>Imgrec</th>
+                <th>Statusrec</th>
+                <th>Daterec</th>
+
+            </tr>
+        </thead>
+        <tbody>
+        {% for reclamation in reclamations %}
+            <tr>
+                <td>{{ reclamation.sujetrec }}</td>
+                <td>{{ reclamation.libelleproduit }}</td>
+                <td>{{ reclamation.descriptionrec }}</td>
+                <td> <img src="{{ asset('/' ~ reclamation.imgrec ) }} " alt="" style="width: 200px; height: 200px"> </td>
+                <td>{{ reclamation.statusrec }}</td>
+                <td>{{ reclamation.daterec ? reclamation.daterec|date('Y-m-d') : '' }}</td>
+
+                <td>
+                    <a class="btn btn-primary btn-sm" href="{{ path('app_reclamation_show', {'idrec': reclamation.idrec}) }}">show</a>
+                    <a class="btn btn-warning btn-sm" href="{{ path('app_reclamation_edit', {'idrec': reclamation.idrec}) }}">edit</a>
+                    {%  if reclamation.statusrec == "traite" %}
+                        {% if reclamation.likee == 1%}
+                            <a href="{{ path('dislike',{'id_rec':reclamation.idrec}) }}"><img href class="me-2" src="/images/like.png" style="width:30px" /></a>
+                            {% else %}
+                                <a href="{{ path('like',{'id_rec':reclamation.idrec}) }}"><img href class="me-2" src="/images/dislikee.png" style="width:30px" /></a>
+                        {% endif %}
+                    {%  endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_reclamation_new') }}">Create new</a>
+{% endblock %}
+{% block stylesheets %}
+{{ parent() }}
+<link href="{{ asset('assets/css/datatables.min.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}

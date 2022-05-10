@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Real Estate Html Template">
+    <meta name="author" content="">
+    <meta name="generator" content="Jekyll">
+    <title>Mot de passe oublié</title>
+</head>
+<body class="bg">
+<main id="content">
+    <section class="py-13">
+        <div class="container">
+            <div class="row login-register">
+                <div class="col-lg-3"></div>
+
+                <div class="col-lg-6">
+                    <div class="card border-0 shadow-xxs-2 mb-6">
+                        <div class="card-body px-8 py-6">
+                            <h2 class="card-title fs-30 font-weight-600 text-dark lh-16 mb-2">Mot de passe oublié</h2>
+                            <div class="form-group mb-4">
+                                {{ form_start(resetForm) }}
+                                {{ form_row(resetForm.plainPassword) }}
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block rounded">Reset password</button>
+                            {{ form_end(resetForm) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+</body>
+</html>

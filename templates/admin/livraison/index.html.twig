@@ -1,0 +1,89 @@
+{% extends 'admin/layout/base.html.twig' %}
+
+{% block body %}
+	<!-- DataTables -->
+	<link
+	rel="stylesheet" href="{{ asset("plugins/datatables-bs4/css/dataTables.bootstrap4.css") }}">
+	<!-- Content Wrapper. Contains page content -->
+	<div
+		class="container">
+		<!-- Content Header (Page header) -->
+		<section class="content-header">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-sm-6">
+						<h1>Livraisons</h1>
+					</div>
+					<div class="col-sm-6">
+						<a class="btn btn-primary" href="{{ path('app_livraison_new') }}">Nouvelle livraison</a>
+					</div>
+				</div>
+			</div>
+			<!-- /.container-fluid -->
+		</section>
+
+		<!-- Main content -->
+		<section class="content">
+			<div class="row">
+				<div class="col-12">
+					<div class="card">
+						<div class="card-header">
+							<h3 class="card-title">Toutes les livraisons</h3>
+						</div>
+						<!-- /.card-header -->
+						<div class="card-body">
+							<table id="example1" class="table table-bordered table-striped">
+								<thead>
+									<tr>
+										<th>ID</th>
+										<th>Adresse</th>
+										<th>Etat</th>
+										<th>Livreur</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for livraison in livraisons %}
+										<tr>
+											<td>{{ livraison.id }}</td>
+											<td>{{ livraison.adresse }}</td>
+											<td>{{ livraison.etat }}</td>
+											<td>{{ livraison.livreur.email }}</td>
+											<td>
+												<a class="btn btn-info" href="{{ path('app_livraison_show', {'id': livraison.id}) }}">Consulter</a>
+												<a class="btn btn-success" href="{{ path('app_livraison_edit', {'id': livraison.id}) }}">Modifier</a>
+											</td>
+										</tr>
+									{% endfor %}
+								</tbody>
+							</tfoot>
+						</table>
+					</div>
+					<!-- /.card-body -->
+				</div>
+				<!-- /.card -->
+			</div>
+			<!-- /.col -->
+		</div>
+		<!-- /.row -->
+	</section>
+	<!-- /.content -->
+</div>
+<!-- DataTables -->
+<script src="{{ asset("plugins/datatables/jquery.dataTables.js") }}"></script>
+<script src="{{ asset("plugins/datatables-bs4/js/dataTables.bootstrap4.js") }}"></script>
+<!-- page script -->
+<script>
+	$(function () {
+$("#example1").DataTable();
+$('#example2').DataTable({
+"paging": true,
+"lengthChange": false,
+"searching": false,
+"ordering": true,
+"info": true,
+"autoWidth": false
+});
+});
+</script>
+<!-- /.content-wrapper -->{% endblock %}

@@ -1,72 +1,275 @@
 {% extends 'front/layout/base.html.twig' %}
 {% block body %}
-    <div class="row">
-        <!-- Swiper -->
-        <div class="swiper-container mb-5">
-            <div class="swiper-wrapper">
-                {% for categorie in categories %}
-                    <div class="swiper-slide position-relative">
-                        <img src="{{ asset('images/categories/'~categorie.baniereImageName) }}" height="500px"
-                             style="width:100%">
-                        <div class="col-3 info-cat-baniere">
-                            <span class="h1-baniere">{{ categorie.nom }}</span> <br>
+    <section class="banner_area">
+        <div class="banner_inner d-flex align-items-center">
+            <div class="container">
+                <div class="banner_content d-md-flex justify-content-between align-items-center">
+                    <div class="mb-3 mb-md-0">
+                        <h2>Détails Produit</h2>
+                    </div>
+                    <div class="page_link">
+                        <a href="{{ path('front_home') }}">ACCUEIL</a>
+                        <a href="#">Détails Produit</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="product_image_area">
+        <div class="container">
+            <div class="row s_product_inner">
+                <div class="col-lg-6">
+                    <div class="s_product_img">
+                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
+                            {#<img class="d-block w-100" src="{{ asset('images/produits/'~produit.imageName) }}" alt="First slide">#}
+
+                            {#<ol class="carousel-indicators">
+                                {% for img in produit.image %}
+                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">
+                                    <img src="{{ asset('images/imageMultiple/'~img.nom) }}" alt="">
+                                </li>
+                                {% endfor %}
+                            </ol>
+                            <div class="carousel-inner">
+                                {% for img in produit.image %}
+                                <div class="carousel-item carousel-item-next carousel-item-left">
+                                    <img class="d-block w-100" src="{{ asset('images/imageMultiple/'~img.nom) }}" alt="First slide">
+                                </div>
+                                {% endfor %}
+                            </div>#}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 offset-lg-1">
+                    <div class="s_product_text">
+                        <h3>{{ produit.nom }}</h3>
+                        <h2>$149.99</h2>
+                        <ul class="list">
+                            <li>
+                                <a class="active" href="{{ path('front_produit_categorie_index', {'id': produit.categorie.id}) }}">
+                                    <span>Categorie</span> : {{ produit.categorie.nom }}</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('front_produit_marque_index', {'id': produit.marque.id}) }}"> <span>Marque</span> :
+                                    <img class="marque-details-produit" src="{{ asset('images/marques/'~produit.marque.imageName) }}" height="100%" width="100px"></a>
+                            </li>
+                        </ul>
+                        <p>
                             {% if app.request.locale == 'fr' %}
-                                <span class="h2-baniere">{{ categorie.description }}</span>
+                                {{ produit.description }}
                             {% elseif app.request.locale == 'en' %}
-                                <span class="h2-baniere">{{ categorie.descriptionEnglish }}</span>
+                                {{ produit.descriptionEnglish }}
                             {% endif %}
+                        </p>
+
+                        <div class="tab-pane fade nav-fiche" id="nav-profile" role="tabpanel"
+                             aria-labelledby="nav-profile-tab">
+                            <ul>
+                                {% for fiche in produit.fichetech %}
+                                    {% set val = ( val | default(0) ) + 1 %}
+                                    <li>
+                                        <i class="fa fa-file-pdf me-1"></i>
+                                        <a href="{{ path('front_produit_download_file',{'file':fiche.nom}) }}">{{ 'Fiche Technique'|trans ~ val }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+{#                        <div class="product_count">
+                            <label for="qty">Quantity:</label>
+                            <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+                            <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button">
+                                <i class="lnr lnr-chevron-up"></i>
+                            </button>
+                            <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;" class="reduced items-count" type="button">
+                                <i class="lnr lnr-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="card_area">
+                            <a class="main_btn" href="#">Add to Cart</a>
+                        </div>#}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="product_description_area">
+        <div class="container">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active show" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Description</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Specification</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade active show" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <p>
+                        Beryl Cook is one of Britain’s most talented and amusing artists
+                        .Beryl’s pictures feature women of all shapes and sizes enjoying
+                        themselves .Born between the two world wars, Beryl Cook eventually
+                        left Kendrick School in Reading at the age of 15, where she went
+                        to secretarial school and then into an insurance office. After
+                        moving to London and then Hampton, she eventually married her next
+                        door neighbour from Reading, John Cook. He was an officer in the
+                        Merchant Navy and after he left the sea in 1956, they bought a pub
+                        for a year before John took a job in Southern Rhodesia with a
+                        motor company. Beryl bought their young son a box of watercolours,
+                        and when showing him how to use it, she decided that she herself
+                        quite enjoyed painting. John subsequently bought her a child’s
+                        painting set for her birthday and it was with this that she
+                        produced her first significant work, a half-length portrait of a
+                        dark-skinned lady with a vacant expression and large drooping
+                        breasts. It was aptly named ‘Hangover’ by Beryl’s husband and
+                    </p>
+                </div>
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <h5>Width</h5>
+                                </td>
+                                <td>
+                                    <h5>128mm</h5>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h5>Height</h5>
+                                </td>
+                                <td>
+                                    <h5>508mm</h5>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h5>Depth</h5>
+                                </td>
+                                <td>
+                                    <h5>85mm</h5>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h5>Weight</h5>
+                                </td>
+                                <td>
+                                    <h5>52gm</h5>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h5>Quality checking</h5>
+                                </td>
+                                <td>
+                                    <h5>yes</h5>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h5>Freshness Duration</h5>
+                                </td>
+                                <td>
+                                    <h5>03days</h5>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h5>When packeting</h5>
+                                </td>
+                                <td>
+                                    <h5>Without touch of hand</h5>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h5>Each Box contains</h5>
+                                </td>
+                                <td>
+                                    <h5>60pcs</h5>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="feature_product_area section_gap_bottom_custom">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="main_title">
+                        <h2><span>PRODUIT ASSOCIE</span></h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                {% for produit in produits %}
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-product">
+                        <div class="product-img">
+                            <img class="img-fluid w-100" src="{{ asset('images/produits/'~produit.imageName) }}" alt="">
+                        </div>
+                        <div class="product-btm">
+                            <a href="#" class="d-block">
+                                <h4>{{ produit.nom }}</h4>
+                            </a>
+                            <div class="mt-3">
+                                <img src="{{ asset('images/marques/'~produit.marque.imageName) }}" style="height: 50px">
+                                <p>{{ produit.categorie.nom }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="feature_product_area section_gap_bottom_custom">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="main_title">
+                        <h2><span>Produits populaires</span></h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                {% for produitFeatured in produitsFeatured %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-product">
+                            <div class="product-img">
+                                <img class="img-fluid w-100" src="{{ asset('images/produits/'~produitFeatured.imageName) }}" alt="">
+                            </div>
+                            <div class="product-btm">
+                                <a href="#" class="d-block">
+                                    <h4>{{ produitFeatured.nom }}</h4>
+                                </a>
+                                <div class="mt-3">
+                                    <img src="{{ asset('images/marques/'~produit.marque.imageName) }}" style="height: 50px">
+                                    <p>{{ produitFeatured.categorie.nom }}</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 {% endfor %}
             </div>
         </div>
-    </div>
-    <div class="social-media-baniere">
-        <a href="{{ parametre.youtube }}"> <i class="fab topicon-fixed fa-youtube"></i></a>
-        <a href="{{ parametre.instagram }}"><i class="fab topicon-fixed fa-instagram"></i></a>
-        <a href="{{ parametre.facebook }}"><i class="fab topicon-fixed fa-facebook"></i></a>
-    </div>
+    </section>
 
 
-    <div>
-        <div class="row mt-5">
-            <div class="col-1 p-0 island1">
-
-            </div>
-            <div class="col-9 p-0">
-                <div class="container">
-
-                    <div class="row mb-5">
-                        <div class="col-6">
-                            <div class="card">
-                                <div class="card-body card-body-details">
-                                    <img src="{{ asset('images/produits/'~produit.imageName) }}" height="500px"
-                                         width="500px">
-                                    <a href="{{ path('front_produit_marque_index', {'id': produit.marque.id}) }}">
-                                        <img class="marque-details-produit"
-                                             src="{{ asset('images/marques/'~produit.marque.imageName) }}"
-                                             height="100px"
-                                             width="150px">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <h3 class="Cat-details">{{ produit.categorie.nom }}</h3>
-                            <h5 class="produit-details">{{ produit.nom }}</h5>
-                            {% if app.request.locale == 'fr' %}
-                                <span class="desc-details">{{ produit.description }}</span>
-                            {% elseif app.request.locale == 'en' %}
-                                <span class="desc-details">{{ produit.descriptionEnglish }}</span>
-                            {% endif %}
-                            <div class="row">
-                                <a class="button-details btn-outline-warning btn"
-                                   id="demanded">{% trans %}Demande de Devis{% endtrans %}</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row mb-5">
+ {#<div class="row mb-5">
                         <nav>
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                 <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab"
@@ -77,11 +280,6 @@
                                         data-bs-target="#nav-profile" type="button" role="tab"
                                         aria-controls="nav-profile"
                                         aria-selected="false">{% trans %}Fiche Techhnique{% endtrans %}
-                                </button>
-                                <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab"
-                                        data-bs-target="#nav-contact" type="button" role="tab"
-                                        aria-controls="nav-contact"
-                                        aria-selected="false">{% trans %}Demande Devis{% endtrans %}
                                 </button>
                             </div>
                         </nav>
@@ -106,179 +304,17 @@
                                     {% endfor %}
                                 </ul>
                             </div>
-                            <div class="tab-pane fade nav-form" id="nav-contact" role="tabpanel"
-                                 aria-labelledby="nav-contact-tab">
-                                {{ form_start(form) }}
-                                {{ form_widget(form) }}
-                                <button class="btn btn-success btn-sm">{{ button_label|default('Ajouter')|trans }}</button>
-                                <button type="reset" class="btn btn-danger btn-sm">
-                                    <i class="fa fa-ban"></i> {% trans %}Réinitialiser{% endtrans %}
-                                </button>
-                                <br>
-                                <br>
-                                {{ form_end(form) }}
-                            </div>
                         </div>
-                    </div>
-
-                    <h1 class="police-class">{% trans %}PRODUIT ASSOCIE{% endtrans %}</h1>
-                    <div class=" position-relative margin-container">
-                        <div class="row item-center swiper2 margin-swiper overflow-hidden">
-                            <div class="swiper-wrapper swiper-slide-background-color2">
-                                {% for produit in produits %}
-                                    <div class="swiper-slide swiper-slide-background-color2">
-                                        <div class="col-4">
-                                            <a href="{{ path('front_produit_show', {'id': produit.id}) }}">
-                                                <div class="card card-categorie2 position-relative">
-                                                    <img src="{{ asset('images/produits/'~produit.imageName) }}"
-                                                         height="170" class="card-img-top">
-                                                    <div class="card-body">
-                                                        <img src="{{ asset('images/marques/'~produit.marque.imageName) }}"
-                                                             class="card-img-top featured-mini-marque2">
-                                                        <h5 class="Cat-details">{{ produit.categorie.nom }}</h5>
-                                                        <h6 class="produit-details">{{ produit.nom }}</h6>
-                                                        {% if app.request.locale == 'fr' %}
-                                                            <p class="card-text threeline">{{ produit.description }}
-                                                                .</p>
-                                                        {% elseif app.request.locale == 'en' %}
-                                                            <p class="card-text threeline">{{ produit.descriptionEnglish }}
-                                                                .</p>
-                                                        {% endif %}
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                {% endfor %}
-                            </div>
-                            <div class="swiper-button-next swiper-button-prev2 arrow-right4"></div>
-                            <div class="swiper-button-prev swiper-button-prev2 arrow-left4"></div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+                    </div>#}
 
 
-            <div class="col-2 p-0 island22">
-                <h6 class="featured-prod">{% trans %}Featured Products{% endtrans %}</h6>
-                <ul>
-                    {% for produitFeatured in produitsFeatured %}
-                        <a href="{{ path('front_produit_show', {'id': produitFeatured.id}) }}">
-                            <li>
-                                <div class="row mb-4">
-                                    <div class="col-6">
-                                        <img class="featured-mini"
-                                             src="{{ asset('images/produits/'~produitFeatured.imageName) }}"
-                                             height="40" width="30"
-                                             class="card-img-top">
-                                    </div>
-                                    <div class="col-6 p-0">
-                                        <img class="featured-mini-marque card-img-top"
-                                             src="{{ asset('images/marques/'~produitFeatured.marque.imageName) }}">
-                                        <h6>{{ produitFeatured.nom }}</h6>
-                                    </div>
-                                </div>
-                            </li>
-                        </a>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-6 p-0 position-relative bor">
-                <img src="{{ asset('assets/images/left.png') }}"
-                     style="width:100%">
-                <span class="bas-left">
-                    <div class="row">CULTURE </div>
-                    <div class="row">   OLÉICULE</div>
-                </span>
-                <span class="bas-left-min">
-                    <div class="row">blade bottom is flat.</div>
-                   <div class="row">In extremely hard</div>
-                    <div class="row">or when cutting with a</div>
-                </span>
-            </div>
-            <div class="col-6 p-0 position-relative bor">
-                <img src="{{ asset('assets/images/right.png') }}"
-                     style="width:100%">
-                <span class="bas-right">SEMANCE</span>
-                <span class="bas-right-min">
-                    <div class="row">blade bottom is flat.</div>
-                   <div class="row">In extremely hard</div>
-                    <div class="row">or when cutting with a</div>
-                </span>
-            </div>
-        </div>
-
-    </div>
 {% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="{{ asset('assets/css/swiper.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/swiper.min.css') }}">
-
-    <!-- Link Swiper's CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
-    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.esm.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.esm.bundle.js"></script>
-
-    <script>
-        var mySwiper = new Swiper('.swiper-container', {
-            // Optional parameters
-            direction: 'horizontal',
-            loop: true,
-
-            // And if we need scrollbar
-            scrollbar: {
-                el: '.swiper-scrollbar',
-            },
-            autoplay: {
-                delay: 3000,
-            },
-        })
-    </script>
-    <script>
-        // Javascript to enable link to tab
-        $('#demanded').on('click', function () {
-            $('html, body').animate({
-                scrollTop: $("#nav-contact-tab").offset().top
-            }, 200);
-            $('#nav-contact-tab').trigger('click');
-        })
-    </script>
-    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-    <script>
-        var swiper2 = new Swiper('.swiper2', {
-            slidesPerView: 3,
-            direction: getDirection(),
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            on: {
-                resize: function () {
-                    swiper2.changeDirection(getDirection());
-                },
-            },
-        });
-
-        function getDirection() {
-            var windowWidth = window.innerWidth;
-            var direction = window.innerWidth <= 760 ? 'vertical' : 'horizontal';
-
-            return direction;
-        }
-    </script>
 {% endblock %}

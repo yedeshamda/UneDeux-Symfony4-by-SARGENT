@@ -1,65 +1,140 @@
-<!--- Sidemenu -->
-<div id="sidebar-menu">
-    <!-- Left Menu Start -->
-    <ul class="metismenu list-unstyled" id="side-menu">
-        <li class="menu-title" key="t-menu">Menu</li>
-        <li>
-            <a href={{ path('home') }} class="waves-effect">
-                <i class="bx bx-home-circle"></i>
-                <span key="t-dashboards">Dashboards</span>
-            </a>
-        </li>
-        <li>
-            <a href="javascript: void(0);" class="has-arrow waves-effect">
-                <i class="bx bxs-archive"></i>
-                <span key="t-contacts">Produits</span>
-            </a>
-            <ul class="sub-menu" aria-expanded="false">
-                <li><a href={{ path('admin_produit_index') }} key="t-user-grid">Liste Produits</a></li>
-                <li><a href={{ path('admin_categorie_index') }} key="t-profile">Catégorie</a></li>
-                <li><a href={{ path('admin_marque_index') }} key="t-profile">Marque</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href={{ path('admin_devis_index') }} class="waves-effect">
-                <i class="bx bx-dollar"></i>
-                <span key="t-calendar">Devis</span>
-            </a>
-        </li>
-        <li>
-            <a href={{ path('admin_contact_index') }} class="waves-effect">
-                <i class="bx bxs-contact"></i>
-                <span key="t-calendar">Contact</span>
-            </a>
-        </li>
-        <li>
-            <a href={{ path('admin_blog_index') }} class="waves-effect">
-                <i class="bx bxl-blogger"></i>
-                <span key="t-calendar">Blog</span>
-            </a>
-        </li>
-        <li>
-            <a href={{ path('admin_user_index') }} class="waves-effect">
-                <i class="bx bx-user"></i>
-                <span key="t-calendar">Utilisateurs</span>
-            </a>
-        </li>
-        <li>
-            <a href={{ path('admin_video_index') }} class="waves-effect">
-                <i class="bx bx-video"></i>
-                <span key="t-calendar">Videos</span>
-            </a>
-        </li>
-        <li>
-            <a href="javascript: void(0);" class="has-arrow waves-effect">
-                <i class="bx bx-cog"></i>
-                <span key="t-contacts">Paramétre</span>
-            </a>
-            <ul class="sub-menu" aria-expanded="false">
-                <li><a href={{ path('admin_parametre_accueil') }} key="t-user-grid">Page d'accueil</a></li>
-                <li><a href={{ path('admin_parametre_a_propos') }} key="t-profile">Qui Sommes Nous ?</a></li>
-                <li><a href={{ path('admin_parametre_new_catalogue') }} key="t-profile">Catalogue</a></li>
-            </ul>
-        </li>
-    </ul>
-</div>
+<nav class="navbar navbar-light navbar-vertical navbar-expand-xl" style="display: none;">
+	<script>
+		var navbarStyle = localStorage.getItem("navbarStyle");
+if (navbarStyle && navbarStyle !== 'transparent') {
+document.querySelector('.navbar-vertical').classList.add(`navbar-${navbarStyle}`);
+}
+	</script>
+	<div class="d-flex align-items-center">
+		<div class="toggle-icon-wrapper">
+			<button class="btn navbar-toggler-humburger-icon navbar-vertical-toggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Toggle Navigation">
+				<span class="navbar-toggle-icon">
+					<span class="toggle-line"></span>
+				</span>
+			</button>
+		</div>
+		<a class="navbar-brand" href="{{ path('home') }}">
+			<div class="d-flex align-items-center py-0"><img class="me-2" src="{{ asset('assets/images/Mini Logo_2x.png') }}" width="45"/><span class="font-sans-serif">UNEDEUX</span>
+			</div>
+		</a>
+	</div>
+	<div class="collapse navbar-collapse" id="navbarVerticalCollapse">
+		<div class="navbar-vertical-content scrollbar">
+			<ul class="navbar-nav flex-column mb-3" id="navbarVerticalNav">
+				<li
+					class="nav-item">
+					<!-- parent pages-->
+					<a class="nav-link dropdown-indicator" href="#dashboard" role="button" data-bs-toggle="collapse" aria-expanded="true" aria-controls="dashboard">
+						<div class="d-flex align-items-center">
+							<span class="nav-link-icon">
+								<span class="fas fa-chart-pie"></span>
+							</span>
+							<span class="nav-link-text ps-1">Dashboard</span>
+						</div>
+					</a>
+					<ul class="nav collapse show" id="dashboard">
+						<li class="nav-item">
+							<a class="nav-link" href="e-commerce.html" aria-expanded="false">
+								<div class="d-flex align-items-center">
+									<span class="nav-link-text ps-1">E commerce</span>
+								</div>
+							</a>
+							<!-- more inner pages-->
+						</li>
+					</ul>
+				</li>
+				<li
+					class="nav-item">
+					<!-- label-->
+					<div class="row navbar-vertical-label-wrapper mt-3 mb-2">
+						<div class="col-auto navbar-vertical-label">Menu</div>
+						<div class="col ps-0">
+							<hr class="mb-0 navbar-vertical-divider"/>
+						</div>
+					</div>
+					<!-- parent pages-->
+					<a class="nav-link" href="{{ path('admin_user_index') }}" role="button" aria-expanded="false">
+						<div class="d-flex align-items-center">
+							<span class="nav-link-icon">
+								<span class="fas fa-user"></span>
+							</span>
+							<span class="nav-link-text ps-1">
+								Utilisateurs
+							</span>
+						</div>
+					</a>
+					<!-- parent pages-->
+					<a class="nav-link dropdown-indicator" href="#email" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="email">
+						<div class="d-flex align-items-center">
+							<span class="nav-link-icon">
+								<span class="fas fa-archive"></span>
+							</span>
+							<span class="nav-link-text ps-1">
+								Produits
+							</span>
+						</div>
+					</a>
+					<ul class="nav collapse false" id="email">
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('admin_produit_index') }}" aria-expanded="false">
+								<div class="d-flex align-items-center">
+									<span class="nav-link-text ps-1">Liste des Produits</span>
+								</div>
+							</a>
+							<!-- more inner pages-->
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('admin_categorie_index') }}" aria-expanded="false">
+								<div class="d-flex align-items-center">
+									<span class="nav-link-text ps-1">Catégorie</span>
+								</div>
+							</a>
+							<!-- more inner pages-->
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('admin_marque_index') }}" aria-expanded="false">
+								<div class="d-flex align-items-center">
+									<span class="nav-link-text ps-1">Marqu</span>
+								</div>
+							</a>
+							<!-- more inner pages-->
+						</li>
+					</ul>
+					<!-- parent pages-->
+					<!-- parent pages-->
+					<a class="nav-link" href="{{ path('app_commande_index') }}" role="button" aria-expanded="false">
+						<div class="d-flex align-items-center">
+							<span class="nav-link-icon">
+								<span class="fas fa-user"></span>
+							</span>
+							<span class="nav-link-text ps-1">
+								Commandes
+							</span>
+						</div>
+					</a>
+					<!-- parent pages-->
+					<a class="nav-link" href="{{ path('app_livraison_index') }}" role="button" aria-expanded="false">
+						<div class="d-flex align-items-center">
+							<span class="nav-link-icon">
+								<span class="fas fa-user"></span>
+							</span>
+							<span class="nav-link-text ps-1">
+								Livraisons
+							</span>
+						</div>
+					</a>
+					<a class="nav-link" href="{{ path('admin_contact_index') }}" role="button" aria-expanded="false">
+						<div class="d-flex align-items-center">
+							<span class="nav-link-icon">
+								<span class="fas fa-envelope"></span>
+							</span>
+							<span class="nav-link-text ps-1">
+								Contact
+							</span>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>

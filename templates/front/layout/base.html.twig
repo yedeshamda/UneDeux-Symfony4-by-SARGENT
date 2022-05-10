@@ -1,89 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
 
-    <meta charset="utf-8">
-    <title>MATEB Admin</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ asset('assets/images/Mini Logo_2x.png') }}">
+<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>Une Deux | Boutique de Sport</title>
+    <link rel="icon" href="{{ asset('assets/images/Mini Logo_2x.png') }}" type="image/png"/>
+    <!-- Bootstrap CSS -->
 
     {% block stylesheets %}
-        <!-- Bootstrap Css -->
-        <link href="{{ asset('assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css">
-        <!-- Icons Css -->
-        <link href="{{ asset('assets/css/all.min.css') }}" id="app-style" rel="stylesheet" type="text/css">
-        <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css">
-        <!-- App Css-->
-        <link href="{{ asset('assets/css/front.css') }}" id="app-style" rel="stylesheet" type="text/css">
-        <link href="{{ asset('assets/css/front_ipad.css') }}" id="app-style" rel="stylesheet" type="text/css">
-        <link href="{{ asset('assets/css/front_mobile.css') }}" id="app-style" rel="stylesheet" type="text/css">
-        <!-- Mobile -->
-        <link href="{{ asset('assets/css/mobile-navigation.css') }}" id="app-style" rel="stylesheet" type="text/css">
-
+        <link rel="stylesheet" href="{{ asset('assets/css/front/bootstrap.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('assets/vendors/front/linericon/style.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('assets/css/front/font-awesome.min.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('assets/css/front/themify-icons.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('assets/css/front/flaticon.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('assets/vendors/front/owl-carousel/owl.carousel.min.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('assets/vendors/front/lightbox/simpleLightbox.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('assets/vendors/front/nice-select/css/nice-select.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('assets/vendors/front/animate-css/animate.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('assets/vendors/front/jquery-ui/jquery-ui.css') }}"/>
+        <!-- main css -->
+        <link rel="stylesheet" href="{{ asset('assets/css/front/style.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('assets/css/front/responsive.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('assets/css/fontawesome.css') }}"/>
     {% endblock %}
 </head>
 
-<body data-sidebar="dark">
-<!-- Begin page -->
-<div id="layout-wrapper">
-    {% include 'front/layout/header.html.twig' %}
-    <!-- ========== Left Sidebar Start ========== -->
-    <!-- Left Sidebar End -->
-    <!-- ============================================================== -->
-    <!-- Start right Content here -->
-    <!-- ============================================================== -->
-    <div class="main-content">
-        <div class="page-content">
-            <div class="container-fluid">
-                {% block body %}
+<body>
+<!--================Header Menu Area =================-->
+{% include 'front/layout/header.html.twig' %}
+<!--================Header Menu Area =================-->
 
-
-                {% endblock %}
+<section class="home_banner_area mb-40">
+    <div class="banner_inner d-flex align-items-center">
+        <div class="container">
+            <div class="banner_content row">
+                <div class="col-lg-12">
+                    <p class="sub text-uppercase">Boutique de sport</p>
+                    <h3><span>Montrer </span> Votre <br>Style <span>Sportif</span></h3>
+                    <h4>Unedeux Sport Tunisie - Boutique de sport : vente en ligne de vêtements <br>et chaussures de
+                        sport. Tous les articles de sport qui répondent à vos besoins.</h4>
+                    <a class="main_btn mt-40" href="{{ path('front_produit_index') }}">Voir Notre Collection</a>
+                </div>
             </div>
         </div>
-        <!-- End Page-content -->
-        <!-- end modal -->
-        {% include 'front/layout/footer.html.twig' %}
     </div>
-    <!-- end main content-->
-</div>
-<!-- END layout-wrapper -->
-<!-- Right bar overlay-->
-<div class="rightbar-overlay"></div>
+</section>
+
+<!-- Start feature Area -->
+<section class="feature-area section_gap_bottom_custom">
+    {# <div class="container"> #}
+    {% block body %}
+
+
+    {% endblock %}
+    {# </div> #}
+</section>
+<!-- End feature Area -->
+
+<!--================ start footer Area  =================-->
+{% include 'front/layout/footer.html.twig' %}
+<!--================ End footer Area  =================-->
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 {% block javascripts %}
-    <!-- JAVASCRIPT -->
-    <script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/metismenu/metisMenu.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/simplebar/simplebar.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/node-waves/waves.min.js') }}"></script>
-
-    <!-- App js -->
-    <script src="{{ asset('assets/js/app.js') }}"></script>
+    <script src="{{ asset('assets/js/front/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ asset('assets/js/front/popper.js') }}"></script>
+    <script src="{{ asset('assets/js/front/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/front/stellar.js') }}"></script>
+    <script src="{{ asset('assets/vendors/front/lightbox/simpleLightbox.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/front/nice-select/js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/front/isotope/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/front/isotope/isotope-min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/front/owl-carousel/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('assets/js/front/jquery.ajaxchimp.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/front/counter-up/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/front/counter-up/jquery.counterup.js') }}"></script>
+    <script src="{{ asset('assets/js/front/mail-script.js') }}"></script>
+    <script src="{{ asset('assets/js/front/theme.js') }}"></script>
+    <script src="{{ asset('assets/js/fontawesome.js') }}"></script>
     <script>
-        //Get the button
-        var mybutton = document.getElementById("myBtn");
+        // updated 2019
+        const input = document.getElementById("search-input");
+        const searchBtn = document.getElementById("search-btn");
 
-        // When the user scrolls down 20px from the top of the document, show the button
-        window.onscroll = function() {scrollFunction()};
+        const expand = () => {
+            searchBtn.classList.toggle("close");
+            input.classList.toggle("square");
+        };
 
-        function scrollFunction() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                mybutton.style.display = "block";
-            } else {
-                mybutton.style.display = "none";
-            }
-        }
-
-        // When the user clicks on the button, scroll to the top of the document
-        function topFunction() {
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
-        }
+        searchBtn.addEventListener("click", expand);
     </script>
 {% endblock %}
 </body>
 </html>
-

@@ -1,0 +1,24 @@
+{{ form_start(form) }}
+
+<div class="app-form">
+    <div class="app-form-group">
+        {{ form_widget(form.nom) }}
+    </div>
+    <div class="app-form-group">
+        {{ form_widget(form.prenom) }}
+    </div>
+    <div class="app-form-group">
+        {{ form_widget(form.email) }}
+    </div>
+    <div class="app-form-group">
+        {{ form_widget(form.tel) }}
+    </div>
+    <div class="app-form-group message">
+        {{ form_widget(form.message) }}
+    </div>
+    <div class="app-form-group buttons">
+        <button class="main_btn">{{ button_label|default('Envoyer') }}</button>
+    </div>
+</div>
+{{ form_end(form) }}
+

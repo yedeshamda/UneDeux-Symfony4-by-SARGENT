@@ -1,233 +1,234 @@
 {% extends 'front/layout/base.html.twig' %}
 
 {% block body %}
-    <div class="swiper swiper-index mySwiper2 position-relative">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <img src="{{ asset('images/parametres/homeBanieres/'~parametre.baniere1) }}" height="500px"
-                     style="width:100%">
-                <img class="img-home" src="{{ asset('assets/images/nawara.png') }}" height="500px"
-                     style="width:100%">
-            </div>
-            <div class="swiper-slide">
-                <img src="{{ asset('images/parametres/homeBanieres/'~parametre.baniere2) }}" height="500px"
-                     style="width:100%">
-                <img class="img-home" src="{{ asset('assets/images/nawara.png') }}" height="500px"
-                     style="width:100%">
-            </div>
-            <div class="swiper-slide">
-                <img src="{{ asset('images/parametres/homeBanieres/'~parametre.baniere3) }}" height="500px"
-                     style="width:100%">
-                <img class="img-home" src="{{ asset('assets/images/nawara.png') }}" height="500px"
-                     style="width:100%">
+    <section class="feature-area section_gap_bottom_custom">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="single-feature">
+                        <a href="#" class="title">
+                            <img src="{{ asset('assets/images/money.png') }}" style="height: 100px">
+                            <h3>Money back gurantee</h3>
+                        </a>
+                        <p>Shall open divide a one</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="single-feature">
+                        <a href="#" class="title">
+                            <img src="{{ asset('assets/images/truck.png') }}" style="height: 100px">
+                            <h3>Free Delivery</h3>
+                        </a>
+                        <p>Shall open divide a one</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="single-feature">
+                        <a href="#" class="title">
+                            <img src="{{ asset('assets/images/support.png') }}" style="height: 100px">
+                            <h3>Alway support</h3>
+                        </a>
+                        <p>Shall open divide a one</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="single-feature">
+                        <a href="#" class="title">
+                            <img src="{{ asset('assets/images/blockchain.png') }}" style="height: 100px">
+                            <h3>Secure payment</h3>
+                        </a>
+                        <p>Shall open divide a one</p>
+                    </div>
+                </div>
             </div>
         </div>
-        <img class="mateb-baniere" src="{{ asset('assets/images/MATEB.png') }}" alt="">
-        <span class="materiel-baniere">{% trans %}MATERIELS ET ÉQUIPEMENT BICHIOU{% endtrans %}</span>
+    </section>
+    <section class="feature_product_area section_gap_bottom_custom">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="main_title">
+                        <h2><span>Featured product</span></h2>
+                        <p>Bring called seed first of third give itself now ment</p>
+                    </div>
+                </div>
+            </div>
 
-        <a class="quisommesnous-baniere-button btn-outline-warning btn"
-           href="{{ path('front_qui_somme_nous') }}">{% trans %}Qui Sommes Nous ?{% endtrans %}</a>
-        <div class="swiper-button-next arrow-right1"></div>
-        <div class="swiper-button-prev arrow-left1"></div>
-        <div class="swiper-pagination pagination-baniere"></div>
-    </div>
-
-    <div class="container mt-5 position-relative">
-        <img class="settings" src="{{ asset('assets/images/settings.png') }}" alt="">
-        <!-- Swiper -->
-        <div class="swiper-container mb-5">
-            <div class="swiper-wrapper">
-                {% for produit in produits %}
-                    <div class="mb-5 swiper-slide position-relative">
-                        <div class="col-6">
-                            <img src="{{ asset('images/produits/'~produit.imageName) }}"
-                                 class="img-produit-home-featured">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-product">
+                        <div class="product-img">
+                            <img class="img-fluid w-100" src="{{ asset('assets/images/product/feature-product/f-p-1.jpg') }}" alt="">
                         </div>
-                        <div class="col-6 mt-5">
-                            <div class="row">
-                                <h3 class="featured-home-marque"> {{ produit.categorie.nom }} </h3>
-                                <h4 class="featured-home-produit"> {{ produit.nom }} </h4>
-                                <span class="featured-home-desc"> {{ produit.categorie.nom }} </span>
-                            </div>
-                            <div class="d-flex justify-content-around">
-                                <a class="button-featured-home button-details-product btn-outline-warning btn"
-                                   href="{{ path('front_produit_show', {'id': produit.id}) }}">{% trans %}Détails{% endtrans %}</a>
-                                <img class="marque-featured"
-                                     src="{{ asset('images/marques/'~produit.marque.imageName) }}" alt="">
+                        <div class="product-btm">
+                            <a href="#" class="d-block">
+                                <h4>Latest men’s sneaker</h4>
+                            </a>
+                            <div class="mt-3">
+                                <span class="mr-4">$25.00</span>
+                                <del>$35.00</del>
                             </div>
                         </div>
                     </div>
-                {% endfor %}
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-product">
+                        <div class="product-img">
+                            <img class="img-fluid w-100" src="{{ asset('assets/images/product/feature-product/f-p-2.jpg') }}" alt="">
+                        </div>
+                        <div class="product-btm">
+                            <a href="#" class="d-block">
+                                <h4>Red women purses</h4>
+                            </a>
+                            <div class="mt-3">
+                                <span class="mr-4">$25.00</span>
+                                <del>$35.00</del>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-product">
+                        <div class="product-img">
+                            <img class="img-fluid w-100" src="{{ asset('assets/images/product/feature-product/f-p-3.jpg') }}" alt="">
+                        </div>
+                        <div class="product-btm">
+                            <a href="#" class="d-block">
+                                <h4>Men stylist Smart Watch</h4>
+                            </a>
+                            <div class="mt-3">
+                                <span class="mr-4">$25.00</span>
+                                <del>$35.00</del>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="swiper-button-next swiper-button-prev2 arrow-right2"></div>
-            <div class="swiper-button-prev swiper-button-prev2 arrow-left2"></div>
         </div>
-    </div>
+    </section>
+    {#<section class="offer_area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="offset-lg-4 col-lg-6 text-center">
+                    <div class="offer_content">
 
-    <div class="container position-relative margin-container">
-        <div class="center-logo">
-            <img class="img-cat" src="{{ asset('assets/images/Logo.png') }}" alt="">
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="row item-center swiper2 margin-swiper overflow-hidden">
-            <div class="swiper-wrapper swiper-slide-background-color2">
-                {% for categorie in categories %}
-                    <div class="swiper-slide swiper-slide-background-color2">
-                        <div class="col-3">
-                            <a href="{{ path('front_produit_categorie_index', {'id': categorie.id}) }}">
-                                <div class="card card-categorie position-relative">
-                                    <figure class="snip1325">
-                                        <img src="{{ asset('images/categories/'~categorie.baniereImageName) }}"
-                                             alt="ls-sample4"/>
-                                    </figure>
-                                    <div class="cercle">
-                                        <img class="cercle-img"
-                                             src="{{ asset('images/categories/'~categorie.imageName2) }}" alt="">
-                                    </div>
-                                    <div class="card-body">
-                                        <h5 class="cat-dessus-footer"> {{ categorie.nom }}</h5>
-                                        {% if app.request.locale == 'fr' %}
-                                            <p class="cat-dessus-footer-span threeline"> {{ categorie.description }}</p>
-                                        {% elseif app.request.locale == 'en' %}
-                                            <p class="cat-dessus-footer-span threeline"> {{ categorie.descriptionEnglish }}</p>
-                                        {% endif %}
+    </section>#}
+    <section class="new_product_area section_gap_top section_gap_bottom_custom">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="main_title">
+                        <h2><span>new products</span></h2>
+                        <p>Bring called seed first of third give itself now ment</p>
+                    </div>
+                </div>
+            </div>
 
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="new_product">
+                        <h5 class="text-uppercase">collection of 2019</h5>
+                        <h3 class="text-uppercase">Men’s summer t-shirt</h3>
+                        <div class="product-img">
+                            <img class="img-fluid" src="{{ asset('assets/images/product/new-product/new-product1.png') }}" alt="">
+                        </div>
+                        <h4>$120.70</h4>
+                        <a href="#" class="main_btn">Add to cart</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mt-5 mt-lg-0">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="single-product">
+                                <div class="product-img">
+                                    <img class="img-fluid w-100" src="{{ asset('assets/images/product/new-product/n1.jpg') }}" alt="">
+                                </div>
+                                <div class="product-btm">
+                                    <a href="#" class="d-block">
+                                        <h4>Nike latest sneaker</h4>
+                                    </a>
+                                    <div class="mt-3">
+                                        <span class="mr-4">$25.00</span>
+                                        <del>$35.00</del>
                                     </div>
                                 </div>
-                            </a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6">
+                            <div class="single-product">
+                                <div class="product-img">
+                                    <img class="img-fluid w-100" src="{{ asset('assets/images/product/new-product/n2.jpg') }}" alt="">
+                                </div>
+                                <div class="product-btm">
+                                    <a href="#" class="d-block">
+                                        <h4>Men’s denim jeans</h4>
+                                    </a>
+                                    <div class="mt-3">
+                                        <span class="mr-4">$25.00</span>
+                                        <del>$35.00</del>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6">
+                            <div class="single-product">
+                                <div class="product-img">
+                                    <img class="img-fluid w-100" src="{{ asset('assets/images/product/new-product/n3.jpg') }}" alt="">
+                                </div>
+                                <div class="product-btm">
+                                    <a href="#" class="d-block">
+                                        <h4>quartz hand watch</h4>
+                                    </a>
+                                    <div class="mt-3">
+                                        <span class="mr-4">$25.00</span>
+                                        <del>$35.00</del>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6">
+                            <div class="single-product">
+                                <div class="product-img">
+                                    <img class="img-fluid w-100" src="{{ asset('assets/images/product/new-product/n4.jpg') }}" alt="">
+                                </div>
+                                <div class="product-btm">
+                                    <a href="#" class="d-block">
+                                        <h4>adidas sport shoe</h4>
+                                    </a>
+                                    <div class="mt-3">
+                                        <span class="mr-4">$25.00</span>
+                                        <del>$35.00</del>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                {% endfor %}
+                </div>
             </div>
-            <div class="swiper-button-next swiper-button-prev2 arrow-right3 "></div>
-            <div class="swiper-button-prev swiper-button-prev2 arrow-left3"></div>
         </div>
-    </div>
+    </section>
 
-    {% include 'front/layout/marques.html.twig' %}
-
-    <div class="social-media-baniere">
-        <a href="{{ parametre.youtube }}"> <i class="fab topicon-fixed fa-youtube"></i></a>
-        <a href="{{ parametre.instagram }}"><i class="fab topicon-fixed fa-instagram"></i></a>
-        <a href="{{ parametre.facebook }}"><i class="fab topicon-fixed fa-facebook"></i></a>
-    </div>
 
 {% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="{{ asset('assets/css/swiper.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/swiper.min.css') }}">
-
-    <!-- Link Swiper's CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
-    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.esm.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.esm.bundle.js"></script>
-    <script>
-        var mySwiper = new Swiper('.swiper-container', {
-            // Optional parameters
-            direction: 'horizontal',
-            loop: true,
-
-            // If we need pagination
-            pagination: {
-                el: '.swiper-pagination',
-            },
-
-            // Navigation arrows
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-
-            // And if we need scrollbar
-            scrollbar: {
-                el: '.swiper-scrollbar',
-            },
-        })
-    </script>
-
-    <!-- Swiper JS -->
-    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-    <!-- Initialize Swiper -->
-    <script>
-        var swiper = new Swiper('.swiper', {
-            slidesPerView: 4,
-            direction: getDirection(),
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            on: {
-                resize: function () {
-                    swiper.changeDirection(getDirection());
-                },
-            },
-        });
-
-        function getDirection() {
-            var windowWidth = window.innerWidth;
-            var direction = window.innerWidth <= 760 ? 'vertical' : 'horizontal';
-
-            return direction;
-        }
-    </script>
-
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-    <!-- Initialize Swiper -->
-    <script>
-        var swiper = new Swiper(".mySwiper2", {
-            cssMode: true,
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-            pagination: {
-                el: ".swiper-pagination",
-            },
-            mousewheel: true,
-            keyboard: true,
-        });
-    </script>
-
-    <script>
-        $(".hover").mouseleave(
-            function () {
-                $(this).removeClass("hover");
-            }
-        );
-    </script>
-
-    <script>
-        var swiper2 = new Swiper('.swiper2', {
-            slidesPerView: 3,
-            direction: getDirection(),
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            on: {
-                resize: function () {
-                    swiper2.changeDirection(getDirection());
-                },
-            },
-        });
-
-        function getDirection() {
-            var windowWidth = window.innerWidth;
-            var direction = window.innerWidth <= 760 ? 'vertical' : 'horizontal';
-
-            return direction;
-        }
-    </script>
 
 {% endblock %}

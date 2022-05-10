@@ -1,138 +1,156 @@
-<header class="baniere-form position-relative">
-    <img src="{{ asset('assets/images/Background1.png') }}" class="img-png w-100">
-    <img src="{{ asset('assets/images/Background2.png') }}" class="img-jpg w-100">
+<header class="header_area">
+	<div class="top_menu">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-7">
+					<div class="float-left">
+						<p>Appelez-nous: +216 24 004 500</p>
+						<p>email: contact@unedeuxcontact.tn</p>
+						<p>Contactez-nous</p>
+					</div>
+				</div>
+				<div class="col-lg-5">
+					<div class="float-right">
+						<ul class="right_side">
+							<li>
+								<a href="https://www.youtube.com/">
+									<i style="font-size: 20px" class="fab topicon fa-youtube"></i>
+								</a>
+							</li>
+							<li>
+								<a href="thttps://www.instagram.com/">
+									<i style="font-size: 20px" class="fab topicon fa-instagram"></i>
+								</a>
+							</li>
+							<li>
+								<a href="https://www.facebook.com/">
+									<i style="font-size: 20px" class="fab topicon fa-facebook"></i>
+								</a>
+							</li>
+
+							{% if app.user %}
+								<li>
+									<div class="nav-item submenu dropdown">
+										<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+											<img class="rounded-circle photo-style" src="{{ asset('images/users/'~app.user.photo.photoName|default('')) }}"/>
+											{{ app.user.prenom|default('') }}
+											{{ app.user.nom|default('') }}
+										</a>
+										<ul class="dropdown-menu">
+											<li class="nav-item">
+												<a class="dropdown-item" href="{{ path('front_user_profile', {'id': app.user.id}) }}">
+													<p class="mt-3">
+														<i style="font-size: 15px" class="fa topicon fa-user mr-2"></i>
+														Profile</p>
+												</a>
+											</li>
+											<li class="nav-item">
+												<a class="dropdown-item" href="{{ path('app_logout') }}">
+													<p class="red-color mt-3">
+														<i style="font-size: 15px" class="fa topicon fa-power-off mr-2"></i>
+														Se déconnecter</p>
+												</a>
+											</li>
+										</ul>
+									</div>
+								</li>
+							{% elseif not app.user %}
+								<li>
+									<a href="{{ path('app_user_login') }}" class="nav-link" role="button" aria-haspopup="true" aria-expanded="false">
+										<i style="font-size: 20px" class="fa topicon fa-user mr-2"></i>
+										Se Connecter
+									</a>
+								</li>
+							{% endif %}
+
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="main_menu">
+		<div class="container">
+			<nav
+				class="navbar navbar-expand-lg navbar-light w-100">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<a class="navbar-brand logo_h" href="{{ path('front_home') }}">
+					<img src="{{ asset('assets/images/Logo_2x.png') }}" style="height: 70px"/>
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse offset w-100" id="navbarSupportedContent">
+					<div class="row w-100 mr-0">
+						<div class="col-lg-7 pr-0">
+							<ul class="nav navbar-nav center_nav pull-right">
+								<li class="nav-item active">
+									<a class="nav-link" href="{{ path('front_home') }}">{% trans %}ACCUEIL{% endtrans %}</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="{{ path('front_qui_somme_nous') }}">{% trans %}QUI SOMMES-NOUS ?{% endtrans %}</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="{{ path('front_produit_index') }}">{% trans %}NOS PRODUITS{% endtrans %}</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="{{ path('front_actualite') }}">{% trans %}Actualite{% endtrans %}</a>
+								</li>
+								<li class="nav-item submenu dropdown">
+									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans %}NOS MARQUES{% endtrans %}</a>
+									{% if is_granted("ROLE_CLIENT") %}
+										<li class="nav-item">
+											<a class="nav-link" href="{{ path('app_mes_commandes') }}">{% trans %}Mes Commandes{% endtrans %}</a>
+										</li>
+									{% endif %}
+									{% if is_granted("ROLE_LIVREUR") %}
+										<li class="nav-item">
+											<a class="nav-link" href="{{ path('app_mes_livraisons') }}">{% trans %}Mes Livraisons{% endtrans %}</a>
+										</li>
+									{% endif %}
+									<ul class="dropdown-menu"></ul>
+								</li>
+							</ul>
+						</div>
 
 
-    <div class="container">
-        <div class="topicon2-margin row d-none d-md-flex">
-            <div class="col-3 div-social-media">
-                <a href="{{ parametre.youtube }}"> <i class="fab topicon fa-youtube"></i></a>
-                <a href="{{ parametre.instagram }}"><i class="fab topicon fa-instagram"></i></a>
-                <a href="{{ parametre.facebook }}"><i class="fab topicon fa-facebook"></i></a>
-            </div>
-            <div class="col-9 div-info-contact position-relative">
-                <span class="topicon2-span"><i class="fas topicon2 fa-phone-volume"></i>  + {{ parametre.num1 }}</span>
-                <span class="topicon2-span"><i class="fas topicon2 fa-envelope"></i> {{ parametre.email }}</span>
-                <span class="topicon2-span"><i class="far topicon2 fa-clock"></i>
-                                                    {% if app.request.locale == 'fr' %}
-                                                        {{ parametre.jourDebut }} - {{ parametre.jourFin }} de {{ parametre.heureDebut }} à {{ parametre.heureFin }}
-                                                    {% elseif app.request.locale == 'en' %}
-                                                        {{ parametre.dayDebut }} - {{ parametre.dayFin }} from {{ parametre.timeDebut }} to {{ parametre.timeFin }}
-                                                    {% endif %}
+						<div class="col-lg-4 pr-0">
+							<form method="POST" action="{{ path('front_produit_search') }}" id="content">
+								<input type="text" name="search-name" class="input-search" id="search-input">
+								<button type="reset" class="search" id="search-btn"></button>
+							</form>
+						</div>
+						<div class="col-lg-1 pr-0">
+							<ul class="nav navbar-nav navbar-right right_nav pull-right">
+								<li class="nav-item submenu dropdown">
+									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+										{% set locale = app.request.locale %}
+										<img src="{{ asset('assets/images/'~locale~'.png') }}" alt="{{ locale }}" width="30px">
+									</a>
+									<ul class="dropdown-menu">
+										<li class="nav-item">
+											<a class="dropdown-item" href="{{ path('change_locale',{'locale': 'fr'}) }}">
+												<img src="{{ asset('assets/images/fr.png') }}" width="30px">
+												Français
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="dropdown-item" href="{{ path('change_locale',{'locale': 'en'}) }}">
+												<img src="{{ asset('assets/images/en.png') }}" width="30px">
+												Anglais
+											</a>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
 
-                </span>
-
-                    <div class="desktop">
-                        <a class="nav-link dropdown-toggle flech-flag" href="#" id="dropdownMenuButtonlng" data-bs-toggle="dropdown" aria-expanded="false">
-                            {% set locale = app.request.locale %}
-                            <img class="flag" src="{{ asset('assets/images/'~locale~'.png') }}" alt="{{ locale }}">
-                        </a>
-                        <ul class="dropdown-menu bg-white flag-div-after" aria-labelledby="dropdownMenuButtonlng">
-                            <li><a class="dropdown-item" href="{{ path('change_locale',{'locale': 'fr'}) }}"><img src="{{ asset('assets/images/fr.png') }}" width="30px"> Français </a></li>
-                            <li><a class="dropdown-item" href="{{ path('change_locale',{'locale': 'en'}) }}"><img src="{{ asset('assets/images/en.png') }}" width="30px"> Anglais </a></li>
-                        </ul>
-                    </div>
-
-            </div>
-        </div>
-        <div class="row d-none d-sm-flex">
-            <div class="col-2">
-                <a href="{{ path('front_home') }}">
-                    <img src="{{ asset('assets/images/logo_2x.png') }}" alt="" height="50" class="logo-front">
-                </a>
-            </div>
-            <div class="col-8">
-                <nav id="menu" class="nav-bar navbar navbar-expand-lg">
-                    <div class="collapse navbar-collapse">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ path('front_home') }}">{% trans %}ACCUEIL{% endtrans %}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link"
-                                   href="{{ path('front_qui_somme_nous') }}">{% trans %}QUI SOMMES-NOUS ?{% endtrans %}</a>
-                            </li>
-                            <li class="nav-item">
-                                <div class="dropdown">
-                                    <a  data-bs-toggle="dropdown" id="dropdownMenuButton1" class="nav-link dropdown-toggle flech" href="#">{% trans %}NOS PRODUITS{% endtrans %}</a>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                        <li class="dropend">
-                                            <a class="dropdown-item  flech2" data-bs-toggle="dropdown"  href="#">PAR ACTIVITE</a>
-                                            <ul class="dropdown-menu second-level">
-
-                                              {% for categorie in categories %}
-                                                <li class="multi-level">
-                                                    <a href="{{ path('front_produit_categorie_index', {'id': categorie.id}) }}">
-                                                            {{ categorie.nom }}
-                                                    </a>
-                                                </li>
-                                                {% endfor %}
-
-                                            </ul>
-                                        </li>
-                                        <li><a class="dropdown-item" href="{{ path('front_produit_index') }}">NOS PRODUITS</a></li>
-                                    </ul>
-                                </div>
-
-
-
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link"
-                                   href="{{ path('front_parametre_catalogue') }}">{% trans %}CATALOGUE{% endtrans %}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link"
-                                   href="{{ path('front_blog_index') }}">{% trans %}ACTUALITES{% endtrans %}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link"
-                                   href="{{ path('front_contact_new') }}">{% trans %}NOUS CONTACTER{% endtrans %}</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-            <div class="col-2">
-                <form method="POST" action="{{ path('front_produit_search') }}" id="content">
-                    <input type="text" name="search-name" class="input-search" id="search-input">
-                    <button type="reset" class="search" id="search-btn"></button>
-                </form>
-            </div>
-        </div>
-
-        <div class="d-xl-none d-md-none d-xxl-none row">
-            <div class="col-3 mt-4">
-                <nav role="navigation" class="nav_mobile">
-                    <div id="menuToggle">
-                        <input type="checkbox"/>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <ul id="menu_mobile">
-                            <li><a href="{{ path('front_home') }}">ACCUEIL</a></li>
-                            <li><a href="{{ path('front_qui_somme_nous') }}">QUI SOMMES-NOUS ?</a></li>
-                            <li><a href="{{ path('front_produit_index') }}">NOS PRODUITS</a></li>
-                            <li><a href="{{ path('front_parametre_catalogue') }}">CATALOGUE</a></li>
-                            <li><a href="{{ path('front_blog_index') }}">ACTUALITES</a></li>
-                            <li><a href="{{ path('front_contact_new') }}">NOUS CONTACTER</a></li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-
-            <div class="col-7">
-                <a href="{{ path('front_home') }}">
-                    <img src="{{ asset('assets/images/logo_2x.png') }}" alt="" height="50" class="logo-front">
-                </a>
-            </div>
-
-            <div class="col-2">
-                <div class="div-search-cadre">
-                    <i class="fas fa-search"></i>
-                </div>
-            </div>
-        </div>
-
-    </div>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</div>
 </header>

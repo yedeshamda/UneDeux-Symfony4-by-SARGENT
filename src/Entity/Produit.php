@@ -89,10 +89,6 @@ class Produit
      */
     private $image;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Devis::class, mappedBy="produits")
-     */
-    private $devis;
 
     /**
      * @ORM\Column(type="boolean",nullable=true)
@@ -288,25 +284,6 @@ class Produit
     public function getDevis(): Collection
     {
         return $this->devis;
-    }
-
-    public function addDevi(Devis $devi): self
-    {
-        if (!$this->devis->contains($devi)) {
-            $this->devis[] = $devi;
-            $devi->addProduit($this);
-        }
-
-        return $this;
-    }
-
-    public function removeDevi(Devis $devi): self
-    {
-        if ($this->devis->removeElement($devi)) {
-            $devi->removeProduit($this);
-        }
-
-        return $this;
     }
 
     public function getFeatured(): ?bool

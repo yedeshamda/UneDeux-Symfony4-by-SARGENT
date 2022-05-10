@@ -21,50 +21,12 @@ class ContactController extends AbstractController
         ]);
     }
 
-    #[Route('/contact/new', name: 'contact_new', methods: ['GET','POST'])]
-    public function new(Request $request): Response
-    {
-        $contact = new Contact();
-        $form = $this->createForm(ContactType::class, $contact);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($contact);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('admin_contact_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('admin/contact/new.html.twig', [
-            'contact' => $contact,
-            'form' => $form,
-        ]);
-    }
 
     #[Route('/contact/{id}', name: 'contact_show', methods: ['GET'])]
     public function show(Contact $contact): Response
     {
         return $this->render('admin/contact/show.html.twig', [
             'contact' => $contact,
-        ]);
-    }
-
-    #[Route('/contact/{id}/edit', name: 'contact_edit', methods: ['GET','POST'])]
-    public function edit(Request $request, Contact $contact): Response
-    {
-        $form = $this->createForm(ContactType::class, $contact);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('admin_contact_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('admin/contact/edit.html.twig', [
-            'contact' => $contact,
-            'form' => $form,
         ]);
     }
 
@@ -79,4 +41,5 @@ class ContactController extends AbstractController
 
         return $this->redirectToRoute('admin_contact_index', [], Response::HTTP_SEE_OTHER);
     }
+
 }

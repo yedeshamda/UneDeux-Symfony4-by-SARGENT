@@ -1,0 +1,54 @@
+{% extends 'admin/layout/base.html.twig' %}
+
+{% block body %}
+    <h1>Commentaire index</h1>
+    <div>
+        <p style="100px" > <input  id="myInput"  type="text" placeholder="search">
+            <img src="https://img.icons8.com/nolan/344/google-web-search.png" style="width:50px;height:50px;"/></p>
+
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+
+                <th>Com</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tbody>
+        <tbody>
+        <tbody id="myTable">
+        {% for commentaire in commentaires %}
+            <tr>
+
+                <td>{{ commentaire.com }}</td>
+                <td>
+                    <a href="{{ path('app_commentaire_show', {'id': commentaire.id}) }}">show</a>
+                    <a href="{{ path('app_commentaire_edit', {'id': commentaire.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        <tbody id="search">
+
+        </tbody>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_commentaire_new') }}">Create new</a>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+{% endblock %}

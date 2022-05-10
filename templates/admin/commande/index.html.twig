@@ -1,0 +1,42 @@
+{% extends 'admin/layout/base.html.twig' %}
+{% block body %}
+	<title>Commande
+	</title>
+	<h1>Mes Commandes
+	</h1>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Produit</th>
+				<th>Client</th>
+				<th>PrixCommande</th>
+				<th>AdresseClient</th>
+				<th>Quantite</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for commande in commandes %}
+				<tr>
+					<td>{{ commande.Produit.nom }}</td>
+					<td>{{ commande.Client.nom }}</td>
+					<td>{{ commande.prixCommande }}</td>
+					<td>{{ commande.adresseClient }}</td>
+					<td>{{ commande.quantite }}</td>
+					<td>
+						<a href="{{ path('app_commande_show', {'id': commande.id}) }}">Détails</a>
+						<a href="{{ path('app_commande_edit', {'id': commande.id}) }}">Modifier</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="5">Pas de commandes enregistrées</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+
+	<a href="{{ path('app_commande_new') }}">Ajouter une Commande ?</a>
+{% endblock %}

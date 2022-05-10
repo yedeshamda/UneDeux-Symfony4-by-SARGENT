@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- ===============================================-->
+    <!--    Document Title-->
+    <!-- ===============================================-->
+    <title>Falcon | Dashboard &amp; Web App Template</title>
+    <!-- ===============================================-->
+    <!--    Favicons-->
+    <!-- ===============================================-->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/images/Mini Logo_2x.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/images/Mini Logo_2x.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/Mini Logo_2x.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/Mini Logo_2x.png') }}">
+    <link rel="manifest" href="{{ asset('assets/images/Mini Logo_2x.png') }}">
+    <meta name="msapplication-TileImage" content="{{ asset('assets/images/Mini Logo_2x.png') }}">
+    <meta name="theme-color" content="#ffffff">
+    <script src="{{ asset('assets/js/back/config.js') }}"></script>
+    <script src="{{ asset('assets/vendors/back/overlayscrollbars/OverlayScrollbars.min.js') }}"></script>
+    <!-- ===============================================-->
+    <!--    Stylesheets-->
+    <!-- ===============================================-->
+    {% block stylesheets %}
+        <link href="{{ asset('assets/vendors/back/leaflet/leaflet.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/vendors/back/leaflet.markercluster/MarkerCluster.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/vendors/back/leaflet.markercluster/MarkerCluster.Default.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/vendors/back/flatpickr/flatpickr.min.css') }}" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com/">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:300,400,500,600,700,800,900&amp;display=swap" rel="stylesheet">
+        <link href="{{ asset('assets/vendors/back/overlayscrollbars/OverlayScrollbars.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/css/back/theme-rtl.min.css') }}" rel="stylesheet" id="style-rtl">
+        <link href="{{ asset('assets/css/back/theme.min.css') }}" rel="stylesheet" id="style-default">
+        <link href="{{ asset('assets/css/back/user-rtl.min.css') }}" rel="stylesheet" id="user-style-rtl">
+        <link href="{{ asset('assets/css/back/user.min.css') }}" rel="stylesheet" id="user-style-default">
+    {% endblock %}
+    <script>
+        var isRTL = JSON.parse(localStorage.getItem('isRTL'));
+        if (isRTL) {
+            var linkDefault = document.getElementById('style-default');
+            var userLinkDefault = document.getElementById('user-style-default');
+            linkDefault.setAttribute('disabled', true);
+            userLinkDefault.setAttribute('disabled', true);
+            document.querySelector('html').setAttribute('dir', 'rtl');
+        } else {
+            var linkRTL = document.getElementById('style-rtl');
+            var userLinkRTL = document.getElementById('user-style-rtl');
+            linkRTL.setAttribute('disabled', true);
+            userLinkRTL.setAttribute('disabled', true);
+        }
+    </script>
+</head>
+
+<body>
+<!-- ===============================================-->
+<!--    Main Content-->
+<!-- ===============================================-->
+<main class="main" id="top">
+    <div class="container" data-layout="container">
+        <script>
+            var isFluid = JSON.parse(localStorage.getItem('isFluid'));
+            if (isFluid) {
+                var container = document.querySelector('[data-layout]');
+                container.classList.remove('container');
+                container.classList.add('container-fluid');
+            }
+        </script>
+        <!-- Sidemenu -->
+        {% include 'admin/layout/sidemenuu.html.twig' %}
+        <!-- Header -->
+        {% include 'admin/layout/headerr.html.twig' %}
+
+        <div class="content">
+            <!-- Header -->
+            {% include 'admin/layout/header22.html.twig' %}
+
+            <script>
+                var navbarPosition = localStorage.getItem('navbarPosition');
+                var navbarVertical = document.querySelector('.navbar-vertical');
+                var navbarTopVertical = document.querySelector('.content .navbar-top');
+                var navbarTop = document.querySelector('[data-layout] .navbar-top');
+                var navbarTopCombo = document.querySelector('.content [data-navbar-top="combo"]');
+                if (navbarPosition === 'top') {
+                    navbarTop.removeAttribute('style');
+                    navbarTopVertical.remove(navbarTopVertical);
+                    navbarVertical.remove(navbarVertical);
+                    navbarTopCombo.remove(navbarTopCombo);
+                } else if (navbarPosition === 'combo') {
+                    navbarVertical.removeAttribute('style');
+                    navbarTopCombo.removeAttribute('style');
+                    navbarTop.remove(navbarTop);
+                    navbarTopVertical.remove(navbarTopVertical);
+                } else {
+                    navbarVertical.removeAttribute('style');
+                    navbarTopVertical.removeAttribute('style');
+                    navbarTop.remove(navbarTop);
+                    navbarTopCombo.remove(navbarTopCombo);
+                }
+            </script>
+
+            <!-- Content is here -->
+            <div class="mb-3 g-3">
+                <div class="card overflow-hidden">
+                    <div class="card-header">
+                        {% block body %}
+                            <!-- Write Content here -->
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Footer -->
+            {% include 'admin/layout/footerr.html.twig' %}
+        </div>
+    </div>
+</main>
+
+<!-- ===============================================-->
+<!--    JavaScripts-->
+<!-- ===============================================-->
+{% block javascripts %}
+    <script src="{{ asset('assets/js/front/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/back/popper/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/back/bootstrap/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/back/anchorjs/anchor.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/back/is/is.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/back/leaflet/leaflet.js') }}"></script>
+    <script src="{{ asset('assets/vendors/back/leaflet.markercluster/leaflet.markercluster.js') }}"></script>
+    <script src="{{ asset('assets/vendors/back/leaflet.tilelayer.colorfilter/leaflet-tilelayer-colorfilter.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/back/countup/countUp.umd.js') }}"></script>
+    <script src="{{ asset('assets/vendors/back/echarts/echarts.min.js') }}"></script>
+    <script src="{{ asset('assets/js/back/world.js') }}"></script>
+    <script src="{{ asset('assets/vendors/back/dayjs/dayjs.min.js') }}"></script>
+    <script src="{{ asset('assets/js/back/flatpickr.js') }}"></script>
+    <script src="{{ asset('assets/vendors/back/fontawesome/all.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/back/lodash/lodash.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/back/list.js/list.min.js') }}"></script>
+    <script src="{{ asset('assets/js/back/theme.js') }}"></script>
+{% endblock %}
+
+</body>
+
+</html>

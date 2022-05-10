@@ -1,0 +1,78 @@
+{{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+
+
+<hr class="invis">
+
+<div class="row">
+    <div class="col-md-6 col-sm-12">
+        <label class="control-label">Titre Article</label>
+        {{ form_widget(form.titre_article,{'attr':{'class':'form-control'}}) }}
+        {% if not form.titre_article.vars.valid %}
+        <div class="alert alert-danger">
+            {{ form_errors(form.titre_article) }}
+        </div>
+        {% endif %}
+    </div>
+</div><!-- end row -->
+<hr class="invis">
+<div class="row">
+    <div class="col-md-6 col-sm-12">
+        <label class="control-label">Type</label>
+        {{ form_widget(form.type_sport,{'attr':{'class':'form-control'}}) }}
+        {% if not form.type_sport.vars.valid %}
+        <div class="alert alert-danger">
+            {{ form_errors(form.type_sport) }}
+        </div>
+        {% endif %}
+    </div>
+</div><!-- end row -->
+<hr class="invis">
+
+<div class="row">
+    <div class="col-md-6 col-sm-12">
+        <label class="control-label">Content</label>
+        {{ form_widget(form.contu_article,{'attr':{'class':'form-control'}}) }}
+        {% if not form.contu_article.vars.valid %}
+        <div class="alert alert-danger">
+            {{ form_errors(form.contu_article) }}
+        </div>
+        {% endif %}
+    </div>
+</div><!-- end row -->
+<hr class="invis">
+<div class="row">
+    <div class="col-md-6 col-sm-12">
+        <label class="control-label">Video</label>
+        {{ form_widget(form.video,{'attr':{'class':'form-control'}}) }}
+        {% if not form.video.vars.valid %}
+        <div class="alert alert-danger">
+            {{ form_errors(form.video) }}
+        </div>
+        {% endif %}
+    </div>
+</div><!-- end row -->
+
+
+<hr class="invis">
+
+<div class="row">
+    <div class="col-md-12 col-sm-12">
+        <label class="control-label">Image <small>Please add a your Image.</small></label>
+        <div class="fileupload fileupload-new" data-provides="fileupload">
+            <div class="fileupload-preview thumbnail"></div>
+            <br>
+            <span class="btn btn-default btn-file">
+                                                    <span class="fileupload-new">Select image</span>
+                                                    <span class="fileupload-exists">Change</span>
+                                                     {{ form_widget(form.image) }}
+                                                </span>
+            <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload"><i class="fa fa-close"></i></a>
+        </div>
+    </div>
+</div><!-- end row -->
+
+
+<hr class="invis">
+    {{ form_widget(form) }}
+    <button class="btn btn-primary btn-block">{{ button_label|default('Submit Form') }}</button>
+{{ form_end(form) }}

@@ -1,0 +1,26 @@
+{% extends ('admin/layout/base.html.twig') %}
+{% block body %}
+
+                    <table id="table_id" class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Date de création</th>
+                            <th>Message</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for notification in notifications %}
+                            <tr>
+                                <td>{{ notification.datecreation ? notification.datecreation|date('Y-m-d') : '' }}</td>
+                                <td>{{ notification.message }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <!-- DataTable-->
+    <script src="{{ asset('assets/js/datatables.min.js') }}"></script>
+{% endblock %}

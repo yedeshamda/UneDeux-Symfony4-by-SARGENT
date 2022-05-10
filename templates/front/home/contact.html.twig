@@ -1,0 +1,51 @@
+{% extends 'front/layout/base.html.twig' %}
+
+{% block body %}
+
+    <div class="background">
+        <div class="container-contact">
+            <div class="screen">
+                <div class="screen-header">
+                    <div class="screen-header-left">
+                        <a href="https://www.facebook.com/leadersimmobilier" class="text-white fs-25 px-4 opacity-hover-10"><i
+                                    class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://twitter.com/leadersimmobil2" class="text-white fs-25 px-4 opacity-hover-10"><i
+                                    class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/authwall?trk=gf&trkInfo=AQHQ7QXKsJO3dAAAAX_q4SzgtDaUJ3ioGuwaS5zM-md_dHI3AnZxVzxn7uwnLDtn3B1GYZ43tNB5HVZZeg1RFoaGKggqosYMai8K_yk7ikU2UlBqhhPyVgpQ6nZqusNp7XUTrTY=&originalReferer=http://leaders-immo.com/&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Fleaders-immobilier" class="text-white  fs-25 px-4 opacity-hover-10"><i
+                                    class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCvog0rk6k2ucztha20MZ0uw" class="text-white  fs-25 px-4 opacity-hover-10"><i
+                                    class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                    <div class="screen-header-right">
+
+                    </div>
+                </div>
+                <div class="screen-body">
+                    <div class="screen-body-item left">
+                        <div class="app-title">
+                            <span>CONTACTEZ - NOUS</span>
+                        </div>
+                        <div class="app-contact"><i class="fas fa-map-marker-alt"></i>  Manara Hammamet 8050, Tunisie.</div>
+                        <div class="app-contact"><i class="fas lh-26 fa-envelope"></i>  Contact@unedeux.com</div>
+                        <div class="app-contact"><i class="lh-26 fas fa-phone"></i>  Nous appeler: (+216) 27 246 333</div>
+                    </div>
+                    <div class="screen-body-item">
+                        {{ include('front/home/_form_contact.html.twig') }}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed">
+{% endblock %}

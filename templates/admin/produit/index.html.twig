@@ -20,7 +20,9 @@
                 <td>{{ produit.datecreation ? produit.datecreation|date('Y-m-d') : '' }}</td>
                 <td>{{ produit.nom }}</td>
                 <td>{{ produit.description }}</td>
-                <td><img src="{{asset('images/produits/'~produit.imageName)}}" height="40"></td>
+                <td>
+                    <img src="{{asset('images/produits/'~produit.imageName)}}" height="40">
+                </td>
                 <td>{{ produit.marque.nom }}</td>
                 <td>{{ produit.categorie.nom }}</td>
                 <td class="td-center">
@@ -47,8 +49,6 @@
 {% block javascripts %}
     {{ parent() }}
     <!-- DataTable-->
-    <script src="{{ asset('assets/js/pdfmake.min.js') }}"></script>
-    <script src="{{ asset('assets/js/vfs_fonts.js') }}"></script>
     <script src="{{ asset('assets/js/datatables.min.js') }}"></script>
 
     <script>

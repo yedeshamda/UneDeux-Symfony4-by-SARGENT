@@ -1,0 +1,9 @@
+{% extends 'front/layout/base.html.twig' %}
+
+{% block body %}
+    <h1>Create new Commentaire</h1>
+
+    {{ include('commentaire/_form.html.twig') }}
+
+    <a href="{{ path('app_commentaire_index') }}">back to list</a>
+{% endblock %}

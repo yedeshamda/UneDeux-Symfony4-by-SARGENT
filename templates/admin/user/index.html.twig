@@ -5,6 +5,7 @@
     <table id="table_id" class="table table-striped">
         <thead>
         <tr>
+            <th>Etat</th>
             <th>Email</th>
             <th>Nom</th>
             <th>Prénom</th>
@@ -18,6 +19,13 @@
         <tbody>
         {% for user in users %}
             <tr>
+                <td>
+                    {% if user.etat==1 %}
+                        <img style="height: 20px;" src="{{ asset('assets/images/green.png') }}" alt="green">
+                    {% else %}
+                        <img style="height: 20px;" src="{{ asset('assets/images/red.png') }}" alt="red">
+                    {% endif %}
+                </td>
                 <td>{{ user.email }}</td>
                 <td>{{ user.nom }}</td>
                 <td>{{ user.prenom }}</td>
@@ -31,6 +39,12 @@
                     {% if is_granted('ROLE_ADMIN') %}
                     <a class="btn btn-primary btn-sm" href="{{ path('admin_user_show', {'id': user.id}) }}">Détails</a>
                     <a class="btn btn-warning btn-sm" href="{{ path('admin_user_edit', {'id': user.id}) }}">Modifier</a>
+                    {% if user.etat==1 %}
+                        <a class="btn btn-danger btn-sm" href="{{ path('admin_user_bloquer', {'id': user.id}) }}">Bloquer</a>
+                    {% else %}
+                        <a class="btn btn-success btn-sm" href="{{ path('admin_user_bloquer', {'id': user.id}) }}">Activer</a>
+                    {% endif %}
+
                     {% endif %}
                 </td>
             </tr>
@@ -53,8 +67,6 @@
 {% block javascripts %}
     {{ parent() }}
     <!-- DataTable-->
-    <script src="{{ asset('assets/js/pdfmake.min.js') }}"></script>
-    <script src="{{ asset('assets/js/vfs_fonts.js') }}"></script>
     <script src="{{ asset('assets/js/datatables.min.js') }}"></script>
 
     <script>

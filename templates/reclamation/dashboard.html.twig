@@ -1,0 +1,51 @@
+
+{% extends 'admin/layout/basee.html.twig' %}
+{% block body %}
+    <h1>Reclamation index</h1>
+
+    <table  class="table table-striped">
+        <thead>
+        <tr>
+
+            <th>Sujetrec</th>
+            <th>Libelleproduit</th>
+            <th>Descriptionrec</th>
+            <th>Imgrec</th>
+            <th>Statusrec</th>
+            <th>Daterec</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for reclamation in reclamation %}
+            <tr>
+                <td>{{ reclamation.sujetrec }}</td>
+                <td>{{ reclamation.libelleproduit }}</td>
+                <td>{{ reclamation.descriptionrec }}</td>
+                <td> <img src="{{ asset('/' ~ reclamation.imgrec ) }} " alt="" style="width: 200px; height: 200px"> </td>
+                <td>{{ reclamation.statusrec }}</td>
+                <td>{{ reclamation.daterec ? reclamation.daterec|date('Y-m-d') : '' }}</td>
+
+                <td>
+                    {% if reclamation.statusrec == "traite" %}
+                        <a href="{{ path('untraiter',{'id_rec':reclamation.idrec}) }}">untraiter</a>
+                        {% else %}
+                        <a href="{{ path('traiter',{'id_rec':reclamation.idrec}) }}">traiter</a>
+
+                    {%  endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('assets/css/datatables.min.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}

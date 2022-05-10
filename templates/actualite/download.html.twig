@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tableau des Actualite</title>
+</head>
+<body >
+<h1 style="text-align: center; color: red">unedeux</h1>
+<h2 style="text-align: center">Tableau des Actualite</h2>
+
+<table border="1">
+    <thead>
+    <tr>
+
+        <th ></th>
+
+        <th >titrearticle	</th>
+        <th >typesport </th>
+        <th> description </th>
+        <th> video</th>
+
+
+    </tr>
+    </thead>
+    <tbody>
+    {% for p in produits %}
+        <tr>
+            <td>{{ p.titre_article }}</td>
+            <td>{{ p.type_sport }}</td>
+            <td>{{ p.contu_article }}</td>
+
+            <td>{{ p.video }}</td>
+
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+</body>
+</html>

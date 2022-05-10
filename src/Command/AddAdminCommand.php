@@ -65,6 +65,7 @@ class AddAdminCommand extends Command
             '</comment>',
         ]);
         $admin->setRoles(array('ROLE_ADMIN'));
+        $admin->setEtat(1);
         $usernameQ = new Question('Email : ');
         $username = $helper->ask($input, $output, $usernameQ);
         $nomQ = new Question('Nom : ');

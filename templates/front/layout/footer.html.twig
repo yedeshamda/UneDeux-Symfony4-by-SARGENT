@@ -1,95 +1,82 @@
-<footer class="footer">
-    <div class="position-relative w-100">
-        <img src="{{ asset('assets/images/footer_opacity.png') }}" class="w-100 img-footer2">
-        <img src="{{ asset('assets/images/footer1.png') }}" class="w-100 img-footer1">
+<footer class="footer-area section_gap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2 col-md-6 single-footer-widget">
+                <img style="height: 80px" src="{{ asset('assets/images/Logo_2x.png') }}" alt="">
+                <p></p>
+                <p>
+                    <i class="fa fa-map-marker-alt"></i>
+                    Address: <br>Hammamet</p>
 
-        <div class="container">
+                <p><i class="fa fa-phone"></i>
+                    Téléphone: <br>+216 24 004 500</p>
 
-            <div class="row">
-                <div class="col-3 col-md-6 col-lg-3  div-footer">
-                    <a href=""> <span>{% trans %}AGRICULTURE{% endtrans %}</span> </a>
-                    <ul>
-                        <li>Épandeur</li>
-                        <li>Épandeur</li>
-                        <li>Épandeur</li>
-                        <li>Épandeur</li>
-                        <li>Épandeur</li>
-                        <li>Épandeur</li>
-                    </ul>
-                </div>
-                <div class="col-3 col-md-6 col-lg-3 div-footer">
-                    <a href=""> <span>{% trans %}AGRICULTURE{% endtrans %}</span> </a>
-                    <ul>
-                        <li>Épandeur</li>
-                        <li>Épandeur</li>
-                        <li>Épandeur</li>
-                        <li>Épandeur</li>
-                        <li>Épandeur</li>
-                        <li>Épandeur</li>
-                    </ul>
-                </div>
-                <div class="col-3 col-md-6 col-lg-3  div-footer">
-                    <a href=""> <span>{% trans %}AGRICULTURE{% endtrans %}</span> </a>
-                    <ul>
-                        <li>Épandeur</li>
-                        <li>Épandeur</li>
-                        <li>Épandeur</li>
-                        <li>Épandeur</li>
-                        <li>Épandeur</li>
-                        <li>Épandeur</li>
-                    </ul>
-                </div>
-                <div class="col-3 col-md-6  col-lg-3 div-footer">
-
-                    <div class="w-100">
-                        <a href=""> <span> {% trans %}INFORMATIONS DE CONTACT{% endtrans %}</span></a>
-                        <a class="span-footer" href="">
-                            {% if app.request.locale == 'fr' %}
-                                {{ parametre.adresse }}
-                            {% elseif app.request.locale == 'en' %}
-                                {{ parametre.addres }}
-                            {% endif %}
-                        </a>
-                    </div>
-                    <div class="w-100">
-                        <div class="num-footer">
-                            (+216) {{ parametre.num1 }}
+                <p> <i class="fa fa-envelope"></i>
+                    Écrivez-nous : contact@unedeux.tn</p>
+            </div>
+            <div class="col-lg-2 col-md-6 single-footer-widget">
+                <h4>Produits</h4>
+                <ul>
+                    <li><a href="#">Promotions</a></li>
+                    <li><a href="#">Nouveaux produits</a></li>
+                    <li><a href="#">Meilleures ventes</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-2 col-md-6 single-footer-widget">
+                <h4>Notre société</h4>
+                <ul>
+                    <li><a href="#">Livraison</a></li>
+                    <li><a href="#">L'innovation Chez Le Sportif</a></li>
+                    <li><a href="#">Conditions Générales</a></li>
+                    <li><a href="#">Comment Commander</a></li>
+                    <li><a href="#">Une Deux</a></li>
+                    <li><a href="{{ path('front_contact') }}">Contactez-nous</a></li>
+                    <li><a href="#">Magasins</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-2 col-md-6 single-footer-widget">
+                <h4>Votre Compte</h4>
+                <ul>
+                    {% if app.user %}
+                        <li><a href="#"><img class="rounded-circle photo-style" src="{{ asset('images/users/'~app.user.photo.photoName|default('')) }}" /> {{ app.user.prenom|default('') }} {{ app.user.nom|default('') }}</a></li>
+                        <li><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
+                        <li><a href="{{ path('front_user_profile', {'id': app.user.id}) }}">Informations personnelles</a></li>
+                    {% elseif not app.user %}
+                        <li><a href="{{ path('app_user_login') }}">Se Connecter</a></li>
+                        <li><a href="{{ path('front_user_new') }}">Créer un compte</a></li>
+                    {% endif %}
+                    <li><a href="#">Commandes</a></li>
+                    <li><a href="#">Avoirs</a></li>
+                    <li><a href="#">Adresses</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4 col-md-6 single-footer-widget">
+                <h4>Sign Up For Newsletter</h4>
+                <p>Vous pouvez vous désinscrire à tout moment. Vous trouverez pour cela nos informations de contact dans les conditions d'utilisation du site.</p>
+                <div class="form-wrap" id="mc_embed_signup">
+                    <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+                          method="get" class="form-inline">
+                        <input class="form-control" name="EMAIL" placeholder="Votre adresse e-mail" onfocus="this.placeholder = ''"
+                               onblur="this.placeholder = 'Your Email Address '" required="" type="email">
+                        <button class="click-btn btn btn-default">S'abonner</button>
+                        <div style="position: absolute; left: -5000px;">
+                            <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
                         </div>
-                    </div>
-                    <div class="w-100">
-                        <div class="social-logo">
-                            <a href="{{ parametre.facebook }}"><i class="fab fa-facebook"></i></a>
-                            <a href="{{ parametre.youtube }}"><i class="fab fa-youtube"></i></a>
-                            <a href="{{ parametre.linkedin }}"><i class="fab fa-linkedin"></i></a>
-                        </div>
-                    </div>
 
-                    <div class="interieur-cadre">
-                        <img src="{{ asset('assets/images/Logo_white.png') }}" height="50">
-                    </div>
-                </div>
-            </div>
-
-            <div onclick="topFunction()" id="myBtn" class="arrow">
-                <i  class="fas fa-chevron-up"></i>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="w-100 copyright-bg" >
-    <div class="container" >
-        <div class="row copyright">
-            <div class="col-sm-6 mt-3">
-                <script>document.write(new Date().getFullYear())</script>
-                © MATEB.
-            </div>
-            <div class="col-sm-6 mt-3">
-                <div class="text-sm-end d-none d-sm-block">
-                    Design & Develop by Tekno Island
+                        <div class="info"></div>
+                    </form>
                 </div>
             </div>
         </div>
-    </div>
+        <div class="footer-bottom row align-items-center">
+            <p class="footer-text m-0 col-lg-8 col-md-12"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                Copyright &copy;<script>document.write(new Date().getFullYear());</script> Tous les droits sont réservés.</a>
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+            <div class="col-lg-4 col-md-12 footer-social">
+                <a href="#"><i style="font-size: 20px" class="fab topicon fa-youtube"></i></a>
+                <a href="#"><i style="font-size: 20px" class="fab topicon fa-instagram"></i></a>
+                <a href="#"><i style="font-size: 20px" class="fab topicon fa-facebook"></i></a>
+            </div>
+        </div>
     </div>
 </footer>

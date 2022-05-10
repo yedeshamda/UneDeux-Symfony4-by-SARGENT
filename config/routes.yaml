@@ -1,3 +1,6 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+app_mes_livraisons:
+  path: /livraison
+  controller: App\Controller\Front\LivraisonController::mesLivraisons

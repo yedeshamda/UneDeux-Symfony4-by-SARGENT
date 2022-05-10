@@ -1,0 +1,46 @@
+{% extends 'front/layout/base.html.twig' %}
+{% block body %}
+<div class="col-lg-9 col-md-9 col-xl-9 col-12">
+    <div class="row">
+        {% for actualite in actualites %}
+            <a href="{{ path('app_actualite_show', {'id': actualite.id}) }}">
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-product">
+                        <div class="product-img">
+                            <img class="img-fluid w-100" src="{{ asset('images/actualite/'~actualite.image) }}"
+                                 alt="">
+                            <div class="product-btm">
+                                <div class="mt-3">
+                                    <span class="mr-4">{{ actualite.typeSport }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="{{ path('likeEvent',{'id':actualite.id}) }}" >Like({{ actualite.jaime }})</a>
+                         <a href="{{ path('dislikeEvent',{'id':actualite.id}) }}" >Dislike({{ actualite.jaimepas }})</a>
+                    </div>
+                     
+                </div>
+ 
+
+                      
+            </a>
+
+        {% endfor %}
+    </div>
+
+    <a href="{{ path('app_actualite_new') }}">Create new</a>
+    <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/625ba0ab7b967b11798b1546/1g0qun82i';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+{% endblock %}

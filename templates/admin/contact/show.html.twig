@@ -1,6 +1,6 @@
 {% extends 'admin/layout/base.html.twig' %}
 {% block body %}
-    <h1>Détails du Contact</h1>
+    <h1>Détails du Categorie</h1>
 
     <table class="table">
         <tbody>
@@ -27,11 +27,11 @@
         </tbody>
     </table>
     <center>
-        {{ include('admin/contact/_delete_form.html.twig') }}
-        <br>
-        <a class="btn btn-primary btn-sm" href="{{ path('admin_contact_edit', {'id': contact.id}) }}">Modifer</a>
-        <br><br>
-    </center><br>
+    {{ include('admin/contact/_delete_form.html.twig') }}
+    <br>
+    </center>
+    <br>
     <a href="{{ path('admin_contact_index') }}">Précédent</a>
     <br>
+
 {% endblock %}

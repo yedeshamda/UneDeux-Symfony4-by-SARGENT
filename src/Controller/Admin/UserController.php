@@ -6,7 +6,6 @@ use App\Entity\User;
 use App\Form\UserType;
 use App\Form\UserUpdatePasswordType;
 use App\Form\UserUpdateType;
-use App\Repository\ParametreRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use phpDocumentor\Reflection\Types\Integer;
@@ -28,8 +27,7 @@ class UserController extends AbstractController
         $this->entityManager = $entityManager;
     }
 
-    #[
-        Route('/user', name: 'user_index', methods: ['GET'])]
+    #[Route('/user', name: 'user_index', methods: ['GET'])]
     public function index(UserRepository $userRepository): Response
     {
         return $this->render('admin/user/index.html.twig', [
@@ -47,7 +45,7 @@ class UserController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            $user->setRoles(["ROLE_USER"]);
+            $user->setRoles(["ROLE_ADMIN"]);
 
             $user->setPassword($this->passwordHasher->hashPassword(
                 $user, $form->get('password')->getData()));
@@ -138,6 +136,21 @@ class UserController extends AbstractController
             $entityManager->remove($user);
             $entityManager->flush();
         }
+
+        return $this->redirectToRoute('admin_user_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/user/{id}/bloquer', name: 'user_bloquer', methods: ['GET'])]
+    public function bloquer(Request $request, User $user): Response
+    {
+        if ($user->getEtat() == 1 ){
+            $user->setEtat(0);
+        }elseif($user->getEtat() == 0) {
+            $user->setEtat(1);
+        }
+
+        $this->entityManager->persist($user);
+        $this->entityManager->flush();
 
         return $this->redirectToRoute('admin_user_index', [], Response::HTTP_SEE_OTHER);
     }
